@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
       password,
       role,
       phone: phone || '',
-      businessName: businessName || (role === 'farmer' ? `${name}'s Farm` : role === 'retailer' ? `${name}'s Supermarket` : `${name} Logistics`),
+      businessName: businessName || (role === 'farmer' ? `${name}'s Farm` : role === 'merchant' ? `${name}'s Supermarket` : role === 'driver' ? `${name} Logistics` : `${name} Organisation`),
       location: location || '',
       vehicle: role === 'driver' ? (vehicle || '') : undefined,
       vehicleNumber: role === 'driver' ? (vehicleNumber || '') : undefined,

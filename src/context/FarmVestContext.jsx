@@ -1,19 +1,38 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
-import confetti from 'canvas-confetti';
-import { io } from 'socket.io-client';
-import { generateLogisticsRoadmap } from '../services/logistics/logisticsService';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { blockchain } from '../services/blockchain/blockchainService';
 import { calculateEscrowBreakdown, simulateEscrowRelease } from '../services/payments/escrowService';
 import { getCropImage } from '../utils/cropImages';
 
 const FarmVestContext = createContext();
 
-const PRODUCTS_KEY = 'farmvest_products_v2';
-const ORDERS_KEY = 'farmvest_orders_v2';
-const ACTIVE_ORDER_KEY = 'farmvest_active_order_v2';
+const PRODUCTS_KEY = 'farmvest_products_v4';
+const ORDERS_KEY = 'farmvest_orders_v4';
+const BATCHES_KEY = 'farmvest_batches_v4';
+const API_URL = 'http://localhost:5000/api';
+const TOKEN_KEY = 'farmvest_token_v3';
+
+function getToken() {
+  return localStorage.getItem(TOKEN_KEY);
+}
+
+async function apiCall(path, method = 'GET', body = null) {
+  const token = getToken();
+  const opts = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {})
+    },
+    ...(body ? { body: JSON.stringify(body) } : {})
+  };
+  const res = await fetch(`${API_URL}${path}`, opts);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || `API error ${res.status}`);
+  return data;
+}
 
 export function FarmVestProvider({ children }) {
-  // Products list (starts fresh from localStorage with verified vegetable images)
+  // Core data
   const [products, setProducts] = useState(() => {
     try {
       const saved = localStorage.getItem(PRODUCTS_KEY);
@@ -22,185 +41,103 @@ export function FarmVestProvider({ children }) {
         return parsed.map(p => ({ ...p, image: getCropImage(p) }));
       }
       return [];
-    } catch {
-      return [];
-    }
+    } catch { return []; }
   });
 
-  // Orders list
   const [orders, setOrders] = useState(() => {
     try {
       const saved = localStorage.getItem(ORDERS_KEY);
       return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
+    } catch { return []; }
   });
 
-  // Active ongoing order undergoing the 10-step lifecycle
-  const [activeOrder, setActiveOrder] = useState(() => {
+  const [batches, setBatches] = useState(() => {
     try {
-      const saved = localStorage.getItem(ACTIVE_ORDER_KEY);
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
-  });
-
-  // Real-time notifications
-  const [notifications, setNotifications] = useState([
-    {
-      id: 'notif-init',
-      title: 'FarmVest Network Ready 🌱',
-      message: 'AI quality grading, live GPS routing, and smart escrow initialized.',
-      time: 'Just now',
-      role: 'all',
-      type: 'info'
-    }
-  ]);
-  const [activeToast, setActiveToast] = useState(null);
-
-  // Live GPS simulation state
-  const [gpsData, setGpsData] = useState({
-    isActive: false,
-    progress: 0,
-    currentLat: 10.7482,
-    currentLng: 78.6534,
-    speedKmh: 0,
-    distanceRemainingKm: 12.4,
-    etaMinutes: 32,
-    heading: 'North-East',
-    status: 'Idle',
-    lastUpdate: new Date().toLocaleTimeString()
+      const saved = localStorage.getItem(BATCHES_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
   });
 
   const [blocks, setBlocks] = useState(blockchain.getRecentTransactions());
-  const [isSellModalOpen, setIsSellModalOpen] = useState(false);
-  const [selectedProductForDetail, setSelectedProductForDetail] = useState(null);
+
+  // UI state
+  const [notifications, setNotifications] = useState([{
+    id: 'notif-init',
+    title: 'FarmVest Supply Chain Ready 🌱',
+    message: 'AI quality grading, blockchain provenance, and custody handovers initialized.',
+    time: 'Just now', role: 'all', type: 'info'
+  }]);
+  const [activeToast, setActiveToast] = useState(null);
   const [selectedQrBatch, setSelectedQrBatch] = useState(null);
+  const [selectedProductForDetail, setSelectedProductForDetail] = useState(null);
+  const [isSellModalOpen, setIsSellModalOpen] = useState(false);
+  const [backendOnline, setBackendOnline] = useState(false);
 
-  const gpsIntervalRef = useRef(null);
-
-  // Save to localStorage whenever state changes
+  // Persist state
   useEffect(() => {
-    try {
-      localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
-    } catch (e) {
-      console.error(e);
-    }
+    try { localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products)); } catch {}
   }, [products]);
-
   useEffect(() => {
-    try {
-      localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
-    } catch (e) {
-      console.error(e);
-    }
+    try { localStorage.setItem(ORDERS_KEY, JSON.stringify(orders)); } catch {}
   }, [orders]);
-
   useEffect(() => {
-    try {
-      if (activeOrder) {
-        localStorage.setItem(ACTIVE_ORDER_KEY, JSON.stringify(activeOrder));
-      } else {
-        localStorage.removeItem(ACTIVE_ORDER_KEY);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, [activeOrder]);
+    try { localStorage.setItem(BATCHES_KEY, JSON.stringify(batches)); } catch {}
+  }, [batches]);
 
-  // Sync state across multiple open tabs/windows
+  // Cross-tab sync
   useEffect(() => {
-    const handleStorageChange = (e) => {
-      if (e.key === PRODUCTS_KEY && e.newValue) {
-        setProducts(JSON.parse(e.newValue));
-      }
-      if (e.key === ORDERS_KEY && e.newValue) {
-        setOrders(JSON.parse(e.newValue));
-      }
-      if (e.key === ACTIVE_ORDER_KEY) {
-        setActiveOrder(e.newValue ? JSON.parse(e.newValue) : null);
-      }
+    const handler = (e) => {
+      if (e.key === PRODUCTS_KEY && e.newValue) setProducts(JSON.parse(e.newValue).map(p => ({ ...p, image: getCropImage(p) })));
+      if (e.key === ORDERS_KEY && e.newValue) setOrders(JSON.parse(e.newValue));
+      if (e.key === BATCHES_KEY && e.newValue) setBatches(JSON.parse(e.newValue));
     };
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    window.addEventListener('storage', handler);
+    return () => window.removeEventListener('storage', handler);
   }, []);
 
-  // Fetch products from backend database & connect socket
+  // Boot: fetch products from backend
   useEffect(() => {
-    // 1. Fetch products from backend database
-    fetch('http://localhost:5000/api/products')
+    fetch(`${API_URL}/products`)
       .then(r => r.json())
       .then(data => {
-        if (data?.products && Array.isArray(data.products) && data.products.length > 0) {
+        setBackendOnline(true);
+        if (data?.products?.length > 0) {
           setProducts(prev => {
             const map = new Map();
+            // backend products first, then local overrides
             data.products.forEach(p => map.set(p.batchId || p.id, { ...p, image: getCropImage(p) }));
-            prev.forEach(p => map.set(p.batchId || p.id, { ...p, image: getCropImage(p) }));
+            prev.forEach(p => { if (!map.has(p.batchId || p.id)) map.set(p.batchId || p.id, { ...p, image: getCropImage(p) }); });
             return Array.from(map.values());
           });
         }
       })
-      .catch(() => {});
-
-    // 2. Real-time Socket.io listener
-    let socket;
-    try {
-      socket = io('http://localhost:5000', {
-        reconnectionAttempts: 3,
-        transports: ['websocket', 'polling']
-      });
-
-      socket.on('notification:new_order', (data) => {
-        if (data?.order) {
-          addNotification(
-            '🛒 New Order Placed!',
-            `Retailer ordered ${data.order.quantity} kg of ${data.order.productName}.`,
-            'farmer',
-            'info'
-          );
-        }
-      });
-    } catch (e) {
-      console.warn('Socket error:', e);
-    }
-
-    return () => {
-      if (socket) socket.disconnect();
-    };
+      .catch(() => setBackendOnline(false));
   }, []);
 
-  const addNotification = (title, message, role = 'all', type = 'success') => {
-    const notif = {
-      id: 'notif-' + Date.now(),
-      title,
-      message,
-      time: 'Just now',
-      role,
-      type
-    };
+  // ── NOTIFICATIONS ─────────────────────────────────────────────────────────
+  const addNotification = useCallback((title, message, role = 'all', type = 'success') => {
+    const notif = { id: 'notif-' + Date.now(), title, message, time: 'Just now', role, type };
     setNotifications(prev => [notif, ...prev]);
     setActiveToast(notif);
-    setTimeout(() => {
-      setActiveToast(current => (current?.id === notif.id ? null : current));
-    }, 4500);
-  };
+    setTimeout(() => setActiveToast(c => c?.id === notif.id ? null : c), 4500);
+  }, []);
 
-  // 1. Farmer publishes product
-  const publishProduct = (productData) => {
-    const newBatchId = productData.batchId || `FV-${productData.name.slice(0, 3).toUpperCase()}-${Math.floor(100 + Math.random() * 900)}`;
-    const tx = blockchain.recordTransaction('BatchRegistered & AIQualityCertified', {
+  // ── PUBLISH PRODUCT (Farmer) ───────────────────────────────────────────────
+  const publishProduct = useCallback(async (productData) => {
+    const newBatchId = productData.batchId || `FV-${(productData.name || 'CRP').slice(0, 3).toUpperCase()}-${Math.floor(100 + Math.random() * 900)}`;
+    
+    // Record genesis block in local blockchain
+    const tx = blockchain.recordTransaction('BatchCreated_GenesisBlock', {
       batchId: newBatchId,
+      farmer: productData.farmerName,
       product: productData.name,
-      aiScore: productData.aiGrade?.score || 92,
-      grade: productData.aiGrade?.grade || 'Grade A',
-      farmer: productData.farmerName || 'Green Valley Farm',
-      quantity: `${productData.totalQuantity} ${productData.unit}`
-    });
+      grade: productData.aiGrade?.grade || 'Ungraded',
+      quantity: `${productData.totalQuantity} ${productData.unit}`,
+      authenticityLevel: productData.authenticityReport?.level || 'unknown'
+    }, newBatchId, productData.farmerName);
 
-    const imageToUse = (productData.image && productData.image.startsWith('http')) 
-      ? productData.image 
+    const imageToUse = (productData.image && productData.image.startsWith('http'))
+      ? productData.image
       : getCropImage(productData);
 
     const newProd = {
@@ -210,23 +147,64 @@ export function FarmVestProvider({ children }) {
       image: imageToUse,
       availableQuantity: productData.totalQuantity,
       status: 'Available',
+      currentCustodian: productData.farmerId,
+      currentCustodianName: productData.farmerName,
+      currentCustodianRole: 'farmer',
+      journeyStatus: 'With Farmer',
       createdAt: new Date().toISOString(),
-      blockchainTx: tx.txHash
+      genesisBlockHash: tx.hash || tx.txHash
+    };
+
+    // Create local batch record
+    const newBatch = {
+      id: 'batch-' + Date.now(),
+      batchId: newBatchId,
+      productId: newProd.id,
+      farmerId: productData.farmerId,
+      farmerName: productData.farmerName,
+      productName: productData.name,
+      category: productData.category,
+      quantity: productData.totalQuantity,
+      unit: productData.unit,
+      pricePerKg: productData.pricePerKg,
+      harvestDate: productData.harvestDate,
+      cultivationDate: productData.cultivationDate || '',
+      location: productData.location,
+      aiGrade: productData.aiGrade || {},
+      authenticityReport: productData.authenticityReport || null,
+      fairPriceRecommendation: productData.fairPriceRecommendation || null,
+      currentCustodian: productData.farmerId,
+      currentCustodianName: productData.farmerName,
+      currentCustodianRole: 'farmer',
+      status: 'Created',
+      journeyStatus: 'With Farmer',
+      orderId: null,
+      merchantId: null,
+      merchantName: null,
+      journey: [
+        {
+          event: 'BatchCreated',
+          actor: productData.farmerName,
+          role: 'farmer',
+          timestamp: new Date().toISOString(),
+          note: `Genesis block created. AI grade: ${productData.aiGrade?.grade || 'Pending'}. Authenticity: ${productData.authenticityReport?.levelLabel || 'Not verified'}`
+        }
+      ],
+      genesisBlockHash: tx.hash || tx.txHash,
+      createdAt: new Date().toISOString()
     };
 
     setProducts(prev => [newProd, ...prev]);
+    setBatches(prev => [newBatch, ...prev]);
     setBlocks(blockchain.getRecentTransactions());
-    
-    // Sync with backend API if user is authenticated
-    try {
-      const token = localStorage.getItem('farmvest_token_v3');
-      if (token) {
-        fetch('http://localhost:5000/api/products', {
+
+    // Sync to backend
+    const token = getToken();
+    if (token) {
+      try {
+        await fetch(`${API_URL}/products`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify({
             name: newProd.name,
             category: newProd.category,
@@ -234,49 +212,41 @@ export function FarmVestProvider({ children }) {
             unit: newProd.unit,
             pricePerKg: newProd.pricePerKg,
             harvestDate: newProd.harvestDate,
+            cultivationDate: newProd.cultivationDate || '',
             location: newProd.location,
             description: newProd.description,
-            image: newProd.image || '',
+            image: newProd.image,
             aiGrade: newProd.aiGrade,
-            batchId: newProd.batchId
+            authenticityReport: newProd.authenticityReport,
+            fairPriceRecommendation: newProd.fairPriceRecommendation,
+            batchId: newBatchId
           })
-        }).catch(err => console.warn('Backend sync failed:', err));
-      }
-    } catch (e) {
-      console.warn(e);
+        }).catch(() => {});
+      } catch {}
     }
 
     addNotification(
-      '🌾 Product Listed for Sale!',
-      `${newProd.name} (${newProd.totalQuantity} ${newProd.unit}) is now live in the Retailer Marketplace. AI Grade: ${newProd.aiGrade?.grade || 'Grade A'}`,
-      'farmer',
-      'success'
+      '🌾 Batch Created & Listed!',
+      `${newProd.name} (${newProd.totalQuantity} ${newProd.unit}) — Batch ${newBatchId} — Grade: ${newProd.aiGrade?.grade || 'Pending'} — Now live in Merchant Marketplace.`,
+      'farmer', 'success'
     );
 
-    return newProd;
-  };
+    return { product: newProd, batch: newBatch };
+  }, [addNotification]);
 
-  // 2. Retailer places order
-  const placeOrder = ({ product, quantityKg, retailerName = 'FreshMart Superstores', deliveryAddress = 'FreshMart Hyperstore, Main Junction' }) => {
-    const roadmap = generateLogisticsRoadmap({
-      farmerLocation: product.location,
-      retailerLocation: deliveryAddress,
-      quantityKg,
-      productType: product.name
-    });
+  // ── PLACE ORDER (Merchant) ─────────────────────────────────────────────────
+  const placeOrder = useCallback(async ({ product, quantityKg, merchantUser }) => {
+    const merchantName = merchantUser?.businessName || merchantUser?.name || 'Merchant';
+    const merchantLocation = merchantUser?.location || 'Merchant Location';
 
-    const escrow = calculateEscrowBreakdown(quantityKg, product.pricePerKg, roadmap.metrics.transportFee);
+    const escrow = calculateEscrowBreakdown(quantityKg, product.pricePerKg, 0);
 
-    const tx = blockchain.recordTransaction('OrderEscrowLocked', {
-      orderId: `ORD-${Date.now().toString().slice(-6)}`,
+    const tx = blockchain.recordTransaction('OrderPlaced_MerchantOrder', {
       batchId: product.batchId,
-      product: product.name,
-      quantity: `${quantityKg} kg`,
-      totalEscrow: `₹${escrow.grandTotal}`,
-      farmerLocked: `₹${escrow.productTotal}`,
-      driverLocked: `₹${escrow.driverShare}`,
-      retailer: retailerName
-    });
+      merchant: merchantName,
+      quantity: `${quantityKg} ${product.unit}`,
+      totalAmount: `₹${escrow.grandTotal}`
+    }, product.batchId, merchantName);
 
     const newOrder = {
       id: `ORD-${Math.floor(100000 + Math.random() * 900000)}`,
@@ -284,391 +254,335 @@ export function FarmVestProvider({ children }) {
       productId: product.id,
       productName: product.name,
       productImage: product.image,
-      quantity: quantityKg,
-      pricePerKg: product.pricePerKg,
-      transportFee: roadmap.metrics.transportFee,
-      totalAmount: escrow.grandTotal,
-      farmerAmount: escrow.productTotal,
-      driverAmount: escrow.driverShare,
+      farmerId: product.farmerId,
       farmerName: product.farmerName,
       farmerLocation: product.location,
-      retailerName: retailerName,
-      retailerLocation: deliveryAddress,
+      merchantId: merchantUser?.id,
+      merchantName,
+      merchantLocation,
+      quantity: quantityKg,
+      unit: product.unit,
+      pricePerKg: product.pricePerKg,
+      totalAmount: escrow.grandTotal,
+      farmerAmount: escrow.productTotal,
+      platformFee: escrow.platformFee,
       aiGrade: product.aiGrade,
-      status: 'Ordered', // Ordered -> Waiting for Pickup -> Pickup Requested -> In Transit -> Driver Arrived -> Delivery Requested -> Delivered
-      timelineStatus: 'AI Logistics Roadmap Created',
-      roadmap,
-      escrow,
-      driver: roadmap.driver,
+      status: 'Ordered',
+      pickupHandoverRequested: false,
+      pickupHandoverAccepted: false,
+      deliveryHandoverRequested: false,
+      deliveryHandoverAccepted: false,
+      damageInspection: null,
+      paymentStatus: 'Pending',
+      paymentTxId: null,
       createdAt: new Date().toISOString(),
-      blockchainTx: tx.txHash,
-      history: [
-        { status: 'Product Listed', time: 'Harvest Recorded', done: true },
-        { status: 'AI Quality Verified', time: 'AI Certified', done: true, detail: `Score: ${product.aiGrade?.score}/100 (${product.aiGrade?.grade})` },
-        { status: 'Retailer Ordered', time: 'Just now', done: true, detail: `${quantityKg} kg ordered by ${retailerName}` },
-        { status: 'Driver Assigned', time: 'Pending Driver Acceptance', done: false },
-        { status: 'Pickup Handover', time: 'Pending Pickup', done: false },
-        { status: 'In Transit & Live GPS', time: 'Pending Pickup Handover', done: false },
-        { status: 'Delivery Handover', time: 'Pending Delivery', done: false },
-        { status: 'Delivered & Escrow Settled', time: 'Pending Acceptance', done: false }
-      ]
+      blockchainTx: tx.hash || tx.txHash
     };
 
-    // Update product available quantity
-    setProducts(prev => prev.map(p => {
-      if (p.id === product.id) {
-        return {
-          ...p,
-          availableQuantity: Math.max(0, p.availableQuantity - quantityKg)
-        };
-      }
-      return p;
-    }));
+    // Update product stock
+    setProducts(prev => prev.map(p => p.id === product.id
+      ? { ...p, availableQuantity: Math.max(0, (p.availableQuantity || p.totalQuantity) - quantityKg) }
+      : p
+    ));
+
+    // Update batch
+    setBatches(prev => prev.map(b => b.batchId === product.batchId ? {
+      ...b,
+      orderId: newOrder.id,
+      merchantId: merchantUser?.id,
+      merchantName,
+      status: 'Ordered',
+      journeyStatus: 'Order Placed',
+      journey: [...(b.journey || []), {
+        event: 'OrderPlaced',
+        actor: merchantName,
+        role: 'merchant',
+        timestamp: new Date().toISOString(),
+        note: `Order for ${quantityKg} ${product.unit}. Amount: ₹${escrow.grandTotal}`
+      }]
+    } : b));
 
     setOrders(prev => [newOrder, ...prev]);
-    setActiveOrder(newOrder);
     setBlocks(blockchain.getRecentTransactions());
 
-    addNotification(
-      '🛒 New Order Placed!',
-      `Retailer ordered ${quantityKg} kg of ${product.name}. ₹${escrow.grandTotal} secured in Escrow. AI roadmap created & driver dispatched!`,
-      'retailer',
-      'success'
-    );
+    // Backend sync
+    const token = getToken();
+    if (token) {
+      try {
+        await fetch(`${API_URL}/orders`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ productId: product.id, quantity: quantityKg, deliveryAddress: merchantLocation })
+        }).catch(() => {});
+      } catch {}
+    }
 
-    addNotification(
-      '🚚 Trip Request Available!',
-      `New cargo delivery from ${product.farmerName} to ${retailerName} (${quantityKg} kg ${product.name}). Est. Earnings: ₹${roadmap.metrics.transportFee}`,
-      'driver',
-      'info'
-    );
-
+    addNotification('🛒 Order Placed!', `${quantityKg} ${product.unit} of ${product.name} ordered. Farmer will be notified.`, 'merchant', 'success');
     return newOrder;
-  };
+  }, [addNotification]);
 
-  // 3. Driver accepts trip
-  const acceptTrip = (orderId) => {
-    setActiveOrder(prev => {
-      if (!prev || prev.id !== orderId) return prev;
-      
-      const tx = blockchain.recordTransaction('DriverAssigned & TripAccepted', {
-        orderId: prev.id,
-        driver: prev.driver.name,
-        vehicle: prev.driver.vehicle,
-        etaToFarmer: `${prev.roadmap.pickup.etaMinutes} min`
-      });
+  // ── REQUEST HANDOVER (Farmer) ──────────────────────────────────────────────
+  const requestHandover = useCallback(async (orderId) => {
+    blockchain.recordTransaction('FarmerRequestedHandover', { orderId }, null, 'Farmer');
 
-      const updated = {
-        ...prev,
-        status: 'Waiting for Pickup',
-        timelineStatus: `Driver ${prev.driver.name} en-route to farm for pickup`,
-        history: prev.history.map(h => {
-          if (h.status === 'Driver Assigned') return { ...h, done: true, time: 'Just now', detail: `${prev.driver.name} accepted trip (₹${prev.driverAmount})` };
-          return h;
-        })
-      };
-
-      setBlocks(blockchain.getRecentTransactions());
-      return updated;
-    });
-
-    addNotification(
-      '🚚 Trip Accepted by Driver',
-      'Driver Arun Kumar is navigating to farm. Estimated arrival: 8 minutes.',
-      'all',
-      'info'
-    );
-  };
-
-  // 4. Pickup Handover: Farmer Requests Handover
-  const requestPickupHandover = (orderId) => {
-    setActiveOrder(prev => {
-      if (!prev || prev.id !== orderId) return prev;
+    setOrders(prev => prev.map(o => o.id === orderId
+      ? { ...o, status: 'Waiting for Handover', pickupHandoverRequested: true, pickupRequestedAt: new Date().toISOString() }
+      : o
+    ));
+    setBatches(prev => prev.map(b => {
+      const order = orders.find(o => o.id === orderId);
+      if (!order || b.batchId !== order.batchId) return b;
       return {
-        ...prev,
-        status: 'Pickup Requested',
-        timelineStatus: 'Farmer requested pickup handover. Awaiting driver confirmation.'
+        ...b,
+        status: 'Waiting for Handover',
+        journeyStatus: 'Farmer Requested Handover',
+        journey: [...(b.journey || []), {
+          event: 'FarmerRequestedHandover',
+          actor: 'Farmer',
+          role: 'farmer',
+          timestamp: new Date().toISOString(),
+          note: 'Farmer initiated custody transfer to Merchant.'
+        }]
       };
-    });
+    }));
+    setBlocks(blockchain.getRecentTransactions());
 
-    addNotification(
-      '📦 Pickup Handover Requested by Farmer',
-      'Farmer has initiated physical cargo handover. Driver inspection requested.',
-      'driver',
-      'warning'
-    );
-  };
+    // Backend sync
+    const token = getToken();
+    if (token) {
+      try {
+        await fetch(`${API_URL}/orders/${orderId}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ action: 'request_pickup' })
+        }).catch(() => {});
+      } catch {}
+    }
 
-  // 5. Pickup Handover: Driver Accepts Handover -> Starts In Transit & GPS
-  const acceptPickupHandover = (orderId) => {
-    setActiveOrder(prev => {
-      if (!prev || prev.id !== orderId) return prev;
+    addNotification('📦 Handover Requested', 'You requested custody handover to the merchant. Awaiting merchant acceptance.', 'farmer', 'info');
+  }, [orders, addNotification]);
 
-      const tx = blockchain.recordTransaction('PickupHandoverConfirmed & InTransit', {
-        orderId: prev.id,
-        batchId: prev.batchId,
-        handoverFrom: prev.farmerName,
-        handoverTo: prev.driver.name,
-        cargoVerified: `${prev.quantity} kg ${prev.productName}`,
-        gpsStatus: 'Live Telemetry Activated'
-      });
+  // ── ACCEPT HANDOVER (Merchant) ─────────────────────────────────────────────
+  const acceptHandover = useCallback(async (orderId, merchantUser) => {
+    const merchantName = merchantUser?.businessName || merchantUser?.name || 'Merchant';
 
-      const updated = {
-        ...prev,
-        status: 'In Transit',
-        timelineStatus: 'In Transit to Retailer (GPS Active)',
-        pickedUpAt: new Date().toISOString(),
-        history: prev.history.map(h => {
-          if (h.status === 'Pickup Handover') return { ...h, done: true, time: 'Just now', detail: 'Farmer handed over cargo to Driver' };
-          if (h.status === 'In Transit & Live GPS') return { ...h, done: true, time: 'Live Now', detail: 'Truck en-route (Speed: 42 km/h)' };
-          return h;
-        })
-      };
+    blockchain.recordTransaction('MerchantAcceptedHandover', { orderId, newCustodian: merchantName }, null, merchantName);
 
-      setBlocks(blockchain.getRecentTransactions());
-      return updated;
-    });
-
-    startGpsSimulation();
-
-    addNotification(
-      '✅ Pickup Handover Complete — In Transit!',
-      'Cargo verified & loaded. Live GPS tracking is now active for Farmer and Retailer.',
-      'all',
-      'success'
-    );
-  };
-
-  // Start live GPS movement
-  const startGpsSimulation = () => {
-    if (gpsIntervalRef.current) clearInterval(gpsIntervalRef.current);
-
-    setGpsData({
-      isActive: true,
-      progress: 5,
-      currentLat: 10.7482,
-      currentLng: 78.6534,
-      speedKmh: 42,
-      distanceRemainingKm: 12.0,
-      etaMinutes: 24,
-      heading: 'North-East',
-      status: 'In Transit on Green Highway 45',
-      lastUpdate: new Date().toLocaleTimeString()
-    });
-
-    let currentProgress = 5;
-
-    gpsIntervalRef.current = setInterval(() => {
-      currentProgress += 5;
-      if (currentProgress >= 100) {
-        currentProgress = 100;
-        clearInterval(gpsIntervalRef.current);
-        
-        setActiveOrder(prev => {
-          if (!prev) return prev;
-          return {
-            ...prev,
-            status: 'Driver Arrived at Destination',
-            timelineStatus: 'Driver arrived at Retailer'
-          };
-        });
-
-        setGpsData(prev => ({
-          ...prev,
-          progress: 100,
-          currentLat: 10.8350,
-          currentLng: 78.6920,
-          speedKmh: 0,
-          distanceRemainingKm: 0.0,
-          etaMinutes: 0,
-          status: 'Arrived at Retail Destination',
-          lastUpdate: new Date().toLocaleTimeString()
-        }));
-
-        addNotification(
-          '📍 Driver Arrived at Destination',
-          'Arun Kumar has arrived at store. Ready for delivery handover.',
-          'all',
-          'info'
-        );
-      } else {
-        const startLat = 10.7482, startLng = 78.6534;
-        const endLat = 10.8350, endLng = 78.6920;
-        const ratio = currentProgress / 100;
-        const lat = startLat + (endLat - startLat) * ratio;
-        const lng = startLng + (endLng - startLng) * ratio;
-        const remainingKm = +(12.4 * (1 - ratio)).toFixed(1);
-        const remainingMin = Math.ceil(24 * (1 - ratio));
-
-        setGpsData({
-          isActive: true,
-          progress: currentProgress,
-          currentLat: +lat.toFixed(4),
-          currentLng: +lng.toFixed(4),
-          speedKmh: 38 + Math.floor(Math.random() * 8),
-          distanceRemainingKm: remainingKm,
-          etaMinutes: remainingMin,
-          heading: 'North-East',
-          status: 'In Transit on Green Highway 45',
-          lastUpdate: new Date().toLocaleTimeString()
-        });
-      }
-    }, 1500);
-  };
-
-  // 6. Delivery Handover: Driver Requests Handover
-  const requestDeliveryHandover = (orderId) => {
-    setActiveOrder(prev => {
-      if (!prev || prev.id !== orderId) return prev;
+    setOrders(prev => prev.map(o => o.id === orderId
+      ? { ...o, status: 'Handover Accepted', pickupHandoverAccepted: true, deliveryHandoverAccepted: true, handoverAcceptedAt: new Date().toISOString() }
+      : o
+    ));
+    setBatches(prev => prev.map(b => {
+      const order = orders.find(o => o.id === orderId) || prev.find(bb => bb.orderId === orderId);
+      if (!order || (b.batchId !== order?.batchId && b.orderId !== orderId)) return b;
       return {
-        ...prev,
-        status: 'Delivery Requested',
-        timelineStatus: 'Driver requested delivery handover. Awaiting retailer inspection.'
+        ...b,
+        status: 'With Merchant',
+        journeyStatus: 'Handover Accepted by Merchant',
+        currentCustodian: merchantUser?.id,
+        currentCustodianName: merchantName,
+        currentCustodianRole: 'merchant',
+        journey: [...(b.journey || []), {
+          event: 'MerchantAcceptedHandover',
+          actor: merchantName,
+          role: 'merchant',
+          timestamp: new Date().toISOString(),
+          note: 'Merchant accepted custody. Product now with merchant.'
+        }]
       };
-    });
+    }));
+    setBlocks(blockchain.getRecentTransactions());
 
-    addNotification(
-      '🏪 Delivery Handover Requested by Driver',
-      'Driver Arun Kumar is ready to deliver produce. Retailer inspection requested.',
-      'retailer',
-      'warning'
-    );
-  };
+    // Backend sync
+    const token = getToken();
+    if (token) {
+      try {
+        await fetch(`${API_URL}/orders/${orderId}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ action: 'accept_handover' })
+        }).catch(() => {});
+      } catch {}
+    }
 
-  // 7. Delivery Handover: Retailer Accepts Handover -> Smart Escrow Release
-  const acceptDeliveryHandover = (orderId) => {
-    confetti({
-      particleCount: 120,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+    addNotification('✅ Handover Accepted', 'You accepted custody of the product. Proceed to inspection.', 'merchant', 'success');
+  }, [orders, addNotification]);
 
-    const escrowReceipt = simulateEscrowRelease(activeOrder || { quantity: 100, pricePerKg: 40, transportFee: 500 });
+  // ── RECORD DAMAGE INSPECTION (Merchant) ───────────────────────────────────
+  const recordDamageInspection = useCallback(async (orderId, damageReport) => {
+    blockchain.recordTransaction('QualityInspectionCompleted', { orderId, damage: damageReport }, null, 'Merchant');
 
-    const tx = blockchain.recordTransaction('DeliveryAccepted & EscrowSettled', {
-      orderId: activeOrder?.id,
-      batchId: activeOrder?.batchId,
-      deliveredTo: activeOrder?.retailerName,
-      receivedBy: 'Store Manager (Retailer)',
-      escrowSplit: {
-        farmerAmount: `₹${activeOrder?.farmerAmount || 4000}`,
-        driverAmount: `₹${activeOrder?.driverAmount || 500}`,
-        platformFee: '₹0 (Fair Trade)'
-      },
-      payoutStatus: 'Completed Instantly via UPI / Smart Contract'
-    });
+    setOrders(prev => prev.map(o => o.id === orderId
+      ? { ...o, status: 'Inspected', damageInspection: damageReport, inspectedAt: new Date().toISOString() }
+      : o
+    ));
+    setBatches(prev => prev.map(b => {
+      const order = orders.find(o => o.id === orderId);
+      if (!order || b.batchId !== order?.batchId) return b;
+      return {
+        ...b,
+        journey: [...(b.journey || []), {
+          event: 'QualityInspected',
+          actor: 'Merchant',
+          role: 'merchant',
+          timestamp: new Date().toISOString(),
+          note: damageReport?.summary || 'Inspection completed.'
+        }]
+      };
+    }));
+    setBlocks(blockchain.getRecentTransactions());
 
-    setActiveOrder(prev => {
-      if (!prev || prev.id !== orderId) return prev;
-      const updated = {
-        ...prev,
+    addNotification('🔍 Inspection Recorded', `Inspection complete. ${damageReport?.summary || 'No damage found.'}`, 'merchant', 'info');
+  }, [orders, addNotification]);
+
+  // ── RELEASE PAYMENT (Merchant) ─────────────────────────────────────────────
+  const releasePayment = useCallback(async (orderId) => {
+    const order = orders.find(o => o.id === orderId);
+    if (!order) return;
+
+    const damageAdjPct = order.damageInspection?.adjustmentPct || 0;
+    const finalFarmerAmount = Math.round(order.farmerAmount * (1 - damageAdjPct / 100));
+    const txId = 'TXN-FV-' + Date.now();
+
+    blockchain.recordTransaction('PaymentReleased_OrderComplete', {
+      orderId,
+      txId,
+      farmerPaid: `₹${finalFarmerAmount}`,
+      batchId: order.batchId
+    }, order.batchId, 'Merchant');
+
+    setOrders(prev => prev.map(o => o.id === orderId
+      ? { ...o, status: 'Delivered', paymentStatus: 'Paid', paymentTxId: txId, finalFarmerAmount, paidAt: new Date().toISOString() }
+      : o
+    ));
+    setBatches(prev => prev.map(b => {
+      if (b.batchId !== order.batchId) return b;
+      return {
+        ...b,
         status: 'Delivered',
-        timelineStatus: 'Order Complete — Escrow Distributed',
-        deliveredAt: new Date().toISOString(),
-        escrowSettlement: escrowReceipt,
-        history: prev.history.map(h => {
-          if (h.status === 'Delivery Handover') return { ...h, done: true, time: 'Just now', detail: 'Retailer inspected and accepted delivery' };
-          if (h.status === 'Delivered & Escrow Settled') return { ...h, done: true, time: 'Just now', detail: `₹${activeOrder?.farmerAmount || 4000} paid to Farmer, ₹${activeOrder?.driverAmount || 500} paid to Driver` };
-          return h;
-        })
+        journeyStatus: 'Delivered & Payment Released',
+        journey: [...(b.journey || []), {
+          event: 'PaymentReleased',
+          actor: 'Merchant',
+          role: 'merchant',
+          timestamp: new Date().toISOString(),
+          note: `₹${finalFarmerAmount} released to farmer. TxID: ${txId}`
+        }]
       };
+    }));
+    setBlocks(blockchain.getRecentTransactions());
+    setProducts(prev => prev.map(p => p.id === order.productId ? { ...p, status: 'Sold' } : p));
 
-      setBlocks(blockchain.getRecentTransactions());
-      return updated;
-    });
+    // Backend sync
+    const token = getToken();
+    if (token) {
+      try {
+        await fetch(`${API_URL}/orders/${orderId}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ action: 'release_payment', damageReport: order.damageInspection })
+        }).catch(() => {});
+      } catch {}
+    }
 
-    addNotification(
-      '🎉 Delivery Accepted & Escrow Settled!',
-      `₹${activeOrder?.farmerAmount || 4000} released to Farmer, ₹${activeOrder?.driverAmount || 500} released to Driver. Blockchain record mined!`,
-      'all',
-      'success'
-    );
-  };
+    addNotification('🎉 Payment Released!', `₹${finalFarmerAmount} sent to farmer. Order complete. TxID: ${txId}`, 'merchant', 'success');
+    return { txId, finalFarmerAmount };
+  }, [orders, addNotification]);
 
-  // Load sample initial crop for quick demonstration if user wants
-  const loadSampleHarvest = () => {
-    const sampleTomato = {
-      id: 'prod-tomato-sample',
-      batchId: 'FV-TOM-101',
+  // ── LOAD SAMPLE HARVEST (Demo) ─────────────────────────────────────────────
+  const loadSampleHarvest = useCallback(() => {
+    const sample = {
+      id: 'prod-tomato-demo',
+      batchId: 'FV-TOM-DEMO',
       name: 'Heritage Red Tomato',
       category: 'Vegetables',
       unit: 'kg',
       totalQuantity: 500,
       availableQuantity: 500,
       pricePerKg: 40,
-      minOrderQty: 50,
       location: 'Saranathan Farm, Valley Sector 4, Trichy',
       farmerName: 'Green Valley Farm',
       farmerPhone: '+91 94210 55821',
       harvestDate: '21 Sept 2026',
       description: 'Vine-ripened organic heritage red tomatoes, pesticide-free harvest.',
       image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80',
-      aiGrade: {
-        score: 92,
-        grade: 'Grade A',
-        freshness: 94,
-        visualQuality: 92,
-        defects: 6,
-        confidence: 95,
-        observations: ['✓ Firm skin tension', '✓ Minimal visible defects (< 6%)', '✓ Ready for retail']
-      },
+      aiGrade: { score: 92, grade: 'Grade A', freshness: 94, visualQuality: 92, defects: 6, confidence: 95 },
       status: 'Available',
+      currentCustodianRole: 'farmer',
+      journeyStatus: 'With Farmer',
       createdAt: new Date().toISOString()
     };
-    setProducts([sampleTomato]);
-    addNotification('🌱 Sample Harvest Loaded', 'Heritage Red Tomato added to marketplace for testing.', 'farmer', 'info');
-  };
+    setProducts(prev => {
+      if (prev.find(p => p.batchId === sample.batchId)) return prev;
+      return [sample, ...prev];
+    });
+    addNotification('🌱 Demo Harvest Loaded', 'Heritage Red Tomato sample loaded into marketplace.', 'all', 'info');
+  }, [addNotification]);
 
-  const clearAllData = () => {
-    if (gpsIntervalRef.current) clearInterval(gpsIntervalRef.current);
+  // ── CLEAR ALL DATA ─────────────────────────────────────────────────────────
+  const clearAllData = useCallback(() => {
     localStorage.removeItem(PRODUCTS_KEY);
     localStorage.removeItem(ORDERS_KEY);
-    localStorage.removeItem(ACTIVE_ORDER_KEY);
+    localStorage.removeItem(BATCHES_KEY);
+    localStorage.removeItem('farmvest_ledger_v4');
     setProducts([]);
     setOrders([]);
-    setActiveOrder(null);
-    setGpsData({
-      isActive: false,
-      progress: 0,
-      currentLat: 10.7482,
-      currentLng: 78.6534,
-      speedKmh: 0,
-      distanceRemainingKm: 12.4,
-      etaMinutes: 32,
-      heading: 'North-East',
-      status: 'Idle',
-      lastUpdate: new Date().toLocaleTimeString()
-    });
-    addNotification('🧹 Storage Cleared', 'All products, orders, and sessions reset to fresh clean state.', 'all', 'info');
-  };
+    setBatches([]);
+    blockchain.clearLedger();
+    setBlocks(blockchain.getRecentTransactions());
+    addNotification('🧹 Data Cleared', 'All products, orders and batches reset.', 'all', 'info');
+  }, [addNotification]);
+
+  // ── GET BATCH FOR PRODUCT ──────────────────────────────────────────────────
+  const getBatchForProduct = useCallback((batchId) => {
+    return batches.find(b => b.batchId === batchId) || null;
+  }, [batches]);
+
+  // ── GET ORDER FOR BATCH ────────────────────────────────────────────────────
+  const getOrderForBatch = useCallback((batchId) => {
+    return orders.find(o => o.batchId === batchId) || null;
+  }, [orders]);
+
+  // ── VERIFY CHAIN ───────────────────────────────────────────────────────────
+  const verifyChain = useCallback(() => {
+    return blockchain.verifyChainIntegrity();
+  }, []);
 
   return (
     <FarmVestContext.Provider value={{
-      products,
-      orders,
-      activeOrder,
-      setActiveOrder,
+      // Data
+      products, setProducts,
+      orders, setOrders,
+      batches, setBatches,
+      blocks,
+      backendOnline,
+      // Actions
       publishProduct,
       placeOrder,
-      acceptTrip,
-      requestPickupHandover,
-      acceptPickupHandover,
-      requestDeliveryHandover,
-      acceptDeliveryHandover,
-      startGpsSimulation,
-      gpsData,
-      blocks,
+      requestHandover,
+      acceptHandover,
+      recordDamageInspection,
+      releasePayment,
+      loadSampleHarvest,
+      clearAllData,
+      // Selectors
+      getBatchForProduct,
+      getOrderForBatch,
+      verifyChain,
+      // Blockchain
+      blockchain,
+      // Notifications
       notifications,
       activeToast,
       setActiveToast,
-      isSellModalOpen,
-      setIsSellModalOpen,
-      selectedProductForDetail,
-      setSelectedProductForDetail,
-      selectedQrBatch,
-      setSelectedQrBatch,
-      loadSampleHarvest,
-      clearAllData
+      addNotification,
+      // UI state
+      isSellModalOpen, setIsSellModalOpen,
+      selectedProductForDetail, setSelectedProductForDetail,
+      selectedQrBatch, setSelectedQrBatch,
+      // Legacy compat (kept for components that reference these)
+      activeOrder: orders.find(o => !['Delivered', 'Cancelled'].includes(o.status)) || null,
+      gpsData: { isActive: false, progress: 0, status: 'N/A' },
     }}>
       {children}
     </FarmVestContext.Provider>
@@ -676,9 +590,7 @@ export function FarmVestProvider({ children }) {
 }
 
 export function useFarmVest() {
-  const context = useContext(FarmVestContext);
-  if (!context) {
-    throw new Error('useFarmVest must be used within a FarmVestProvider');
-  }
-  return context;
+  const ctx = useContext(FarmVestContext);
+  if (!ctx) throw new Error('useFarmVest must be used within FarmVestProvider');
+  return ctx;
 }

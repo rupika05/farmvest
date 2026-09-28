@@ -119,6 +119,36 @@
       "rating": 5,
       "verified": true,
       "createdAt": "2026-09-26T10:43:11.403Z"
+    },
+    {
+      "id": "5d0bcb1e-7121-434f-a3e0-740c3ad37112",
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "password": "$2b$10$IuY0xdzOEzHWLAfHc.cKZ.4G5kVQGmhiGFKzs7tDifngEnsy/GMFO",
+      "role": "merchant",
+      "phone": "",
+      "businessName": "Trading",
+      "location": "Trichy",
+      "vehicle": "",
+      "vehicleNumber": "",
+      "rating": 5,
+      "verified": true,
+      "createdAt": "2026-09-28T14:05:52.426Z"
+    },
+    {
+      "id": "67ab4549-33d1-4a3b-9fdf-148660945fbb",
+      "name": "Sarah",
+      "email": "sarah@gmail.com",
+      "password": "$2b$10$Erd/F0C4VEaBVRumG1C2ZOOcTp3y/6E3Sj5RIj4K883FKxfc9Iozu",
+      "role": "officer",
+      "phone": "",
+      "businessName": "TN govt",
+      "location": "Trichy",
+      "vehicle": "",
+      "vehicleNumber": "",
+      "rating": 5,
+      "verified": true,
+      "createdAt": "2026-09-28T14:06:59.398Z"
     }
   ],
   "products": [

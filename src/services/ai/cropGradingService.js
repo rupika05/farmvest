@@ -1,5 +1,6 @@
 // AI Crop Quality Grading Service
-// Ready for Gemini Vision & TensorFlow API integration with realistic high-accuracy inspection model
+// NOTE: This is a simulation service — ready for Gemini Vision API or TensorFlow integration
+// Grades are estimates based on crop type profiles, not real spectral analysis
 
 export const SAMPLE_CROPS = [
   {
@@ -15,24 +16,12 @@ export const SAMPLE_CROPS = [
     description: 'Vine-ripened, organic red tomatoes grown with drip-irrigation and zero synthetic pesticides.',
     image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80',
     mockGrade: {
-      score: 92,
-      grade: 'Grade A',
-      freshness: 94,
-      visualQuality: 92,
-      defects: 6,
-      confidence: 95,
-      metrics: {
-        colorPurity: 96,
-        firmness: 91,
-        blemishRate: 4,
-        sugarBrix: '5.4° Bx',
-        pesticideResidue: '0.00 ppm (Clean)'
-      },
+      score: 92, grade: 'Grade A', freshness: 94, visualQuality: 92, defects: 6, confidence: 95,
       observations: [
         'Excellent uniform deep red pigment across 98% of batch',
-        'Minimal visible surface skin blemishes (< 4%)',
+        'Minimal visible surface blemishes (<4%)',
         'Firm structure, ideal for cold-chain transit (5-7 days shelf life)',
-        'Passed bio-organic purity scan with zero heavy metals detected',
+        'Zero heavy metals detected (simulation)',
         'Certified premium retail grade for supermarket shelves'
       ]
     }
@@ -50,23 +39,11 @@ export const SAMPLE_CROPS = [
     description: 'Tree-ripened golden mangoes with rich aroma and naturally sweet pulp.',
     image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80',
     mockGrade: {
-      score: 96,
-      grade: 'Grade A+',
-      freshness: 97,
-      visualQuality: 95,
-      defects: 3,
-      confidence: 98,
-      metrics: {
-        colorPurity: 97,
-        firmness: 93,
-        blemishRate: 2,
-        sugarBrix: '18.2° Bx',
-        pesticideResidue: '0.00 ppm (Clean)'
-      },
+      score: 96, grade: 'Grade A+', freshness: 97, visualQuality: 95, defects: 3, confidence: 98,
       observations: [
         'Exceptional golden-amber skin luster with natural protective bloom',
         'Zero fruit fly stings or fungal spots detected',
-        'High natural sweetness profile (18.2° Brix) ready for premium consumer market'
+        'High natural sweetness profile — ready for premium consumer market'
       ]
     }
   },
@@ -83,19 +60,7 @@ export const SAMPLE_CROPS = [
     description: 'Sun-dried golden wheat grains with high luster, high protein content, and zero foreign matter.',
     image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80',
     mockGrade: {
-      score: 90,
-      grade: 'Grade A',
-      freshness: 92,
-      visualQuality: 90,
-      defects: 5,
-      confidence: 94,
-      metrics: {
-        colorPurity: 93,
-        firmness: 95,
-        blemishRate: 3,
-        moistureContent: '11.2% (Optimal)',
-        pesticideResidue: '0.00 ppm'
-      },
+      score: 90, grade: 'Grade A', freshness: 92, visualQuality: 90, defects: 5, confidence: 94,
       observations: [
         'Optimal moisture equilibrium below 12%, highly resilient for silo storage',
         'Uniform grain size distribution with 99.1% pure whole kernels',
@@ -116,65 +81,82 @@ export const SAMPLE_CROPS = [
     description: 'High altitude creamy potatoes with thin skin, low sugar, and high starch.',
     image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80',
     mockGrade: {
-      score: 88,
-      grade: 'Grade A',
-      freshness: 90,
-      visualQuality: 88,
-      defects: 7,
-      confidence: 93,
-      metrics: {
-        colorPurity: 91,
-        firmness: 92,
-        blemishRate: 5,
-        starchLevel: 'High (21%)',
-        pesticideResidue: '0.00 ppm'
-      },
+      score: 88, grade: 'Grade A', freshness: 90, visualQuality: 88, defects: 7, confidence: 93,
       observations: [
         'Dense tuber consistency with zero green toxicity zones',
-        'Clean skin with minimal mechanical scrapes (< 5%)',
+        'Clean skin with minimal mechanical scrapes (<5%)',
         'Ideal processing and cooking grade for commercial wholesale'
       ]
     }
   }
 ];
 
-export async function analyzeCropQuality(cropImage, cropType = 'Tomato', customMetrics = {}) {
-  // Simulate AI deep-learning vision inference steps
-  const steps = [
-    'Initializing Neural Vision Pipeline...',
-    'Extracting morphological surface geometry...',
-    'Checking spectral reflectance & chlorophyll degradation...',
-    'Scanning for micro-punctures & fungal blemishes...',
-    'Synthesizing multi-spectral quality certificate...'
+/**
+ * Analyze crop quality — simulation model
+ * In production, replace with: Gemini Vision API call or TensorFlow.js inference
+ */
+export async function analyzeCropQuality(cropImage, cropType, customMetrics) {
+  cropType = cropType || 'Produce';
+  customMetrics = customMetrics || {};
+
+  const lower = (cropType).toLowerCase();
+
+  // Crop-type base scores (realistic profile)
+  const baseScore =
+    lower.includes('mango')    ? 95 :
+    lower.includes('tomato')   ? 92 :
+    lower.includes('carrot')   ? 91 :
+    lower.includes('onion')    ? 89 :
+    lower.includes('wheat')    ? 90 :
+    lower.includes('potato') || lower.includes('pahadi') ? 88 :
+    lower.includes('spinach') || lower.includes('palak') ? 85 :
+    Math.floor(82 + Math.random() * 12);
+
+  // Add slight random variation
+  const score = Math.min(100, Math.max(60, baseScore + Math.floor(Math.random() * 5) - 2));
+  const freshness = Math.min(100, score + Math.floor(Math.random() * 4));
+  const visualQuality = Math.min(100, score - Math.floor(Math.random() * 4));
+  const defects = Math.max(0, 100 - score + Math.floor(Math.random() * 4));
+  const confidence = Math.min(99, 90 + Math.floor(Math.random() * 8));
+
+  const grade =
+    score >= 93 ? 'Grade A+' :
+    score >= 85 ? 'Grade A'  :
+    score >= 75 ? 'Grade B'  :
+    score >= 60 ? 'Grade C'  : 'Damaged';
+
+  const observations = [
+    score >= 85
+      ? `Good surface pigment uniformity — minimal bruising (${defects}% defect rate)`
+      : `Moderate surface quality — ${defects}% defect rate detected`,
+    freshness >= 88
+      ? 'Freshness index within premium retail range'
+      : 'Freshness slightly below premium threshold — suitable for local market',
+    visualQuality >= 85
+      ? 'Visual integrity confirms firm texture suitable for transit'
+      : 'Minor visual degradation — handle with care during transit',
+    'No prohibited residues detected (simulation estimate only)',
   ];
 
-  // Return simulated high precision AI evaluation
-  const baseScore = cropType.toLowerCase().includes('mango') ? 95 : 
-                    cropType.toLowerCase().includes('tomato') ? 92 : 89;
-
   return {
-    score: baseScore,
-    grade: baseScore >= 90 ? 'Grade A' : baseScore >= 80 ? 'Grade B' : 'Grade C',
-    freshness: 94,
-    visualQuality: baseScore,
-    defects: 100 - baseScore,
-    confidence: 95,
+    score,
+    grade,
+    freshness,
+    visualQuality,
+    defects,
+    confidence,
     timestamp: new Date().toISOString(),
-    aiModel: 'FarmVest-BioVision-v3.4-Pro',
-    hashSignature: '0x' + Array.from({length: 32}, () => Math.floor(Math.random()*16).toString(16)).join(''),
+    aiModel: 'FarmVest-BioVision-v3.4 (Simulation)',
+    disclaimer: 'These grades are simulation estimates based on crop profiles. Real AI grading requires integration with Gemini Vision API or spectral imaging hardware.',
+    observations,
     metrics: {
-      freshnessRate: '94%',
-      visualIntegrity: `${baseScore}%`,
-      defectAllowance: `${100 - baseScore}%`,
-      spectralPurity: '96.2%',
-      pesticideIndex: '0.00 ppm (Clean Eco-Certified)',
-      estimatedShelfLife: '6-8 Days (at 12°C)'
-    },
-    observations: [
-      '✓ Excellent surface pigment uniformity with zero deep bruising',
-      '✓ Firm cellular skin tension suitable for road transit',
-      '✓ Micro-defect scan detected negligible superficial blemishes (< 6%)',
-      '✓ Fully compliant with FSSAI & GlobalGAP retail export benchmarks'
-    ]
+      freshnessRate: `${freshness}%`,
+      visualIntegrity: `${visualQuality}%`,
+      defectAllowance: `${defects}%`,
+      confidence: `${confidence}%`,
+      estimatedShelfLife:
+        freshness >= 90 ? '7-10 days (at 10°C)' :
+        freshness >= 80 ? '5-7 days' : '3-4 days'
+    }
   };
 }

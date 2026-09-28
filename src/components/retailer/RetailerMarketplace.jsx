@@ -627,32 +627,155 @@ export default function RetailerMarketplace() {
       )}
 
       {/* 13. FINAL MASTER QR MODAL (GENERATED AFTER COMPLETED TRANSACTION) */}
-      {isFinalQROpen && activeOrder && (
+      {isFinalQROpen && activeOrder && (() => {
+        const escrow = activeOrder.escrow || {};
+        const perKgRate = activeOrder.pricePerKg || 40;
+        const qty = activeOrder.quantity || 100;
+        const farmerAmt = activeOrder.farmerAmount || escrow.productTotal || (perKgRate * qty);
+        const driverAmt = activeOrder.driverAmount || escrow.driverShare || 500;
+        const totalAmt = activeOrder.totalAmount || escrow.grandTotal || (farmerAmt + driverAmt);
+        const farmerPct = Math.round((farmerAmt / totalAmt) * 100);
+        const driverPct = Math.round((driverAmt / totalAmt) * 100);
+        const grade = activeOrder.aiGrade?.grade || 'Grade A';
+        const score = activeOrder.aiGrade?.score || 92;
+
+        const journeySteps = [
+          { icon: '🌾', label: 'Harvested & Listed', detail: `${activeOrder.farmerName || 'Farmer'} • ${activeOrder.farmerLocation || 'Farm'}`, color: '#2B4C26' },
+          { icon: '🤖', label: 'AI Quality Verified', detail: `${grade} (${score}/100) • Freshness ${activeOrder.aiGrade?.freshness || 94}%`, color: '#4EA858' },
+          { icon: '🛒', label: 'Merchant Ordered', detail: `${qty} kg @ ₹${perKgRate}/kg • ${activeOrder.retailerName || 'Merchant'}`, color: '#D9822B' },
+          { icon: '🚚', label: 'Driver Pickup & Transit', detail: `${activeOrder.driver?.name || 'Driver'} • Vehicle: ${activeOrder.driver?.vehicle || 'Cargo Truck'}`, color: '#8B6F4E' },
+          { icon: '📦', label: 'Delivered & Inspected', detail: `Delivered to ${activeOrder.retailerLocation || 'Store'}`, color: '#0284C7' },
+          { icon: '✅', label: 'Escrow Released', detail: `₹${totalAmt.toLocaleString()} settled on blockchain`, color: '#2B4C26' }
+        ];
+
+        return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-          <div className="ghibli-card-elevated bg-[#FAF7F0] w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-[#4EA858] p-6 space-y-5 animate-in zoom-in-95">
+          <div className="ghibli-card-elevated bg-[#FAF7F0] w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl border-2 border-[#4EA858] p-6 space-y-5 animate-in zoom-in-95">
             
             <div className="text-center space-y-1">
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#4EA858] bg-[#E6EFE3] px-3 py-0.5 rounded-full">
                 TRANSACTION COMPLETE
               </span>
-              <h3 className="font-display font-extrabold text-2xl text-[#1F361C]">Final Master QR Generated!</h3>
-              <p className="text-xs text-[#62432B]">Complete verified journey and price split-up record</p>
+              <h3 className="font-display font-extrabold text-2xl text-[#1F361C]">Final Master QR Certificate</h3>
+              <p className="text-xs text-[#62432B]">Complete verified journey, payment split-up & per-kg breakdown</p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-[#4EA858]/40 text-center space-y-3">
+            {/* QR Code */}
+            <div className="p-4 rounded-2xl bg-white border border-[#4EA858]/40 text-center space-y-2">
               <div className="flex justify-center p-3 bg-[#FAF7F0] rounded-xl border border-[#7DA972]/30 inline-block mx-auto">
                 <QRCodeSVG 
-                  value={`https://farmvest.trade/verify/${activeOrder.batchId}`}
-                  size={150}
+                  value={JSON.stringify({
+                    batchId: activeOrder.batchId,
+                    product: activeOrder.productName,
+                    grade: grade,
+                    score: score,
+                    qty: `${qty} kg`,
+                    pricePerKg: `₹${perKgRate}`,
+                    total: `₹${totalAmt}`,
+                    farmerPaid: `₹${farmerAmt}`,
+                    driverPaid: `₹${driverAmt}`,
+                    platformFee: '₹0',
+                    farmer: activeOrder.farmerName,
+                    merchant: activeOrder.retailerName,
+                    verified: true
+                  })}
+                  size={140}
                   level="H"
                 />
               </div>
               <div className="font-mono text-sm font-extrabold text-[#2B4C26]">{activeOrder.batchId}</div>
-              <div className="text-xs text-[#5F8A55] font-semibold">
-                {activeOrder.productName} • Grade A (92/100) • Verified on Polygon
+              <div className="text-[10px] text-[#5F8A55] font-semibold">
+                {activeOrder.productName} • {grade} ({score}/100) • Verified on Polygon
               </div>
             </div>
 
+            {/* Product Journey Timeline */}
+            <div className="p-4 rounded-2xl bg-white border border-[#7DA972]/20 space-y-1">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#1F361C] mb-2 flex items-center gap-1.5">
+                <span>📋</span> Product Journey
+              </h4>
+              <div className="space-y-0">
+                {journeySteps.map((step, idx) => (
+                  <div key={idx} className="flex items-start gap-3 relative">
+                    {/* Vertical connector line */}
+                    {idx < journeySteps.length - 1 && (
+                      <div className="absolute left-[15px] top-[26px] w-[2px] h-[calc(100%-6px)] bg-[#7DA972]/30" />
+                    )}
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 bg-[#E6EFE3] border border-[#7DA972]/30 z-10">
+                      {step.icon}
+                    </div>
+                    <div className="pb-3 pt-1">
+                      <div className="text-xs font-bold text-[#1F361C]">{step.label}</div>
+                      <div className="text-[10px] text-[#62432B]">{step.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Payment Split Breakdown */}
+            <div className="p-4 rounded-2xl bg-white border border-[#7DA972]/20 space-y-3">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#1F361C] flex items-center gap-1.5">
+                <Coins className="w-3.5 h-3.5 text-[#D9822B]" /> Payment Split Breakdown
+              </h4>
+
+              {/* Per KG detail */}
+              <div className="p-3 rounded-xl bg-[#FAF7F0] border border-[#7DA972]/20">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold uppercase text-[#62432B]">Rate & Quantity</span>
+                  <span className="text-xs font-extrabold text-[#2B4C26]">₹{perKgRate}/kg × {qty} kg</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase text-[#62432B]">Product Subtotal</span>
+                  <span className="text-xs font-extrabold text-[#1F361C]">₹{farmerAmt.toLocaleString()}</span>
+                </div>
+                <div className="flex items-center justify-between mt-1">
+                  <span className="text-[10px] font-bold uppercase text-[#62432B]">Transport Fee</span>
+                  <span className="text-xs font-extrabold text-[#1F361C]">₹{driverAmt.toLocaleString()}</span>
+                </div>
+                <div className="border-t border-dashed border-[#7DA972]/30 my-2" />
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold uppercase text-[#1F361C]">Grand Total</span>
+                  <span className="text-sm font-extrabold text-[#2B4C26]">₹{totalAmt.toLocaleString()}</span>
+                </div>
+              </div>
+
+              {/* Split bars */}
+              <div className="space-y-2">
+                {/* Farmer share */}
+                <div>
+                  <div className="flex items-center justify-between text-[10px] mb-1">
+                    <span className="font-bold text-[#2B4C26]">🌾 Farmer — {activeOrder.farmerName || 'Farmer'}</span>
+                    <span className="font-extrabold text-[#2B4C26]">₹{farmerAmt.toLocaleString()} ({farmerPct}%)</span>
+                  </div>
+                  <div className="h-2.5 rounded-full bg-[#E6EFE3] overflow-hidden">
+                    <div className="h-full rounded-full bg-gradient-to-r from-[#2B4C26] to-[#4EA858]" style={{ width: `${farmerPct}%` }} />
+                  </div>
+                </div>
+                {/* Driver share */}
+                <div>
+                  <div className="flex items-center justify-between text-[10px] mb-1">
+                    <span className="font-bold text-[#8B6F4E]">🚚 Driver — {activeOrder.driver?.name || 'Driver'}</span>
+                    <span className="font-extrabold text-[#8B6F4E]">₹{driverAmt.toLocaleString()} ({driverPct}%)</span>
+                  </div>
+                  <div className="h-2.5 rounded-full bg-[#FDF3E3] overflow-hidden">
+                    <div className="h-full rounded-full bg-gradient-to-r from-[#D9822B] to-[#8B6F4E]" style={{ width: `${driverPct}%` }} />
+                  </div>
+                </div>
+                {/* Platform fee */}
+                <div>
+                  <div className="flex items-center justify-between text-[10px] mb-1">
+                    <span className="font-bold text-[#5F8A55]">🌱 FarmVest Platform Fee</span>
+                    <span className="font-extrabold text-[#4EA858]">₹0 (Fair Trade)</span>
+                  </div>
+                  <div className="h-2.5 rounded-full bg-[#E6EFE3] overflow-hidden">
+                    <div className="h-full rounded-full bg-[#A5D6A7]" style={{ width: '0%' }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Actions */}
             <div className="space-y-2">
               <button
                 onClick={() => {
@@ -667,7 +790,7 @@ export default function RetailerMarketplace() {
                 }}
                 className="w-full py-3 rounded-xl bg-[#2B4C26] text-white font-extrabold text-xs shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
-                <QrCode className="w-4 h-4 text-[#A5D6A7]" /> View Full Journey & Price Breakdown
+                <QrCode className="w-4 h-4 text-[#A5D6A7]" /> View Full Traceability Passport
               </button>
 
               <button
@@ -680,7 +803,8 @@ export default function RetailerMarketplace() {
 
           </div>
         </div>
-      )}
+        );
+      })()}
 
     </div>
   );

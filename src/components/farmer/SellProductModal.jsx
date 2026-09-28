@@ -23,46 +23,29 @@ export default function SellProductModal({ isOpen, onClose }) {
   const { publishProduct } = useFarmVest();
   const [step, setStep] = useState(1); // 1: Details, 2: Photo/Camera, 3: AI Grading, 4: Summary & Publish
 
-  // Form State initialized to exact Tomato demo defaults
+  // Form State initialized to empty
   const [formData, setFormData] = useState({
-    name: 'Tomato',
+    name: '',
     category: 'Vegetables',
-    totalQuantity: 500,
+    totalQuantity: '',
     unit: 'kg',
-    pricePerKg: 40,
-    minOrderQty: 50,
-    harvestDate: '21 Sept 2026',
-    location: 'Saranathan Farm, Valley Sector 4',
-    farmerName: 'Green Valley Farm',
-    description: 'Fresh organic heritage vine tomatoes, pesticide-free harvest.',
-    image: SAMPLE_CROPS[0].image,
-    batchId: 'FV-TOM-101'
+    pricePerKg: '',
+    minOrderQty: '',
+    harvestDate: '',
+    location: '',
+    farmerName: '',
+    description: '',
+    image: '',
+    batchId: `FV-${Math.floor(100 + Math.random() * 900)}`
   });
 
-  const [aiReport, setAiReport] = useState(SAMPLE_CROPS[0].mockGrade);
+  const [aiReport, setAiReport] = useState(null);
   const [isCameraActive, setIsCameraActive] = useState(false);
   const videoRef = useRef(null);
 
   if (!isOpen) return null;
 
-  // Preset quick fill buttons for demo ease
-  const selectPreset = (sample) => {
-    setFormData({
-      ...formData,
-      name: sample.name.split(' ')[0] || sample.name,
-      category: sample.category,
-      totalQuantity: sample.defaultQty,
-      unit: sample.unit,
-      pricePerKg: sample.defaultPrice,
-      location: sample.location,
-      farmerName: sample.farmerName,
-      harvestDate: sample.harvestDate,
-      description: sample.description,
-      image: sample.image,
-      batchId: `FV-${sample.name.slice(0, 3).toUpperCase()}-${Math.floor(100 + Math.random() * 900)}`
-    });
-    setAiReport(sample.mockGrade);
-  };
+
 
   // Trigger device camera
   const handleStartCamera = async () => {
@@ -131,29 +114,7 @@ export default function SellProductModal({ isOpen, onClose }) {
           {/* STEP 1: PRODUCT DETAILS */}
           {step === 1 && (
             <div className="space-y-4">
-              {/* Demo Quick Presets */}
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#825D3E] block mb-1.5">
-                  ⚡ Quick Sample Presets (Click to Auto-fill):
-                </span>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {SAMPLE_CROPS.map((sample) => (
-                    <button
-                      key={sample.id}
-                      type="button"
-                      onClick={() => selectPreset(sample)}
-                      className={`p-2 rounded-xl text-left border text-xs flex items-center gap-2 transition-all ${
-                        formData.name === (sample.name.split(' ')[0])
-                          ? 'bg-[#E6EFE3] border-[#2B4C26] font-bold shadow-sm'
-                          : 'bg-white border-[#7DA972]/30 hover:bg-[#FAF7F0]'
-                      }`}
-                    >
-                      <img src={sample.image} alt={sample.name} className="w-6 h-6 rounded-md object-cover" />
-                      <span className="truncate">{sample.name.split(' ')[0]}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+
 
               {/* Form Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">

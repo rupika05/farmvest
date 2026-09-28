@@ -8,7 +8,8 @@ export default function MasterQRCodeModal({ batch, onClose }) {
   const { setActiveView } = useAuth();
   if (!batch) return null;
 
-  const verificationUrl = `https://farmvest.trade/verify/${batch.batchId || 'FV-TOM-101'}`;
+  const verifyBatchId = batch.batchId || batch.id || 'FV-UNKNOWN';
+  const verificationUrl = `${window.location.origin}/verify/${verifyBatchId}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
@@ -42,21 +43,23 @@ export default function MasterQRCodeModal({ batch, onClose }) {
 
           <div className="space-y-1">
             <div className="font-mono text-sm font-extrabold text-[#2B4C26]">
-              {batch.batchId || 'FV-TOM-101'}
+              {batch.batchId}
             </div>
             <div className="font-display font-bold text-base text-[#1F361C]">
-              {batch.name || 'Heritage Red Tomato'}
+              {batch.name || batch.productName}
             </div>
             <div className="text-xs text-[#5F8A55]">
-              {batch.farmerName || 'Green Valley Farm'} • {batch.location || 'Saranathan Farm'}
+              {batch.farmerName} • {batch.location}
             </div>
           </div>
 
           {/* AI Grade pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6EFE3] text-[#2B4C26] text-xs font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-[#D9822B]" />
-            <span>AI Grade A (92/100 Quality Score)</span>
-          </div>
+          {batch.aiGrade && (
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6EFE3] text-[#2B4C26] text-xs font-bold">
+              <Sparkles className="w-3.5 h-3.5 text-[#D9822B]" />
+              <span>AI Grade {batch.aiGrade.grade} ({batch.aiGrade.score}/100 Score)</span>
+            </div>
+          )}
 
         </div>
 

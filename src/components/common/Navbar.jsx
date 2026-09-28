@@ -7,7 +7,6 @@ import {
   ChevronDown, 
   LogOut, 
   Sprout, 
-  Truck, 
   Store, 
   X, 
   CheckCircle2, 
@@ -118,7 +117,7 @@ export default function Navbar() {
                   ) : (
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-xs ${
                       currentUser.role === 'farmer' ? 'bg-[#2B4C26]' :
-                      currentUser.role === 'driver' ? 'bg-[#D9822B]' :
+                      currentUser.role === 'merchant' || currentUser.role === 'retailer' ? 'bg-[#D9822B]' :
                       'bg-[#0284C7]'
                     }`}>
                       {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U'}
@@ -129,10 +128,10 @@ export default function Navbar() {
                       {currentUser.name}
                       <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase ${
                         currentUser.role === 'farmer' ? 'bg-[#E6EFE3] text-[#2B4C26]' :
-                        currentUser.role === 'driver' ? 'bg-[#FDF3E3] text-[#D9822B]' :
+                        currentUser.role === 'merchant' || currentUser.role === 'retailer' ? 'bg-[#FDF3E3] text-[#D9822B]' :
                         'bg-[#E0F2FE] text-[#0369A1]'
                       }`}>
-                        {currentUser.role}
+                        {currentUser.role === 'retailer' ? 'merchant' : currentUser.role}
                       </span>
                     </div>
                     <div className="text-[10px] text-[#62432B]/80 truncate max-w-[120px]">
@@ -162,8 +161,7 @@ export default function Navbar() {
                         className="w-full text-left px-2 py-1.5 rounded-lg hover:bg-[#E6EFE3] flex items-center gap-2 text-xs font-semibold text-[#1F361C] cursor-pointer"
                       >
                         {currentUser.role === 'farmer' && <Sprout className="w-4 h-4 text-[#4EA858]" />}
-                        {currentUser.role === 'driver' && <Truck className="w-4 h-4 text-[#D9822B]" />}
-                        {currentUser.role === 'retailer' && <Store className="w-4 h-4 text-[#0284C7]" />}
+                        {(currentUser.role === 'merchant' || currentUser.role === 'retailer') && <Store className="w-4 h-4 text-[#D9822B]" />}
                         Go to My Dashboard
                       </button>
                     </div>
