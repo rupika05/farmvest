@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-farm-olive-900: #142412;
+    --color-farm-olive-800: #1F361C;
+    --color-farm-olive-700: #2B4C26;
+    --color-farm-olive-600: #386332;
+    --color-farm-sage-500: #5F8A55;
+    --color-farm-sage-400: #7DA972;
+    --color-farm-sage-300: #A2C498;
+    --color-farm-sage-200: #CBE0C4;
+    --color-farm-sage-100: #E6EFE3;
+    --color-farm-cream-50: #FCFBF7;
+    --color-farm-cream-100: #F6F3EB;
+    --color-farm-cream-200: #EDE7DA;
+    --color-farm-earth-900: #2C1B10;
+    --color-farm-earth-800: #462E1C;
+    --color-farm-earth-700: #62432B;
+    --color-farm-earth-600: #825D3E;
+    --color-farm-gold-500: #D9822B;
+    --color-farm-gold-400: #ECA946;
+    --color-farm-gold-100: #FDF3E3;
+  }
+
+  body {
+    background-color: #FAF7F0;
+    color: #1F2E1E;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(at 10% 20%, rgba(203, 224, 196, 0.25) 0px, transparent 50%),
+      radial-gradient(at 90% 10%, rgba(246, 243, 235, 0.5) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(125, 169, 114, 0.15) 0px, transparent 50%),
+      radial-gradient(at 20% 90%, rgba(237, 231, 218, 0.4) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Typography styles */
+.font-display {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-serif-warm {
+  font-family: 'Lora', Georgia, serif;
+}
+
+/* Ghibli atmospheric background subtle textures */
+.bg-ghibli-paper {
+  background-color: #F8F5EE;
+  background-image: radial-gradient(#386332 0.4px, transparent 0.4px), radial-gradient(#825D3E 0.4px, #F8F5EE 0.4px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.ghibli-card {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(125, 169, 114, 0.22);
+  box-shadow: 0 8px 30px -4px rgba(31, 54, 28, 0.06), 0 2px 8px -2px rgba(31, 54, 28, 0.04);
+  border-radius: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ghibli-card:hover {
+  border-color: rgba(95, 138, 85, 0.4);
+  box-shadow: 0 14px 38px -6px rgba(31, 54, 28, 0.12), 0 4px 12px -2px rgba(31, 54, 28, 0.06);
+}
+
+.ghibli-card-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(246, 243, 235, 0.9));
+  border: 1.5px solid rgba(125, 169, 114, 0.3);
+  box-shadow: 0 12px 36px -4px rgba(31, 54, 28, 0.08);
+  border-radius: 1.5rem;
+}
+
+.ghibli-card-dark {
+  background: linear-gradient(145deg, #1F361C, #142412);
+  border: 1px solid rgba(162, 196, 152, 0.25);
+  box-shadow: 0 16px 40px -8px rgba(10, 20, 10, 0.3);
+  color: #FAF7F0;
+  border-radius: 1.25rem;
+}
+
+/* Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes swaySlow {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(95, 138, 85, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(95, 138, 85, 0.65);
+  }
+}
+
+@keyframes scanBeam {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: swaySlow 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+.animate-scan-beam {
+  animation: scanBeam 2s ease-in-out infinite alternate;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EFE6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B4CBB0;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7DA972;
+}
