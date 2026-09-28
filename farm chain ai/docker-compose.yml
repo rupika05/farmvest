@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  farmchain-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: farmchain-ai-service
+    restart: unless-stopped
+    ports:
+      - "${PORT:-5001}:5001"
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+      - CORS_ORIGIN=*
+    volumes:
+      # Persist the cryptographic ledger JSON database across container restarts
+      - farmchain-data:/app/backend/data
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5001/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  farmchain-data:
+    driver: local

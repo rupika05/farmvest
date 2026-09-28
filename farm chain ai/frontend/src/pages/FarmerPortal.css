@@ -1,0 +1,1190 @@
+/* ==========================================================================
+   Low-Literacy Farmer Batch Creation Flow - Responsive Design System
+   Fluid layout across 360px (small phone), 430px (large phone), 
+   768px (tablet), and 1280px+ (desktop).
+   Tap targets >= 56px on all breakpoints.
+   ========================================================================== */
+
+.low-lit-portal {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 0.25rem 2rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 430px) {
+  .low-lit-portal {
+    padding: 0.75rem 0.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .low-lit-portal {
+    padding: 1.25rem 1rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .low-lit-portal {
+    padding: 1.5rem 1.5rem 3.5rem;
+  }
+}
+
+/* Accessible Top Header & Action Row */
+.low-lit-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.low-lit-lang-selector {
+  display: flex;
+  gap: 0.35rem;
+  background: rgba(15, 23, 42, 0.75);
+  padding: 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.low-lit-lang-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 40px;
+}
+
+@media (min-width: 430px) {
+  .low-lit-lang-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+.low-lit-lang-btn.active {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+}
+
+/* "Hear This Page" Big Speech Button - Always >= 56px height */
+.btn-hear-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  min-height: 56px;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+@media (min-width: 430px) {
+  .btn-hear-page {
+    font-size: 1.05rem;
+    padding: 0.6rem 1.25rem;
+  }
+}
+
+.btn-hear-page:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+
+.btn-hear-page.speaking {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #bae6fd;
+  animation: audioPulse 1.5s infinite;
+}
+
+@keyframes audioPulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+/* 4-Step Progress Stepper - Responsive across small phones to desktop */
+.low-lit-stepper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0.5rem 0.25rem;
+  width: 100%;
+}
+
+@media (min-width: 430px) {
+  .low-lit-stepper {
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+    border-radius: 18px;
+  }
+}
+
+.low-lit-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  color: #64748b;
+  min-height: 56px;
+  justify-content: center;
+}
+
+.low-lit-step-item:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.low-lit-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 430px) {
+  .low-lit-step-circle {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+}
+
+.low-lit-step-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  color: #94a3b8;
+}
+
+@media (min-width: 430px) {
+  .low-lit-step-label {
+    font-size: 0.82rem;
+  }
+}
+
+.low-lit-step-item.active .low-lit-step-circle {
+  background: #10b981;
+  border-color: #34d399;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.5);
+  transform: scale(1.06);
+}
+
+.low-lit-step-item.active .low-lit-step-label {
+  color: #34d399;
+  font-weight: 700;
+}
+
+.low-lit-step-item.completed .low-lit-step-circle {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.low-lit-step-item.completed .low-lit-step-label {
+  color: #cbd5e1;
+}
+
+/* Card Container - Flexibly adapts without fixed widths */
+.low-lit-card {
+  background: rgba(13, 22, 40, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1rem 0.75rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 430px) {
+  .low-lit-card {
+    padding: 1.25rem 1rem;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .low-lit-card {
+    padding: 1.75rem;
+    border-radius: 24px;
+  }
+}
+
+/* Step Header & Title */
+.screen-title-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.screen-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 430px) {
+  .screen-title {
+    font-size: 1.4rem;
+  }
+}
+
+.screen-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Back Navigation Button - Min 56px height */
+.btn-screen-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  min-height: 56px;
+  transition: all 0.2s ease;
+}
+
+.btn-screen-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   SCREEN 1: CROP SELECTION GRID - REFLOWING RESPONSIVE LAYOUT
+   - 2 columns on small phones (< 420px)
+   - 3 columns on larger phones (420px - 767px)
+   - 4 columns on tablets (768px - 1023px)
+   - 4-6 columns on desktop (1024px+)
+   Scrollable container preserves tap targets and prevents squishing.
+   ========================================================================== */
+.crop-cards-scroll-container {
+  max-height: min(65vh, 600px);
+  min-height: 360px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 185, 129, 0.45) rgba(255, 255, 255, 0.05);
+  -webkit-overflow-scrolling: touch;
+}
+
+.crop-cards-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+.crop-cards-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.45);
+  border-radius: 9999px;
+}
+.crop-cards-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.crop-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Small phones (~360px) */
+  gap: 0.75rem;
+}
+
+/* Large phones (~430px) */
+@media (min-width: 420px) {
+  .crop-cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+}
+
+/* Tablets (~768px+) */
+@media (min-width: 768px) {
+  .crop-cards-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Desktop screens (1280px+) */
+@media (min-width: 1100px) {
+  .crop-cards-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+}
+
+/* Tappable Crop Card - Minimum height well above 56px (130px - 150px) */
+.crop-card-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1rem 0.5rem;
+  min-height: 130px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: 100%;
+}
+
+@media (min-width: 430px) {
+  .crop-card-button {
+    min-height: 140px;
+    padding: 1.25rem 0.75rem;
+    border-radius: 18px;
+  }
+}
+
+.crop-card-button:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+}
+
+.crop-card-button:active {
+  transform: scale(0.97);
+}
+
+.crop-card-button.selected {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #34d399;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.35);
+}
+
+/* Agent 2 Live Scanner Shortcut Banner */
+.farmer-agent2-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.25) 100%);
+  border: 1.5px solid rgba(52, 211, 153, 0.45);
+  border-radius: 16px;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.12);
+}
+
+.farmer-agent2-banner:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.24) 0%, rgba(5, 150, 105, 0.35) 100%);
+  border-color: #34d399;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.22);
+}
+
+.farmer-agent2-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.farmer-agent2-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.farmer-agent2-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #34d399;
+}
+
+.farmer-agent2-desc {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  margin-top: 0.15rem;
+}
+
+.btn-launch-scanner-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #059669;
+  color: #ffffff;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-launch-scanner-shortcut:hover {
+  background: #10b981;
+  transform: translateX(2px);
+}
+
+/* Agent 1 Realistic Crop Photograph Framing */
+.crop-card-photo-frame {
+  width: 78px;
+  height: 78px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+  position: relative;
+  background: #090d16;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (min-width: 430px) {
+  .crop-card-photo-frame {
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
+  }
+}
+
+.crop-card-button:hover .crop-card-photo-frame {
+  transform: scale(1.06);
+  border-color: #34d399;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+
+.crop-card-button.selected .crop-card-photo-frame {
+  border-color: #34d399;
+  box-shadow: 0 0 16px rgba(52, 211, 153, 0.5);
+}
+
+.crop-card-real-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.crop-pill-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-right: 0.35rem;
+}
+
+.crop-card-icons-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.crop-card-emoji {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+@media (min-width: 430px) {
+  .crop-card-emoji {
+    font-size: 3.2rem;
+  }
+}
+
+.crop-card-lucide-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.crop-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+@media (min-width: 430px) {
+  .crop-card-title {
+    font-size: 1.25rem;
+  }
+}
+
+.crop-card-subname {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SCREEN 2: QUANTITY ON-SCREEN KEYPAD (CENTERED & PROPORTIONATELY SCALED)
+   ========================================================================== */
+.quantity-hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.quantity-display-box {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 3px solid #10b981;
+  border-radius: 18px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(16, 185, 129, 0.2);
+}
+
+.quantity-digits {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: var(--font-display), var(--font-sans);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+@media (min-width: 430px) {
+  .quantity-digits {
+    font-size: 4.2rem;
+  }
+}
+
+.quantity-unit-tag {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #34d399;
+}
+
+@media (min-width: 430px) {
+  .quantity-unit-tag {
+    font-size: 2.2rem;
+  }
+}
+
+/* Quick shortcut chips */
+.quick-qty-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+}
+
+.quick-qty-chip {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  min-height: 48px;
+  transition: all 0.15s ease;
+}
+
+.quick-qty-chip:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+/* Numeric Keypad Grid - Centered with max-width */
+.numeric-keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 1rem auto 1.25rem;
+}
+
+@media (min-width: 430px) {
+  .numeric-keypad-grid {
+    gap: 0.85rem;
+    margin: 1.25rem auto 1.5rem;
+  }
+}
+
+.keypad-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  border-radius: 14px;
+  min-height: 64px; /* Always >= 56px */
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  font-family: var(--font-display), var(--font-sans);
+}
+
+@media (min-width: 430px) {
+  .keypad-btn {
+    min-height: 68px;
+    font-size: 2rem;
+    border-radius: 16px;
+  }
+}
+
+.keypad-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.keypad-btn:active {
+  background: #10b981;
+  transform: scale(0.95);
+}
+
+.keypad-btn-clear {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #f87171;
+  font-size: 1.35rem;
+}
+
+.keypad-btn-clear:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+.keypad-btn-backspace {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  font-size: 1.5rem;
+}
+
+.keypad-btn-backspace:hover {
+  background: #f59e0b;
+  color: #ffffff;
+  border-color: #f59e0b;
+}
+
+/* Big Action Next Button - Min 60px height */
+.btn-action-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 16px;
+  min-height: 60px; /* Always >= 56px */
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+@media (min-width: 430px) {
+  .btn-action-next {
+    font-size: 1.35rem;
+    min-height: 64px;
+  }
+}
+
+.btn-action-next:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+}
+
+.btn-action-next:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   SCREEN 3: PRICE SCREEN (CENTERED ON LARGE SCREENS)
+   ========================================================================== */
+.price-display-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.75rem;
+  width: 100%;
+}
+
+.crop-summary-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.price-hero-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35rem;
+  background: rgba(0, 0, 0, 0.45);
+  border: 3px solid #34d399;
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 0 35px rgba(52, 211, 153, 0.25);
+  margin-bottom: 0.85rem;
+}
+
+@media (min-width: 430px) {
+  .price-hero-stat {
+    padding: 1.5rem 2.25rem;
+    border-radius: 24px;
+  }
+}
+
+.price-symbol {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #34d399;
+  line-height: 1;
+}
+
+@media (min-width: 430px) {
+  .price-symbol {
+    font-size: 3.5rem;
+  }
+}
+
+.price-massive-val {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  font-family: var(--font-display), var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 430px) {
+  .price-massive-val {
+    font-size: 5rem;
+  }
+}
+
+.price-unit {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-left: 0.25rem;
+}
+
+@media (min-width: 430px) {
+  .price-unit {
+    font-size: 2rem;
+  }
+}
+
+.price-source-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.payout-preview-text {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.payout-preview-text strong {
+  color: #fbbf24;
+  font-size: 1.3rem;
+}
+
+/* Big Accept / Reject Dual Action Buttons - Always >= 64px height */
+.price-action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.btn-price-accept {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: 3px solid #34d399;
+  border-radius: 18px;
+  min-height: 80px; /* Always >= 56px */
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+@media (min-width: 430px) {
+  .btn-price-accept {
+    min-height: 90px;
+    border-radius: 20px;
+  }
+}
+
+.btn-price-accept:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+}
+
+.btn-price-reject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  border: 3px solid #f87171;
+  border-radius: 18px;
+  min-height: 80px; /* Always >= 56px */
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+@media (min-width: 430px) {
+  .btn-price-reject {
+    min-height: 90px;
+    border-radius: 20px;
+  }
+}
+
+.btn-price-reject:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+}
+
+.price-btn-label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* Custom Price Entry Panel (if Reject is tapped) */
+.custom-price-panel {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   SCREEN 4: CONFIRMATION & LARGE CENTERED QR CODE
+   ========================================================================== */
+.confirmation-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.confirmation-celebration-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.2);
+  border: 2px solid #10b981;
+  color: #34d399;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Big Centered QR Code Box */
+.large-qr-container {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 290px;
+  margin-bottom: 1.25rem;
+}
+
+.large-qr-image {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+.qr-official-tag {
+  margin-top: 0.65rem;
+  color: #002147;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.qr-scan-hint {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.2rem;
+}
+
+/* Batch ID Pill with Copy */
+.batch-id-pill-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.55rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  word-break: break-all;
+}
+
+.btn-copy-id {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #cbd5e1;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  transition: all 0.15s ease;
+  min-height: 36px;
+}
+
+.btn-copy-id:hover {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+/* Summary Badges Grid */
+.confirm-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  width: 100%;
+  margin-bottom: 1.75rem;
+}
+
+.confirm-summary-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.confirm-summary-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.confirm-summary-value {
+  font-size: 1.05rem;
+  color: #f8fafc;
+  font-weight: 800;
+}
+
+/* Big Done Button - Always >= 60px height */
+.btn-action-done {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 900;
+  border: none;
+  border-radius: 16px;
+  min-height: 60px; /* Always >= 56px */
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
+  transition: all 0.2s ease;
+  user-select: none;
+  margin-bottom: 1.25rem;
+}
+
+.btn-action-done:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+}
+
+.secondary-nav-row {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-nav-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.6rem 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  min-height: 56px; /* Always >= 56px */
+  transition: all 0.2s ease;
+}
+
+.btn-nav-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}

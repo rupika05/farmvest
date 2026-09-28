@@ -1,0 +1,12 @@
+{
+  "name": "farmchain-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:backend": "npm --prefix \"farm chain ai\" run dev:backend",
+    "dev:frontend": "npm --prefix \"farm chain ai\" run dev:frontend",
+    "build": "npm --prefix \"farm chain ai\" run build && node -e \"require('fs').cpSync('farm chain ai/dist', 'dist', {recursive: true, force: true})\"",
+    "start": "npm --prefix \"farm chain ai\" start",
+    "test": "npm --prefix \"farm chain ai\" test"
+  }
+}

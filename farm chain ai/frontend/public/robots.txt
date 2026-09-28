@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /track/
+Allow: /ledger
+Allow: /price-suggestion/
+Disallow: /api/auth/
+Disallow: /admin/
+Disallow: /api/admin/
+
+# Sitemaps
+Sitemap: https://farmchain.gov.in/sitemap.xml

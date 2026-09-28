@@ -1,0 +1,318 @@
+{
+  "crops": [
+    {
+      "name": "Tomatoes",
+      "tamilName": "தக்காளி (Tomato)",
+      "hindiName": "टमाटर (Tomato)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 32.0,
+      "samples": [
+        { "region": "Koyambedu Wholesale Market, Chennai (TN)", "market": "APMC Terminal", "price": 34.0, "date": "2026-09-02" },
+        { "region": "Kolar Mandi, Karnataka", "market": "Farmer Produce Yard", "price": 30.0, "date": "2026-09-03" },
+        { "region": "Nashik APMC, Maharashtra", "market": "Wholesale Exchange", "price": 32.0, "date": "2026-09-03" },
+        { "region": "Azadpur Mandi, Delhi", "market": "National Terminal", "price": 32.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Onions",
+      "tamilName": "வெங்காயம் (Onion)",
+      "hindiName": "प्याज (Onion)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 28.0,
+      "samples": [
+        { "region": "Lasalgaon APMC, Nashik (MH)", "market": "Asia's Largest Onion Mandi", "price": 27.5, "date": "2026-09-02" },
+        { "region": "Dindigul Market Yard, Tamil Nadu", "market": "Small Onion Terminal", "price": 32.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Mandi, Chennai", "market": "Wholesale Yard", "price": 28.0, "date": "2026-09-04" },
+        { "region": "Pune APMC", "market": "Regional Exchange", "price": 26.5, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Potatoes",
+      "tamilName": "உருளைக்கிழங்கு (Potato)",
+      "hindiName": "आलू (Potato)",
+      "category": "Tubers",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 22.0,
+      "samples": [
+        { "region": "Mettupalayam / Ooty Nilgiris (TN)", "market": "Hill Produce Exchange", "price": 26.0, "date": "2026-09-02" },
+        { "region": "Agra APMC, Uttar Pradesh", "market": "Cold Storage Depot", "price": 20.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Central Terminal", "price": 23.0, "date": "2026-09-04" },
+        { "region": "Jalandhar Mandi, Punjab", "market": "Seed & Table Exchange", "price": 21.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Bananas",
+      "tamilName": "வாழைப்பழம் (Banana)",
+      "hindiName": "केला (Banana)",
+      "category": "Fruits",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 26.0,
+      "samples": [
+        { "region": "Theni / Chinnamanur APMC (TN)", "market": "Grand Naine Yard", "price": 28.0, "date": "2026-09-02" },
+        { "region": "Jalgaon Banana Mandi (MH)", "market": "National Hub", "price": 24.0, "date": "2026-09-03" },
+        { "region": "Tiruchirappalli APMC (TN)", "market": "Poovan & Robusta Terminal", "price": 27.0, "date": "2026-09-04" },
+        { "region": "Koyambedu, Chennai", "market": "Wholesale Depot", "price": 26.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Mangoes",
+      "tamilName": "மாம்பழம் (Mango)",
+      "hindiName": "आम (Mango)",
+      "category": "Fruits",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 120.0,
+      "samples": [
+        { "region": "Salem Mango Market (TN)", "market": "Salem Gundu & Bangalora Yard", "price": 115.0, "date": "2026-09-02" },
+        { "region": "Ratnagiri Mandi (MH)", "market": "Alphonso Growers Co-op", "price": 140.0, "date": "2026-09-03" },
+        { "region": "Dharmapuri Regulated Market (TN)", "market": "Orchard Gate", "price": 110.0, "date": "2026-09-04" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Central Auction", "price": 125.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Turmeric",
+      "tamilName": "மஞ்சள் (Turmeric)",
+      "hindiName": "हल्दी (Turmeric)",
+      "category": "Spices",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 135.0,
+      "samples": [
+        { "region": "Erode Regulated Market (TN)", "market": "World Turmeric Capital APMC", "price": 138.0, "date": "2026-09-02" },
+        { "region": "Nizamabad APMC, Telangana", "market": "Finger Turmeric Terminal", "price": 132.0, "date": "2026-09-03" },
+        { "region": "Sangli Mandi, Maharashtra", "market": "Turmeric Exchange", "price": 136.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Apples",
+      "tamilName": "ஆப்பிள் (Apple)",
+      "hindiName": "सेब (Apple)",
+      "category": "Fruits",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 110.0,
+      "samples": [
+        { "region": "Sopore Fruit Mandi, Kashmir", "market": "Asia's 2nd Largest Apple Yard", "price": 105.0, "date": "2026-09-02" },
+        { "region": "Shimla APMC, Himachal Pradesh", "market": "Royal Delicious Depot", "price": 112.0, "date": "2026-09-03" },
+        { "region": "Azadpur Terminal, Delhi", "market": "North India Exchange", "price": 115.0, "date": "2026-09-04" },
+        { "region": "Koyambedu, Chennai", "market": "Cold Reefer Inflow", "price": 118.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Rice",
+      "tamilName": "நெல் / அரிசி (Rice/Paddy)",
+      "hindiName": "चावल / धान (Rice)",
+      "category": "Grains",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 48.0,
+      "samples": [
+        { "region": "Thanjavur Granary Yard (TN)", "market": "Kaveri Delta APMC", "price": 46.0, "date": "2026-09-02" },
+        { "region": "Karnal Mandi, Haryana", "market": "Basmati Export Hub", "price": 52.0, "date": "2026-09-03" },
+        { "region": "Kanchipuram Regulated Market (TN)", "market": "Samba Rice Exchange", "price": 47.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Wheat",
+      "tamilName": "கோதுமை (Wheat)",
+      "hindiName": "गेहूं (Wheat)",
+      "category": "Grains",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 26.5,
+      "samples": [
+        { "region": "Khanna Mandi, Punjab", "market": "Largest Grain Market Asia", "price": 26.0, "date": "2026-09-02" },
+        { "region": "Sehore APMC, Madhya Pradesh", "market": "Sharbati Wheat Hub", "price": 28.0, "date": "2026-09-03" },
+        { "region": "Karnal Grain Market, Haryana", "market": "FCI Procurement Center", "price": 25.5, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Green Chillies",
+      "tamilName": "பச்சை மிளகாய் (Green Chilli)",
+      "hindiName": "हरी मिर्च (Green Chilli)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 45.0,
+      "samples": [
+        { "region": "Guntur APMC, Andhra Pradesh", "market": "Asia's Premier Chilli Hub", "price": 44.0, "date": "2026-09-02" },
+        { "region": "Madurai Central Market (TN)", "market": "Farmer Direct Yard", "price": 48.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Terminal Auction", "price": 46.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Coconut",
+      "tamilName": "தேங்காய் (Coconut)",
+      "hindiName": "नारियल (Coconut)",
+      "category": "Plantation",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 38.0,
+      "samples": [
+        { "region": "Pollachi Coconut Market (TN)", "market": "India's Coconut Capital", "price": 38.0, "date": "2026-09-02" },
+        { "region": "Kangayam Copra Mandi (TN)", "market": "Oil Mills Exchange", "price": 40.0, "date": "2026-09-03" },
+        { "region": "Kozhikode APMC, Kerala", "market": "Malabar Copra Yard", "price": 37.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Groundnut",
+      "tamilName": "நிலக்கடலை (Groundnut)",
+      "hindiName": "मूंगफली (Groundnut)",
+      "category": "Oilseeds",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 62.0,
+      "samples": [
+        { "region": "Tiruvannamalai Regulated Market (TN)", "market": "State Oilseed APMC", "price": 64.0, "date": "2026-09-02" },
+        { "region": "Rajkot Mandi, Gujarat", "market": "Saurashtra Groundnut Hub", "price": 60.0, "date": "2026-09-03" },
+        { "region": "Villupuram Market Yard (TN)", "market": "Farmer Produce Yard", "price": 63.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Cotton",
+      "tamilName": "பருத்தி (Cotton)",
+      "hindiName": "कपास (Cotton)",
+      "category": "Cash Crops",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 72.0,
+      "samples": [
+        { "region": "Coimbatore Cotton Exchange (TN)", "market": "South India Mills Hub", "price": 74.0, "date": "2026-09-02" },
+        { "region": "Rajkot APMC, Gujarat", "market": "Shankar-6 Cotton Yard", "price": 71.0, "date": "2026-09-03" },
+        { "region": "Warangal Mandi, Telangana", "market": "Cotton Corporation Yard", "price": 72.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Mustard",
+      "tamilName": "கடுகு (Mustard)",
+      "hindiName": "सरसों (Mustard)",
+      "category": "Oilseeds",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 56.0,
+      "samples": [
+        { "region": "Bharatpur APMC, Rajasthan", "market": "National Mustard Hub", "price": 57.0, "date": "2026-09-02" },
+        { "region": "Jaipur Mandi, Rajasthan", "market": "Oil Millers Exchange", "price": 55.0, "date": "2026-09-03" },
+        { "region": "Agra APMC, UP", "market": "Produce Exchange", "price": 56.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Chickpeas",
+      "tamilName": "கொண்டைக்கடலை (Chana)",
+      "hindiName": "चना (Chickpeas)",
+      "category": "Pulses",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 64.0,
+      "samples": [
+        { "region": "Latur APMC, Maharashtra", "market": "Pulses Capital of India", "price": 65.0, "date": "2026-09-02" },
+        { "region": "Bikaner Mandi, Rajasthan", "market": "Desi Chana Hub", "price": 63.0, "date": "2026-09-03" },
+        { "region": "Indore APMC, MP", "market": "Central Grain Exchange", "price": 64.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Carrot",
+      "tamilName": "கேரட் (Carrot)",
+      "hindiName": "गाजर (Carrot)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 35.0,
+      "samples": [
+        { "region": "Ooty Regulated Market, Nilgiris (TN)", "market": "Hill Produce Terminal", "price": 36.0, "date": "2026-09-02" },
+        { "region": "Kolar Mandi, Karnataka", "market": "Direct Farmer Gate", "price": 34.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Vegetable Terminal", "price": 35.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Brinjal",
+      "tamilName": "கத்தரிக்காய் (Brinjal/Eggplant)",
+      "hindiName": "बैंगन (Brinjal/Eggplant)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 30.0,
+      "samples": [
+        { "region": "Vellore APMC Market Yard (TN)", "market": "State Regulated Yard", "price": 28.0, "date": "2026-09-02" },
+        { "region": "Madurai Central Market (TN)", "market": "Southern Terminal", "price": 31.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Central Auction Yard", "price": 31.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Cabbage",
+      "tamilName": "முட்டைக்கோஸ் (Cabbage)",
+      "hindiName": "पत्ता गोभी (Cabbage)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 24.0,
+      "samples": [
+        { "region": "Mettupalayam Market Yard (TN)", "market": "Foot Hills Terminal", "price": 23.0, "date": "2026-09-02" },
+        { "region": "Nashik APMC, Maharashtra", "market": "Wholesale Mandi", "price": 25.0, "date": "2026-09-03" },
+        { "region": "Koyambedu, Chennai", "market": "Daily Green Exchange", "price": 24.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Cauliflower",
+      "tamilName": "காலிஃபிளவர் (Cauliflower)",
+      "hindiName": "फूलगोभी (Cauliflower)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 36.0,
+      "samples": [
+        { "region": "Hosur Wholesale Produce Hub (TN)", "market": "Border Agri Terminal", "price": 38.0, "date": "2026-09-02" },
+        { "region": "Kolar APMC, Karnataka", "market": "Vegetable Auction", "price": 34.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Market, Chennai", "market": "Central Terminal", "price": 36.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Okra",
+      "tamilName": "வெண்டைக்காய் (Ladies Finger/Okra)",
+      "hindiName": "भिंडी (Okra/Ladies Finger)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 32.0,
+      "samples": [
+        { "region": "Dindigul Market Yard (TN)", "market": "Central Farmer Yard", "price": 33.0, "date": "2026-09-02" },
+        { "region": "Tiruppur Regulated Market (TN)", "market": "Farmer Produce Yard", "price": 31.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Vegetable Auction", "price": 32.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Cucumber",
+      "tamilName": "வெள்ளரிக்காய் (Cucumber)",
+      "hindiName": "खीरा (Cucumber)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 20.0,
+      "samples": [
+        { "region": "Villupuram Regulated Market (TN)", "market": "East Coast Terminal", "price": 19.0, "date": "2026-09-02" },
+        { "region": "Salem APMC, Tamil Nadu", "market": "Central Market Yard", "price": 21.0, "date": "2026-09-03" },
+        { "region": "Koyambedu, Chennai", "market": "Produce Exchange", "price": 20.0, "date": "2026-09-04" }
+      ]
+    },
+    {
+      "name": "Beans",
+      "tamilName": "பீன்ஸ் (French Beans)",
+      "hindiName": "फलियां / बीन्स (Beans)",
+      "category": "Vegetables",
+      "unit": "kg",
+      "currency": "INR",
+      "benchmarkPrice": 42.0,
+      "samples": [
+        { "region": "Kodaikanal Produce Depot (TN)", "market": "Hill Farming Exchange", "price": 44.0, "date": "2026-09-02" },
+        { "region": "Chikkaballapur Mandi (KA)", "market": "Export Yard", "price": 40.0, "date": "2026-09-03" },
+        { "region": "Koyambedu Wholesale, Chennai", "market": "Daily Auction Depot", "price": 42.0, "date": "2026-09-04" }
+      ]
+    }
+  ]
+}

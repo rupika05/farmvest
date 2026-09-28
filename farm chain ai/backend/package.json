@@ -1,0 +1,16 @@
+{
+  "name": "farmchain-ai-backend",
+  "version": "1.0.0",
+  "description": "Backend API and Hash-chain Ledger for FarmChain AI",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/ledger.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "qrcode": "^1.5.3"
+  }
+}

@@ -1,0 +1,739 @@
+/* ==========================================================================
+   TNeGA e-Sevai Official Styling (https://www.tnesevai.tn.gov.in/)
+   Government of Tamil Nadu - e-Governance Agency Portal
+   ========================================================================== */
+
+.tnega-login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Tamil', 'Mukta Malar', sans-serif;
+  color: #1e293b;
+}
+
+/* 1. Top Utility Header */
+.tnega-utility-topbar {
+  background: #0b3c5d;
+  color: #e2e8f0;
+  padding: 0.35rem 1.5rem;
+  font-size: 0.76rem;
+  border-bottom: 2px solid #d4af37;
+}
+
+.tnega-utility-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tnega-help-links {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.tnega-util-link {
+  color: #e2e8f0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.tnega-util-link:hover {
+  color: #fbbf24;
+}
+
+.util-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.tnega-util-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.tnega-font-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.1rem 0.25rem;
+  border-radius: 4px;
+}
+
+.font-btn {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+.font-btn:hover,
+.font-btn.active {
+  background: #d4af37;
+  color: #0b3c5d;
+}
+
+.tnega-lang-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tnega-lang-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tnega-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.tnega-lang-btn.active {
+  background: #d4af37;
+  color: #0b3c5d;
+  font-weight: 700;
+  border-color: #d4af37;
+}
+
+/* 2. Main Brand Header Bar */
+.tnega-main-brand-bar {
+  background: #ffffff;
+  border-bottom: 1px solid #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 0.85rem 1.5rem;
+}
+
+.tnega-brand-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.tnega-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tnega-state-crest {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.tnega-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.tnega-dept-title {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #047857; /* Official Tamil Nadu Green */
+}
+
+.tnega-agency-title {
+  margin: 0.15rem 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0b3c5d; /* Royal Navy */
+  letter-spacing: -0.01em;
+}
+
+.tnega-portal-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tnega-portal-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.tnega-tag-official {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.tnega-brand-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.tnega-slogan-box {
+  text-align: right;
+  border-right: 2px solid #e2e8f0;
+  padding-right: 1.25rem;
+}
+
+.tnega-motto {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b3c5d;
+  font-style: italic;
+}
+
+.tnega-submotto {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.tnega-badge-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tnega-chip-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.tnega-chip-badge.saffron {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+.tnega-chip-badge.green {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+/* 3. Sub-strip Banner */
+.tnega-substrip {
+  background: linear-gradient(90deg, #0b3c5d 0%, #1e40af 100%);
+  color: #ffffff;
+  padding: 0.45rem 1.5rem;
+  font-size: 0.78rem;
+}
+
+.tnega-substrip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.substrip-tag {
+  background: #d4af37;
+  color: #0b3c5d;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.substrip-msg {
+  color: #f8fafc;
+  font-weight: 500;
+}
+
+/* 4. Body Content Layout (Two Columns) */
+.tnega-body-container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.tnega-grid-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.75rem;
+  align-items: flex-start;
+}
+
+/* Left Column: 4-Step Process Guide */
+.tnega-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tnega-guide-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.guide-card-header {
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.guide-card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0b3c5d;
+}
+
+.tnega-steps-list {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.step-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.step-num-bubble {
+  background: #0b3c5d;
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(11, 60, 93, 0.3);
+}
+
+.step-item-content h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.step-item-content p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.tnega-helpdesk-box {
+  background: #f0fdf4;
+  border-top: 1px solid #bbf7d0;
+  padding: 1rem 1.25rem;
+  font-size: 0.78rem;
+  color: #166534;
+}
+
+.helpdesk-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.5rem;
+  color: #15803d;
+  font-size: 0.84rem;
+}
+
+.helpdesk-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  line-height: 1.4;
+}
+
+/* Right Column: Official TNeGA Login Form */
+.tnega-login-col {
+  width: 100%;
+}
+
+.tnega-login-box {
+  background: #ffffff;
+  border: 2px solid #0b3c5d;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(11, 60, 93, 0.08);
+  padding: 1.5rem;
+}
+
+.login-box-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+.login-box-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0b3c5d;
+}
+
+.login-box-desc {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Role Selector Tabs */
+.tnega-role-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.35rem;
+  background: #f1f5f9;
+  padding: 0.3rem;
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  border: 1px solid #cbd5e1;
+}
+
+.tnega-role-tab {
+  background: transparent;
+  border: none;
+  padding: 0.55rem 0.35rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.tnega-role-tab:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #0b3c5d;
+}
+
+.tnega-role-tab.active {
+  background: #0b3c5d;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(11, 60, 93, 0.25);
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+}
+
+/* Simulated SMS Alert Toast */
+.tnega-sms-toast {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  border-left: 4px solid #ca8a04;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px rgba(202, 138, 4, 0.1);
+}
+
+.sms-toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #854d0e;
+  margin-bottom: 0.25rem;
+}
+
+.sms-msg-text {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.8rem;
+  color: #713f12;
+  line-height: 1.4;
+}
+
+.sms-code-strong {
+  background: #fef08a;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #000000;
+}
+
+.tnega-autofill-btn {
+  background: #ca8a04;
+  color: #ffffff;
+  border: none;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.15s ease;
+}
+
+.tnega-autofill-btn:hover {
+  background: #a16207;
+}
+
+/* Error Banner */
+.tnega-error-banner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  padding: 0.65rem 0.85rem;
+  border-radius: 4px;
+  color: #991b1b;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Form Elements */
+.tnega-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tnega-form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 0.35rem;
+}
+
+.tnega-form-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.92rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.tnega-form-input:focus {
+  border-color: #0b3c5d;
+  box-shadow: 0 0 0 3px rgba(11, 60, 93, 0.15);
+}
+
+.tnega-form-input.otp-input {
+  font-family: monospace;
+  font-size: 1.3rem;
+  letter-spacing: 0.35em;
+  text-align: center;
+  font-weight: 700;
+  color: #0b3c5d;
+}
+
+.tnega-primary-btn {
+  background: #0b3c5d;
+  color: #ffffff;
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(11, 60, 93, 0.2);
+}
+
+.tnega-primary-btn:hover:not(:disabled) {
+  background: #082a42;
+  transform: translateY(-1px);
+}
+
+.tnega-primary-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.tnega-resend-row {
+  text-align: center;
+  margin-top: -0.25rem;
+}
+
+.tnega-link-btn {
+  background: transparent;
+  border: none;
+  color: #0284c7;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tnega-link-btn:hover {
+  color: #0369a1;
+}
+
+/* 1-Click Evaluator Section */
+.tnega-evaluator-section {
+  margin-top: 1.5rem;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 1rem;
+}
+
+.evaluator-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 0.6rem;
+}
+
+.evaluator-btns-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+
+.evaluator-chip {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.evaluator-chip:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  transform: translateX(2px);
+}
+
+.evaluator-chip.farmer {
+  border-left: 3px solid #16a34a;
+}
+
+.evaluator-chip.trader {
+  border-left: 3px solid #ea580c;
+}
+
+.evaluator-chip.admin {
+  border-left: 3px solid #7c3aed;
+}
+
+/* 5. TNeGA Footer */
+.tnega-footer {
+  background: #0b3c5d;
+  color: #e2e8f0;
+  border-top: 3px solid #d4af37;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.76rem;
+  margin-top: auto;
+}
+
+.tnega-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-col-main .footer-title {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.footer-col-main .footer-desc {
+  margin: 0.2rem 0 0;
+  color: #94a3b8;
+  font-size: 0.72rem;
+}
+
+.footer-col-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-seal-pill {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .tnega-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .tnega-brand-right {
+    display: none;
+  }
+}

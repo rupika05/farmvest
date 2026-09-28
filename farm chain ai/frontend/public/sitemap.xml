@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Home & Farmer Mandi Registration Portal -->
+  <url>
+    <loc>https://farmchain.gov.in/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://farmchain.gov.in/?lang=ta" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://farmchain.gov.in/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://farmchain.gov.in/?lang=hi" />
+  </url>
+
+  <!-- Citizen Provenance Passport & Traceability Verification -->
+  <url>
+    <loc>https://farmchain.gov.in/?tab=consumer</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- APMC Mandi Logistics & Custody Transfer -->
+  <url>
+    <loc>https://farmchain.gov.in/?tab=transfer</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- National SHA-256 Ledger Cryptographic Inspector -->
+  <url>
+    <loc>https://farmchain.gov.in/?tab=ledger</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Public Mandi Benchmark Price Feeds -->
+  <url>
+    <loc>https://farmchain.gov.in/price-suggestion/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

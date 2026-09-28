@@ -1,0 +1,19 @@
+{
+  "name": "farmchain-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Transparent Farm-to-Consumer Marketplace with Hash-chain Ledger and AI Quality Control",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:backend": "node backend/server.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend install && npm --prefix frontend run build && node -e \"require('fs').cpSync('frontend/dist', 'dist', {recursive: true, force: true})\"",
+    "start": "node backend/server.js",
+    "test:ledger": "node backend/tests/ledger.test.js",
+    "test:e2e": "node backend/tests/e2e_demo_flow.test.js",
+    "test": "node backend/tests/ledger.test.js && node backend/tests/e2e_demo_flow.test.js"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "FarmChain AI — National Krishi Transparency Portal",
+  "short_name": "FarmChain AI",
+  "description": "Blockchain-inspired agricultural supply chain traceability with SHA-256 ledger and AI quality inspection.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#064e3b",
+  "theme_color": "#047857",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["agriculture", "government", "productivity", "utilities"],
+  "lang": "ta"
+}
