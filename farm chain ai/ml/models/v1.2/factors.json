@@ -1,0 +1,83 @@
+{
+  "farmerToIntermediary": [
+    {
+      "factor": "Produce Quality Grade",
+      "impact": "High influence",
+      "weight_pct": 38.6
+    },
+    {
+      "factor": "Commodity Type",
+      "impact": "High influence",
+      "weight_pct": 22.0
+    },
+    {
+      "factor": "Current Market Demand",
+      "impact": "Medium influence",
+      "weight_pct": 15.1
+    },
+    {
+      "factor": "Regional Produce Supply",
+      "impact": "Medium influence",
+      "weight_pct": 12.1
+    },
+    {
+      "factor": "Current APMC Mandi Price",
+      "impact": "Low influence",
+      "weight_pct": 6.8
+    }
+  ],
+  "intermediaryToRetailer": [
+    {
+      "factor": "Produce Quality Grade",
+      "impact": "High influence",
+      "weight_pct": 33.9
+    },
+    {
+      "factor": "Commodity Type",
+      "impact": "Medium influence",
+      "weight_pct": 19.7
+    },
+    {
+      "factor": "Current Market Demand",
+      "impact": "Medium influence",
+      "weight_pct": 13.7
+    },
+    {
+      "factor": "Regional Produce Supply",
+      "impact": "Medium influence",
+      "weight_pct": 11.1
+    },
+    {
+      "factor": "Cold Storage Duration",
+      "impact": "Low influence",
+      "weight_pct": 6.2
+    }
+  ],
+  "retailerToConsumer": [
+    {
+      "factor": "Produce Quality Grade",
+      "impact": "High influence",
+      "weight_pct": 32.5
+    },
+    {
+      "factor": "Commodity Type",
+      "impact": "High influence",
+      "weight_pct": 21.6
+    },
+    {
+      "factor": "Current Market Demand",
+      "impact": "Medium influence",
+      "weight_pct": 13.5
+    },
+    {
+      "factor": "Regional Produce Supply",
+      "impact": "Medium influence",
+      "weight_pct": 11.3
+    },
+    {
+      "factor": "Cold Storage Duration",
+      "impact": "Low influence",
+      "weight_pct": 5.9
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import {
   Copy, RotateCcw, Delete, QrCode, CheckCircle2, ExternalLink, 
   Sparkles, RefreshCw, Globe, CheckCircle, Camera, Bot, Video
 } from 'lucide-react';
-import { createBatch, fetchPriceSuggestion } from '../services/api';
+import { createBatch, fetchPriceSuggestion, getMlPriceRecommendation } from '../services/api';
 import { CROPS_CONFIG, getCropImage } from '../config/crops';
 import confetti from 'canvas-confetti';
 import './FarmerPortal.css';
@@ -32,6 +32,8 @@ export default function FarmerPortal({
   // Status & API State
   const [loadingPrice, setLoadingPrice] = useState(false);
   const [priceDetails, setPriceDetails] = useState(null);
+  const [mlRecommendation, setMlRecommendation] = useState(null);
+  const [loadingMl, setLoadingMl] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [createdBatch, setCreatedBatch] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -128,13 +130,17 @@ export default function FarmerPortal({
     }
   };
 
-  // Helper to fetch live APMC Mandi price
+  // Helper to fetch live APMC Mandi price and AI ML Recommendation
   const loadMandiPrice = async (cropObj) => {
     setLoadingPrice(true);
+    setLoadingMl(true);
     setErrorMsg(null);
+    let resolvedMandiPrice = cropObj.defaultPrice;
+
     try {
       const res = await fetchPriceSuggestion(cropObj.apiQuery || cropObj.name);
       if (res?.success && res.averagePrice) {
+        resolvedMandiPrice = res.averagePrice;
         setSuggestedPrice(res.averagePrice);
         setPriceDetails(res);
       } else {
@@ -145,6 +151,25 @@ export default function FarmerPortal({
       setSuggestedPrice(cropObj.defaultPrice);
     } finally {
       setLoadingPrice(false);
+    }
+
+    // Query genuine ML Recommendation Engine
+    try {
+      const mlRes = await getMlPriceRecommendation({
+        crop: cropObj.name,
+        mandi_price: resolvedMandiPrice,
+        quality_grade: 'Grade A',
+        quantity_kg: Number(quantityStr) || 25,
+        location: authenticatedUser?.location || 'Tamil Nadu',
+        demand_level: 'High'
+      });
+      if (mlRes) {
+        setMlRecommendation(mlRes);
+      }
+    } catch (e) {
+      console.warn('ML price engine query error:', e);
+    } finally {
+      setLoadingMl(false);
     }
   };
 
@@ -210,7 +235,14 @@ export default function FarmerPortal({
         owner: defaultOwner,
         location: defaultLocation,
         harvestDate: new Date().toISOString().slice(0, 10),
-        notes: `Farmer batch registered via low-literacy portal. Benchmark rate: ₹${suggestedPrice}/kg.`
+        notes: `Farmer batch registered via low-literacy portal. Benchmark rate: ₹${suggestedPrice}/kg.`,
+        mlRecommendation: mlRecommendation ? {
+          lower: mlRecommendation.recommendations?.farmerToIntermediary?.lower,
+          expected: mlRecommendation.recommendations?.farmerToIntermediary?.expected,
+          upper: mlRecommendation.recommendations?.farmerToIntermediary?.upper,
+          modelVersion: mlRecommendation.model?.version || 'v1.0',
+          marketReferencePrice: mlRecommendation.marketReferencePrice || suggestedPrice
+        } : null
       };
 
       const result = await createBatch(payload);
@@ -672,6 +704,76 @@ export default function FarmerPortal({
                 <strong>₹{totalPayout.toLocaleString()}</strong>
               </div>
             </div>
+
+            {/* AI FAIR PRICE RECOMMENDATION CARD */}
+            {mlRecommendation && (
+              <div className="farmer-ml-card" style={{
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 78, 59, 0.2))',
+                border: '1px solid rgba(46, 204, 113, 0.35)',
+                borderRadius: '16px',
+                padding: '1.25rem',
+                marginBottom: '1.5rem',
+                boxShadow: '0 4px 18px rgba(0, 0, 0, 0.25)'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ background: '#2ecc71', color: '#064e3b', fontWeight: 800, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px', textTransform: 'uppercase' }}>
+                      AI Fair Price Recommendation
+                    </span>
+                    <span style={{ fontSize: '0.82rem', color: '#a7f3d0', fontWeight: 600 }}>
+                      Model: {mlRecommendation.model?.version || 'v1.0'}
+                    </span>
+                  </div>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                    Mandi Baseline: ₹{mlRecommendation.marketReferencePrice || suggestedPrice}/kg
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', background: 'rgba(0, 0, 0, 0.3)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#cbd5e1', display: 'block', marginBottom: '4px' }}>
+                      {currentLang === 'ta' ? 'பரிந்துரைக்கப்பட்ட உழவர் வரம்பு (Farmer → Intermediary):' : currentLang === 'hi' ? 'अनुशंसित किसान मूल्य सीमा:' : 'Recommended Farmer → Intermediary Range:'}
+                    </span>
+                    <span style={{ fontSize: '1.6rem', fontWeight: 900, color: '#34d399', letterSpacing: '-0.5px' }}>
+                      ₹{mlRecommendation.recommendations?.farmerToIntermediary?.lower} – ₹{mlRecommendation.recommendations?.farmerToIntermediary?.upper}
+                      <span style={{ fontSize: '0.9rem', color: '#94a3b8', fontWeight: 500 }}> / kg</span>
+                    </span>
+                  </div>
+
+                  <div style={{ textAlign: 'right' }}>
+                    <span style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block' }}>Expected Fair Price</span>
+                    <strong style={{ fontSize: '1.3rem', color: '#f59e0b' }}>
+                      ₹{mlRecommendation.recommendations?.farmerToIntermediary?.expected}/kg
+                    </strong>
+                  </div>
+                </div>
+
+                {/* Factors Explainability */}
+                <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#e2e8f0', display: 'block', marginBottom: '6px' }}>
+                    💡 {currentLang === 'ta' ? 'விலை வரம்பிற்கான முக்கிய காரணிகள்:' : 'Why this range? (Top Market Factors):'}
+                  </span>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    {(mlRecommendation.explanation?.topFactors || []).slice(0, 4).map((factor, idx) => (
+                      <span key={idx} style={{
+                        background: 'rgba(255, 255, 255, 0.06)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        padding: '3px 8px',
+                        borderRadius: '20px',
+                        fontSize: '0.72rem',
+                        color: '#cbd5e1'
+                      }}>
+                        • {factor.factor} <span style={{ color: '#34d399' }}>({factor.impact})</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '0.75rem', fontSize: '0.72rem', color: '#6ee7b7', opacity: 0.9 }}>
+                  ℹ️ {mlRecommendation.disclaimer}
+                </div>
+              </div>
+            )}
 
             {/* Error banner if any */}
             {errorMsg && (

@@ -1,0 +1,351 @@
+crop,mandi_price,mandi_min_price,mandi_max_price,quality_grade,quantity_kg,location,market_location,season,supply_level,demand_level,transport_cost_per_kg,storage_cost_per_kg,handling_cost_per_kg,days_in_storage,weather_condition,transaction_date,farmer_to_intermediary_price,intermediary_to_retailer_price,retailer_to_consumer_price,distance_km
+Cabbage,17.21,14.63,19.79,Grade B,1512.3,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,1.45,0.37,0.66,5,Drought,2026-08-24,15.55,21.47,26.96,100.0
+Onion,28.32,24.07,32.57,Grade B,2156.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,High,Low,1.92,0.7,0.52,5,Normal,2026-04-02,23.75,32.08,39.53,119.0
+Onion,27.49,23.37,31.61,Grade B,813.7,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,Low,1.54,0.5,0.77,7,Rainy,2026-07-19,23.29,32.44,41.51,212.2
+Carrot,35.27,29.98,40.56,Grade B,924.0,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,High,Low,1.67,0.79,0.71,4,Normal,2026-03-04,29.1,38.51,47.84,165.8
+Tomato,33.79,28.72,38.86,Grade B,2291.7,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,Medium,2.04,0.63,0.64,6,Rainy,2026-07-12,30.29,40.65,49.68,189.8
+Carrot,44.79,38.07,51.51,Grade B,1330.7,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,High,2.5,0.54,0.63,4,Rainy,2026-05-31,44.93,56.02,69.92,60.6
+Cabbage,16.84,14.31,19.37,Grade C,2029.9,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Low,1.34,0.75,0.62,2,Normal,2026-08-05,12.64,17.47,22.27,65.6
+Wheat,26.62,22.63,30.61,Grade A,1301.3,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,High,0.97,0.77,0.53,1,Normal,2026-03-03,29.12,34.52,41.61,80.2
+Tomato,31.84,27.06,36.62,Grade A,895.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Medium,1.84,0.58,0.64,7,Normal,2026-05-03,34.64,45.76,55.37,114.1
+Potato,23.03,19.58,26.48,Grade A,2096.5,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,High,High,1.31,0.64,0.41,3,Rainy,2026-05-28,26.08,32.2,39.98,158.2
+Cabbage,16.87,14.34,19.4,Grade C,2199.5,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Medium,Low,1.62,0.56,0.5,6,Rainy,2026-02-06,12.11,19.3,24.6,75.8
+Onion,29.17,24.79,33.55,Grade C,1960.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Low,Low,1.7,0.59,0.55,1,Normal,2026-04-03,22.37,27.16,33.18,117.1
+Onion,25.33,21.53,29.13,Grade B,631.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,Medium,1.61,0.55,0.65,6,Normal,2026-02-07,24.14,32.66,40.52,201.2
+Potato,24.29,20.65,27.93,Grade B,2167.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,1.42,0.32,0.8,6,Drought,2026-04-27,22.18,29.11,36.37,210.6
+Tomato,37.42,31.81,43.03,Grade C,234.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,High,High,1.88,0.49,0.56,6,Normal,2026-04-14,30.2,38.28,47.98,70.8
+Cotton,74.06,62.95,85.17,Grade B,1771.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,Low,3.08,0.76,0.6,1,Normal,2026-01-20,69.54,83.35,101.59,179.2
+Onion,25.42,21.61,29.23,Grade A,1466.8,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,High,Low,1.83,0.73,0.5,2,Rainy,2026-02-23,23.78,29.31,36.57,185.6
+Carrot,43.87,37.29,50.45,Grade A,1057.8,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,High,High,2.57,0.66,0.42,7,Normal,2026-02-27,47.62,60.08,74.12,54.7
+Tomato,28.03,23.83,32.23,Grade A,498.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,2.03,0.52,0.69,3,Normal,2026-05-24,30.11,37.45,45.81,38.8
+Chilli,89.75,76.29,103.21,Grade A,1188.5,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,High,Low,3.73,0.43,0.41,3,Normal,2026-01-01,87.72,105.94,127.52,143.2
+Cabbage,19.69,16.74,22.64,Grade B,1454.7,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Low,1.67,0.71,0.66,3,Normal,2026-05-21,18.48,25.02,30.79,27.8
+Potato,21.14,17.97,24.31,Grade A,2119.9,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Low,High,1.03,0.65,0.65,5,Normal,2026-08-05,25.52,33.23,41.35,55.5
+Wheat,29.89,25.41,34.37,Grade B,362.8,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Low,1.08,0.42,0.67,7,Normal,2026-04-15,27.42,35.7,42.55,119.3
+Wheat,27.42,23.31,31.53,Grade A,76.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,High,Medium,1.28,0.78,0.63,7,Normal,2026-03-10,27.99,38.34,46.35,154.5
+Chilli,97.33,82.73,111.93,Grade C,1735.7,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,High,3.45,0.34,0.73,2,Normal,2026-01-29,76.33,86.49,101.09,182.6
+Cabbage,16.97,14.42,19.52,Grade B,1418.1,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Low,High,1.57,0.31,0.59,2,Normal,2026-07-19,17.68,22.62,28.18,169.2
+Wheat,22.99,19.54,26.44,Grade C,597.8,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Low,High,1.25,0.56,0.8,5,Normal,2026-05-27,19.33,26.61,33.4,145.9
+Tomato,35.07,29.81,40.33,Grade C,161.3,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Low,Low,1.85,0.61,0.51,4,Normal,2026-05-16,27.95,36.75,43.87,35.5
+Wheat,25.33,21.53,29.13,Grade A,735.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,High,1.26,0.71,0.78,5,Normal,2026-07-13,28.18,36.52,44.96,102.3
+Brinjal,25.59,21.75,29.43,Grade A,2426.3,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,Medium,1.41,0.44,0.42,6,Normal,2026-07-16,28.48,37.02,45.61,209.0
+Cotton,64.22,54.59,73.85,Grade A,666.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,High,Low,2.95,0.32,0.51,7,Normal,2026-06-11,61.18,75.21,90.4,81.6
+Tomato,37.28,31.69,42.87,Grade C,1038.5,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Low,2.25,0.61,0.79,2,Normal,2026-01-30,28.32,35.19,43.38,165.3
+Wheat,29.12,24.75,33.49,Grade A,1574.1,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,High,1.26,0.55,0.5,5,Drought,2026-02-22,35.08,42.88,52.02,135.9
+Onion,23.13,19.66,26.6,Grade B,1030.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Medium,1.7,0.39,0.48,3,Rainy,2026-07-29,23.77,29.45,36.26,37.7
+Tomato,26.51,22.53,30.49,Grade C,365.4,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,High,1.87,0.64,0.6,3,Rainy,2026-03-02,21.93,29.05,35.64,217.3
+Rice,49.98,42.48,57.48,Grade A,1183.2,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,High,1.16,0.75,0.6,7,Normal,2026-01-18,54.1,68.74,80.43,68.5
+Wheat,24.4,20.74,28.06,Grade B,2109.7,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,Low,1.1,0.64,0.72,5,Normal,2026-08-16,20.76,29.52,37.1,169.1
+Tomato,26.86,22.83,30.89,Grade A,2254.1,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,Low,1.99,0.42,0.44,6,Normal,2026-04-22,27.87,35.9,43.91,77.0
+Rice,33.59,28.55,38.63,Grade C,324.5,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Low,0.93,0.39,0.67,1,Normal,2026-07-22,26.01,29.68,37.16,173.9
+Brinjal,26.28,22.34,30.22,Grade B,1782.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,Medium,1.49,0.33,0.53,2,Normal,2026-05-18,23.04,27.98,35.19,156.3
+Tomato,31.82,27.05,36.59,Grade B,1996.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Low,1.55,0.67,0.78,4,Normal,2026-01-01,28.87,37.58,47.12,188.4
+Rice,43.79,37.22,50.36,Grade B,2071.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,High,Medium,1.25,0.46,0.64,2,Rainy,2026-02-08,39.71,47.26,57.8,144.8
+Tomato,32.05,27.24,36.86,Grade A,2254.0,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,High,1.93,0.52,0.53,3,Normal,2026-07-11,35.96,45.07,54.93,134.6
+Brinjal,26.66,22.66,30.66,Grade B,400.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Medium,1.65,0.35,0.61,7,Rainy,2026-08-04,25.6,33.37,42.48,128.0
+Chilli,91.55,77.82,105.28,Grade B,1750.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Medium,2.67,0.75,0.63,7,Normal,2026-02-15,87.84,107.42,128.91,47.8
+Potato,21.64,18.39,24.89,Grade C,2333.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Medium,1.05,0.59,0.64,6,Normal,2026-07-25,17.53,24.61,30.76,217.0
+Chilli,85.38,72.57,98.19,Grade B,1027.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Low,2.41,0.47,0.56,1,Rainy,2026-02-07,77.31,86.62,101.77,167.5
+Tomato,30.86,26.23,35.49,Grade C,658.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,High,High,1.72,0.69,0.51,2,Normal,2026-08-01,24.0,30.65,37.95,111.8
+Chilli,79.57,67.63,91.51,Grade C,1280.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Medium,3.6,0.47,0.59,1,Normal,2026-01-30,61.07,72.79,89.52,78.8
+Onion,31.11,26.44,35.78,Grade A,1031.9,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,High,Medium,1.26,0.68,0.51,3,Normal,2026-05-04,30.29,38.27,45.58,70.8
+Cabbage,18.14,15.42,20.86,Grade A,1649.2,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,1.84,0.72,0.56,5,Normal,2026-05-22,18.58,27.25,33.81,22.6
+Cabbage,18.99,16.14,21.84,Grade A,2197.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,Low,1.46,0.43,0.55,7,Normal,2026-01-20,20.44,27.52,34.91,130.4
+Potato,21.35,18.15,24.55,Grade C,1960.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,Low,1.24,0.39,0.59,1,Normal,2026-02-09,15.67,19.34,25.28,63.6
+Brinjal,22.42,19.06,25.78,Grade A,95.1,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Low,Medium,1.17,0.5,0.6,4,Normal,2026-04-16,25.49,32.0,39.24,73.3
+Rice,44.39,37.73,51.05,Grade B,1454.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,Low,1.01,0.48,0.78,1,Normal,2026-02-05,38.04,44.14,54.93,203.1
+Cabbage,18.78,15.96,21.6,Grade A,2387.5,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,1.32,0.72,0.74,3,Normal,2026-08-14,20.35,26.85,34.32,88.9
+Rice,41.88,35.6,48.16,Grade B,1115.3,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,High,High,1.28,0.3,0.44,5,Normal,2026-02-18,41.13,47.68,57.84,128.4
+Rice,44.32,37.67,50.97,Grade B,1824.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.29,0.77,0.42,2,Normal,2026-05-25,45.3,53.65,63.95,203.1
+Carrot,37.38,31.77,42.99,Grade A,1083.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,2.06,0.56,0.66,6,Normal,2026-08-15,43.29,53.67,67.15,197.0
+Rice,35.01,29.76,40.26,Grade B,2019.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,1.06,0.51,0.75,2,Normal,2026-06-19,32.01,38.02,45.8,206.5
+Cabbage,21.74,18.48,25.0,Grade A,1025.8,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Medium,1.38,0.36,0.54,6,Rainy,2026-05-26,23.22,29.19,35.69,155.9
+Cotton,68.26,58.02,78.5,Grade B,2456.7,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,High,3.24,0.42,0.78,7,Normal,2026-08-25,69.11,83.11,99.7,211.5
+Rice,40.33,34.28,46.38,Grade C,2215.3,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,High,1.06,0.55,0.8,3,Rainy,2026-08-18,32.82,41.07,50.78,27.0
+Chilli,79.29,67.4,91.18,Grade C,700.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Low,3.69,0.7,0.66,5,Normal,2026-08-14,60.58,72.5,85.33,72.0
+Carrot,40.15,34.13,46.17,Grade C,318.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,High,2.48,0.56,0.76,3,Normal,2026-04-08,33.94,43.63,53.36,166.8
+Rice,43.98,37.38,50.58,Grade C,2174.9,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Medium,1.14,0.61,0.7,7,Rainy,2026-02-14,36.57,46.8,57.12,87.0
+Cabbage,18.53,15.75,21.31,Grade B,1293.3,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,Low,1.67,0.43,0.65,5,Normal,2026-03-11,16.23,23.21,29.07,98.4
+Carrot,38.57,32.78,44.36,Grade A,1785.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.67,0.73,0.8,7,Drought,2026-06-13,44.35,57.97,71.51,96.7
+Tomato,31.66,26.91,36.41,Grade B,1724.1,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Low,1.82,0.53,0.47,7,Rainy,2026-03-16,26.69,36.67,45.87,74.7
+Tomato,33.1,28.14,38.06,Grade C,2413.1,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,Medium,1.73,0.66,0.7,3,Normal,2026-01-25,25.67,33.42,42.34,114.3
+Rice,40.59,34.5,46.68,Grade A,426.5,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,High,1.2,0.45,0.76,2,Normal,2026-02-15,46.12,55.21,68.14,69.5
+Wheat,25.92,22.03,29.81,Grade A,1475.8,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,Medium,1.03,0.31,0.43,2,Normal,2026-04-05,28.68,34.3,42.9,171.4
+Brinjal,25.52,21.69,29.35,Grade B,407.5,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,High,1.46,0.41,0.54,2,Normal,2026-01-02,25.67,31.86,39.41,36.5
+Chilli,75.58,64.24,86.92,Grade C,542.1,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Low,High,3.41,0.78,0.45,3,Normal,2026-01-06,63.17,78.54,96.75,79.8
+Rice,42.49,36.12,48.86,Grade B,1550.0,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Low,Medium,1.12,0.56,0.69,3,Normal,2026-01-12,42.38,49.9,60.24,194.4
+Cotton,69.96,59.47,80.45,Grade B,2186.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,High,High,2.03,0.63,0.53,1,Normal,2026-06-05,63.39,74.1,87.78,34.4
+Tomato,31.14,26.47,35.81,Grade C,1069.0,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,2.33,0.32,0.75,1,Normal,2026-04-27,24.22,31.36,37.81,139.5
+Chilli,73.9,62.82,84.98,Grade B,2285.3,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,Medium,3.5,0.37,0.69,6,Normal,2026-06-21,68.62,82.87,96.12,102.6
+Brinjal,21.7,18.45,24.95,Grade C,1141.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,Medium,1.34,0.5,0.74,5,Normal,2026-06-17,15.87,21.79,28.15,67.4
+Cotton,59.93,50.94,68.92,Grade B,1105.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Low,High,2.45,0.49,0.64,7,Normal,2026-06-14,63.0,77.32,94.17,109.3
+Brinjal,24.48,20.81,28.15,Grade A,189.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,High,1.44,0.77,0.53,1,Normal,2026-01-12,26.55,32.29,40.09,193.6
+Rice,34.94,29.7,40.18,Grade B,392.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,Medium,1.28,0.35,0.67,6,Rainy,2026-03-27,33.25,41.59,49.99,215.7
+Cotton,73.06,62.1,84.02,Grade B,327.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Low,Medium,3.18,0.71,0.67,1,Normal,2026-08-08,72.35,85.1,100.56,83.6
+Tomato,34.57,29.38,39.76,Grade B,1439.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Low,Medium,1.73,0.63,0.72,2,Rainy,2026-01-23,33.95,42.32,51.53,44.0
+Brinjal,22.32,18.97,25.67,Grade B,1544.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,Medium,1.29,0.49,0.49,2,Normal,2026-07-19,21.5,27.17,34.52,112.7
+Onion,29.39,24.98,33.8,Grade B,2289.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,High,1.59,0.42,0.59,3,Normal,2026-03-11,27.85,34.92,43.55,124.2
+Carrot,42.43,36.07,48.79,Grade A,2321.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,High,1.77,0.61,0.61,6,Normal,2026-08-27,48.86,62.47,76.32,37.9
+Potato,22.56,19.18,25.94,Grade B,1330.1,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Low,High,1.14,0.7,0.47,4,Normal,2026-04-28,23.57,30.88,38.82,28.7
+Cotton,73.43,62.42,84.44,Grade B,1994.7,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Low,2.96,0.58,0.5,4,Normal,2026-01-19,68.19,82.01,99.85,181.9
+Onion,26.13,22.21,30.05,Grade B,461.6,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Medium,1.33,0.46,0.49,7,Normal,2026-05-18,25.68,34.18,41.4,31.7
+Wheat,24.33,20.68,27.98,Grade A,1808.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Low,High,0.85,0.66,0.63,7,Normal,2026-02-05,30.07,39.5,47.89,65.3
+Wheat,23.87,20.29,27.45,Grade B,1690.5,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,High,1.1,0.64,0.49,2,Normal,2026-03-11,24.78,30.35,37.33,92.6
+Onion,27.42,23.31,31.53,Grade A,1427.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,High,Medium,1.35,0.57,0.44,1,Rainy,2026-01-12,29.11,35.34,42.81,179.1
+Cabbage,16.43,13.97,18.89,Grade C,2321.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Medium,1.67,0.34,0.7,1,Normal,2026-07-23,13.19,17.72,22.99,27.2
+Tomato,30.25,25.71,34.79,Grade A,898.5,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Low,1.69,0.77,0.75,6,Rainy,2026-06-20,30.03,41.82,52.26,98.2
+Tomato,32.21,27.38,37.04,Grade A,2201.0,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Medium,High,1.8,0.39,0.68,2,Drought,2026-07-29,36.84,44.81,54.95,46.5
+Brinjal,26.82,22.8,30.84,Grade A,2250.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Low,Low,1.59,0.36,0.59,4,Normal,2026-03-09,27.76,34.65,42.14,207.3
+Chilli,78.61,66.82,90.4,Grade B,579.3,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,High,3.57,0.53,0.42,3,Normal,2026-06-08,74.18,86.85,103.61,44.3
+Onion,29.23,24.85,33.61,Grade B,1601.3,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Medium,1.67,0.56,0.57,7,Normal,2026-07-10,26.94,35.61,43.66,93.6
+Brinjal,26.08,22.17,29.99,Grade B,77.0,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,High,1.3,0.68,0.45,7,Normal,2026-01-13,26.38,36.17,44.75,41.9
+Carrot,36.18,30.75,41.61,Grade A,1856.5,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,Low,1.99,0.78,0.45,1,Normal,2026-06-18,36.73,43.51,54.43,70.9
+Cotton,71.5,60.77,82.22,Grade B,2071.6,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,High,3.11,0.53,0.75,5,Normal,2026-07-12,71.46,84.9,101.84,27.6
+Cabbage,17.47,14.85,20.09,Grade A,79.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,1.94,0.79,0.78,3,Normal,2026-08-23,18.95,26.88,32.72,186.1
+Rice,45.35,38.55,52.15,Grade B,985.8,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,1.19,0.62,0.61,6,Rainy,2026-01-10,39.81,49.28,60.76,216.0
+Brinjal,26.66,22.66,30.66,Grade B,1560.4,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,High,1.54,0.35,0.55,6,Normal,2026-08-05,25.22,32.08,39.22,205.7
+Onion,28.69,24.39,32.99,Grade A,2049.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Medium,1.37,0.79,0.7,6,Normal,2026-08-24,31.48,42.03,51.16,170.6
+Wheat,25.8,21.93,29.67,Grade B,2053.6,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Low,Medium,1.07,0.6,0.6,7,Normal,2026-01-23,25.42,34.81,43.04,147.3
+Carrot,39.56,33.63,45.49,Grade A,654.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Low,High,2.0,0.7,0.48,2,Normal,2026-02-15,46.63,54.61,66.56,91.1
+Wheat,25.72,21.86,29.58,Grade B,136.5,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,Low,0.98,0.46,0.46,7,Normal,2026-07-30,21.6,29.77,36.69,197.2
+Onion,28.88,24.55,33.21,Grade A,487.0,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,High,1.49,0.5,0.75,5,Normal,2026-08-04,30.93,39.11,47.74,160.6
+Rice,47.48,40.36,54.6,Grade B,711.1,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,High,0.83,0.47,0.71,6,Normal,2026-04-10,48.22,55.2,67.67,49.5
+Cabbage,16.74,14.23,19.25,Grade A,203.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Low,Medium,1.42,0.39,0.66,4,Normal,2026-08-07,19.26,25.47,32.12,210.1
+Carrot,38.44,32.67,44.21,Grade A,114.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Low,High,2.12,0.45,0.78,2,Rainy,2026-06-03,45.39,54.5,65.67,111.6
+Carrot,42.91,36.47,49.35,Grade A,2264.6,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,High,1.66,0.41,0.45,1,Normal,2026-06-01,52.85,60.63,73.3,76.5
+Cotton,66.38,56.42,76.34,Grade A,2270.3,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Low,2.34,0.38,0.74,3,Normal,2026-04-17,66.27,77.67,91.92,102.2
+Cabbage,17.78,15.11,20.45,Grade B,1393.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,Low,1.67,0.55,0.79,5,Normal,2026-08-06,16.41,23.58,29.22,81.7
+Carrot,34.83,29.61,40.05,Grade A,420.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,Low,2.16,0.56,0.45,2,Normal,2026-02-12,36.2,44.05,53.49,128.7
+Brinjal,26.1,22.19,30.02,Grade A,395.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,Low,1.44,0.67,0.52,7,Normal,2026-07-07,24.97,34.82,42.85,178.8
+Tomato,30.35,25.8,34.9,Grade A,859.0,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,High,High,2.03,0.38,0.5,5,Normal,2026-02-27,32.55,40.9,51.0,130.5
+Rice,44.97,38.22,51.72,Grade B,1269.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Low,Medium,1.19,0.78,0.48,2,Normal,2026-08-08,44.32,51.58,63.47,82.5
+Wheat,27.59,23.45,31.73,Grade B,437.0,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Low,Medium,1.23,0.75,0.51,6,Normal,2026-05-09,27.13,36.66,44.85,166.5
+Carrot,46.6,39.61,53.59,Grade A,2211.9,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,Low,2.02,0.79,0.67,5,Normal,2026-06-05,46.36,58.13,71.28,52.4
+Carrot,43.8,37.23,50.37,Grade B,2231.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,High,Low,2.42,0.57,0.68,4,Drought,2026-07-13,39.04,48.72,60.4,91.6
+Potato,22.24,18.9,25.58,Grade B,648.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,High,High,1.05,0.47,0.58,2,Normal,2026-01-23,21.1,25.36,32.25,188.3
+Onion,27.29,23.2,31.38,Grade A,1720.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,High,1.68,0.65,0.61,6,Normal,2026-01-21,32.47,42.81,52.38,194.2
+Cabbage,18.41,15.65,21.17,Grade C,50.5,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Medium,Medium,1.37,0.49,0.45,3,Drought,2026-03-19,14.47,19.4,24.66,104.3
+Cotton,75.12,63.85,86.39,Grade B,2455.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Medium,2.79,0.52,0.49,5,Normal,2026-06-17,71.94,83.05,100.56,184.9
+Carrot,36.63,31.14,42.12,Grade B,167.9,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Medium,2.49,0.39,0.43,5,Rainy,2026-06-25,33.65,42.43,51.5,219.1
+Potato,25.27,21.48,29.06,Grade A,589.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,0.98,0.73,0.43,1,Normal,2026-03-28,27.75,31.96,39.14,106.9
+Wheat,23.95,20.36,27.54,Grade A,2372.9,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,High,1.06,0.35,0.55,5,Drought,2026-08-24,27.22,33.7,41.8,168.7
+Tomato,30.4,25.84,34.96,Grade C,57.2,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,High,1.69,0.79,0.53,1,Normal,2026-05-22,22.65,27.31,34.46,61.4
+Brinjal,25.6,21.76,29.44,Grade A,1184.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,High,Medium,1.15,0.44,0.73,1,Normal,2026-03-29,26.44,32.17,39.77,135.0
+Cabbage,20.74,17.63,23.85,Grade C,372.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,1.86,0.64,0.5,5,Normal,2026-02-14,15.96,23.96,30.22,20.4
+Cabbage,19.18,16.3,22.06,Grade B,1673.5,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,Medium,1.88,0.5,0.53,1,Rainy,2026-07-10,17.57,23.04,29.47,197.6
+Cotton,65.43,55.62,75.24,Grade A,428.1,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,High,Low,2.08,0.57,0.46,1,Normal,2026-01-12,63.17,72.74,85.14,135.4
+Cotton,70.99,60.34,81.64,Grade B,215.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,Medium,2.1,0.57,0.74,6,Normal,2026-04-08,67.96,80.32,93.49,135.9
+Wheat,22.22,18.89,25.55,Grade B,959.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,Medium,0.99,0.38,0.57,4,Normal,2026-03-06,20.58,25.6,31.79,25.1
+Potato,19.51,16.58,22.44,Grade A,1053.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Medium,1.18,0.41,0.8,1,Normal,2026-04-23,21.56,26.33,32.39,25.5
+Onion,27.77,23.6,31.94,Grade A,125.8,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Medium,1.31,0.54,0.45,2,Normal,2026-06-19,30.25,36.14,43.15,108.8
+Potato,19.29,16.4,22.18,Grade A,1376.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,1.42,0.72,0.58,2,Rainy,2026-04-19,20.28,25.61,31.66,213.3
+Cabbage,16.21,13.78,18.64,Grade B,2499.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Low,High,1.79,0.67,0.52,6,Normal,2026-01-19,17.01,25.53,31.48,27.9
+Tomato,33.34,28.34,38.34,Grade A,1502.9,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,Medium,1.47,0.67,0.62,5,Normal,2026-01-20,36.22,45.48,55.41,213.9
+Onion,28.84,24.51,33.17,Grade B,2165.7,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Medium,1.53,0.6,0.77,3,Normal,2026-06-28,27.09,34.25,42.74,108.7
+Chilli,84.27,71.63,96.91,Grade C,195.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,High,2.76,0.46,0.5,5,Normal,2026-08-26,71.2,85.65,101.38,172.5
+Brinjal,27.25,23.16,31.34,Grade B,379.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Medium,1.49,0.7,0.8,2,Normal,2026-04-23,26.13,32.73,40.2,146.6
+Carrot,41.49,35.27,47.71,Grade C,1765.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,Medium,2.01,0.33,0.54,3,Normal,2026-07-24,30.78,37.78,46.86,79.9
+Rice,41.54,35.31,47.77,Grade A,1789.8,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Low,1.26,0.5,0.76,5,Normal,2026-02-08,40.87,50.46,60.28,215.8
+Carrot,38.7,32.9,44.51,Grade B,510.2,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Low,Medium,2.24,0.56,0.59,6,Rainy,2026-06-01,37.13,48.06,57.14,44.0
+Cabbage,17.0,14.45,19.55,Grade A,2210.9,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,1.44,0.3,0.6,2,Normal,2026-08-02,17.99,22.58,28.47,187.9
+Wheat,27.0,22.95,31.05,Grade A,2330.7,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,High,Medium,1.23,0.59,0.76,3,Normal,2026-06-26,27.63,34.85,42.8,155.0
+Tomato,31.83,27.06,36.6,Grade A,1600.1,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,2.04,0.78,0.7,1,Normal,2026-01-25,33.95,40.82,49.74,176.4
+Carrot,39.55,33.62,45.48,Grade C,1276.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,High,1.97,0.48,0.42,1,Normal,2026-08-17,31.96,38.57,47.52,62.4
+Wheat,26.82,22.8,30.84,Grade B,2000.8,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,High,1.13,0.67,0.53,4,Normal,2026-01-28,27.06,34.06,42.3,198.0
+Onion,30.24,25.7,34.78,Grade B,1382.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,Medium,1.45,0.31,0.45,2,Normal,2026-05-11,27.32,33.3,39.61,139.0
+Rice,44.07,37.46,50.68,Grade A,1024.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Low,Low,1.06,0.79,0.45,5,Normal,2026-06-24,47.34,57.87,70.23,73.1
+Carrot,43.98,37.38,50.58,Grade A,1622.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,Medium,2.48,0.64,0.62,1,Normal,2026-07-19,46.82,55.2,66.56,199.9
+Wheat,26.31,22.36,30.26,Grade B,196.3,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Low,0.92,0.57,0.66,3,Drought,2026-01-28,23.58,29.2,36.56,165.1
+Cabbage,18.49,15.72,21.26,Grade B,1466.8,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,Medium,1.49,0.64,0.5,1,Rainy,2026-04-12,17.88,22.46,27.59,198.0
+Wheat,28.32,24.07,32.57,Grade C,1268.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,High,Medium,0.95,0.68,0.54,2,Normal,2026-07-16,21.37,27.01,33.75,172.2
+Cotton,71.02,60.37,81.67,Grade B,2166.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,High,Low,3.23,0.7,0.74,4,Normal,2026-06-18,57.75,71.04,86.07,71.9
+Wheat,24.29,20.65,27.93,Grade B,1018.3,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Low,High,1.04,0.66,0.5,1,Normal,2026-03-22,26.05,31.19,37.99,174.3
+Brinjal,27.28,23.19,31.37,Grade B,973.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Low,High,1.69,0.39,0.61,3,Normal,2026-06-04,28.73,35.41,43.29,152.5
+Cotton,92.14,78.32,105.96,Grade B,1606.8,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,High,High,2.56,0.44,0.65,5,Normal,2026-07-31,84.52,95.53,117.46,189.5
+Tomato,32.04,27.23,36.85,Grade A,145.4,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,Low,1.69,0.78,0.63,3,Normal,2026-05-29,30.32,39.51,48.46,76.5
+Cabbage,17.73,15.07,20.39,Grade B,1217.0,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,High,1.45,0.73,0.48,1,Normal,2026-05-02,17.99,22.72,28.83,101.9
+Rice,45.02,38.27,51.77,Grade A,2070.7,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,High,0.95,0.77,0.56,5,Normal,2026-02-26,52.26,62.8,75.99,92.4
+Wheat,23.74,20.18,27.3,Grade A,53.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Medium,1.01,0.68,0.64,6,Normal,2026-01-25,25.15,33.56,40.93,45.1
+Brinjal,22.25,18.91,25.59,Grade B,1379.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Low,1.13,0.43,0.61,1,Drought,2026-01-10,19.45,22.78,28.52,209.8
+Wheat,26.36,22.41,30.31,Grade B,1785.8,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,Low,1.15,0.66,0.58,1,Normal,2026-05-02,23.9,29.27,36.53,74.8
+Wheat,24.84,21.11,28.57,Grade A,2447.4,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,Medium,1.08,0.77,0.6,3,Normal,2026-04-10,26.31,33.68,41.93,96.9
+Onion,27.11,23.04,31.18,Grade B,1559.0,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,Medium,1.58,0.65,0.61,3,Normal,2026-07-16,24.37,31.74,39.45,55.9
+Onion,28.42,24.16,32.68,Grade B,1581.3,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Low,1.39,0.61,0.63,7,Rainy,2026-07-29,25.24,34.31,41.97,57.4
+Carrot,36.71,31.2,42.22,Grade B,868.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.96,0.34,0.53,6,Normal,2026-07-13,35.58,43.75,52.48,216.4
+Chilli,92.6,78.71,106.49,Grade A,1074.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Low,3.77,0.31,0.58,2,Normal,2026-01-06,96.78,112.64,134.76,131.1
+Potato,20.87,17.74,24.0,Grade A,1024.2,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,High,Medium,1.12,0.44,0.66,6,Normal,2026-07-02,22.14,29.18,36.28,38.4
+Onion,31.36,26.66,36.06,Grade A,87.0,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Medium,1.73,0.61,0.53,4,Normal,2026-01-02,34.68,43.18,52.9,137.5
+Potato,21.11,17.94,24.28,Grade B,994.8,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Low,1.2,0.72,0.48,6,Drought,2026-05-25,18.59,27.77,34.53,85.4
+Chilli,87.15,74.08,100.22,Grade A,683.8,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,High,3.28,0.61,0.66,2,Normal,2026-08-25,100.19,116.51,140.24,22.7
+Tomato,30.21,25.68,34.74,Grade A,203.2,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Medium,2.05,0.34,0.78,2,Rainy,2026-05-07,32.13,38.36,47.16,143.4
+Tomato,34.5,29.32,39.67,Grade A,555.2,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,Low,2.26,0.73,0.41,3,Normal,2026-07-08,34.54,43.57,53.8,186.7
+Rice,48.69,41.39,55.99,Grade C,206.8,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,Medium,0.81,0.45,0.6,5,Normal,2026-03-29,36.78,44.0,55.1,151.0
+Tomato,35.81,30.44,41.18,Grade C,1879.6,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,Medium,2.17,0.3,0.77,3,Normal,2026-01-23,29.04,36.78,44.55,35.3
+Rice,39.76,33.8,45.72,Grade C,2384.4,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Medium,Medium,1.27,0.74,0.44,1,Normal,2026-04-19,31.45,36.18,44.47,191.8
+Cotton,70.13,59.61,80.65,Grade B,1065.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Medium,2.9,0.49,0.6,5,Normal,2026-04-14,67.05,80.44,98.26,177.9
+Brinjal,20.88,17.75,24.01,Grade A,1844.4,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,High,Medium,1.53,0.36,0.48,3,Normal,2026-02-16,21.67,26.66,32.99,63.9
+Rice,45.43,38.62,52.24,Grade A,1100.9,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Medium,Medium,0.89,0.55,0.56,6,Normal,2026-04-03,51.01,60.41,73.13,141.1
+Cabbage,18.62,15.83,21.41,Grade A,1010.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,High,Medium,1.51,0.31,0.72,1,Normal,2026-05-11,18.82,24.25,30.74,157.7
+Wheat,27.9,23.71,32.08,Grade B,1189.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,High,High,1.07,0.56,0.73,1,Rainy,2026-05-11,27.01,32.29,39.76,149.6
+Potato,21.92,18.63,25.21,Grade A,2199.5,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,Low,1.0,0.62,0.43,2,Normal,2026-03-20,22.3,27.44,33.9,34.0
+Rice,41.37,35.16,47.58,Grade B,1820.7,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,High,0.91,0.63,0.59,4,Normal,2026-08-14,40.71,49.43,61.35,33.3
+Rice,46.82,39.8,53.84,Grade B,908.0,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,High,1.16,0.49,0.66,7,Rainy,2026-06-06,42.25,51.79,62.24,141.1
+Carrot,42.51,36.13,48.89,Grade B,1599.4,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Medium,1.99,0.59,0.47,5,Normal,2026-04-04,40.22,50.53,61.95,169.2
+Tomato,29.34,24.94,33.74,Grade A,1154.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,2.29,0.62,0.53,5,Rainy,2026-05-29,33.76,43.05,52.98,139.1
+Brinjal,24.69,20.99,28.39,Grade C,1977.4,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,High,1.27,0.53,0.51,5,Rainy,2026-06-12,20.82,28.0,35.36,191.6
+Brinjal,22.28,18.94,25.62,Grade B,1853.8,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,Medium,1.69,0.65,0.79,3,Drought,2026-02-12,19.75,27.69,33.92,80.8
+Tomato,31.24,26.55,35.93,Grade A,246.5,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,High,High,2.26,0.65,0.52,7,Rainy,2026-08-23,34.69,45.13,54.07,98.1
+Chilli,97.03,82.48,111.58,Grade A,610.7,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Low,Low,2.91,0.56,0.48,3,Normal,2026-02-19,102.57,120.57,145.11,163.0
+Wheat,27.36,23.26,31.46,Grade B,938.0,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Medium,0.83,0.62,0.79,6,Normal,2026-03-24,27.01,36.0,44.58,102.8
+Rice,40.66,34.56,46.76,Grade B,2101.5,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Low,Medium,1.15,0.72,0.72,6,Rainy,2026-06-05,41.61,50.52,61.14,50.7
+Carrot,41.42,35.21,47.63,Grade A,1864.4,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,High,High,2.02,0.34,0.64,4,Normal,2026-06-23,45.95,54.03,66.04,192.6
+Rice,44.12,37.5,50.74,Grade A,2016.5,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,High,Low,1.11,0.79,0.59,7,Normal,2026-04-20,41.88,53.57,64.81,215.1
+Tomato,33.87,28.79,38.95,Grade A,1402.1,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,High,1.87,0.33,0.78,4,Normal,2026-03-25,39.02,47.25,57.85,75.7
+Rice,43.83,37.26,50.4,Grade A,100.3,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,Medium,0.95,0.79,0.47,4,Normal,2026-07-11,46.31,55.55,67.07,185.9
+Carrot,44.84,38.11,51.57,Grade A,813.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Low,Medium,2.58,0.5,0.69,5,Normal,2026-01-09,50.79,61.73,73.63,129.4
+Rice,38.37,32.61,44.13,Grade A,359.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Low,Low,0.81,0.56,0.59,1,Normal,2026-06-21,41.39,48.52,60.01,43.4
+Potato,22.66,19.26,26.06,Grade A,1308.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Low,High,1.3,0.59,0.6,7,Normal,2026-02-08,26.94,36.31,44.69,75.9
+Brinjal,24.57,20.88,28.26,Grade C,1252.4,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Medium,1.51,0.49,0.71,3,Rainy,2026-07-06,19.05,25.62,31.57,134.6
+Carrot,41.66,35.41,47.91,Grade A,584.6,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,Low,2.22,0.6,0.42,4,Normal,2026-07-01,41.52,51.54,61.2,59.9
+Rice,44.79,38.07,51.51,Grade A,764.1,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Low,Medium,0.8,0.69,0.68,7,Normal,2026-07-29,50.81,64.52,78.01,207.0
+Potato,24.06,20.45,27.67,Grade A,124.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,High,1.36,0.53,0.71,5,Normal,2026-06-29,27.39,35.67,43.64,205.7
+Tomato,33.66,28.61,38.71,Grade A,873.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Low,1.61,0.76,0.68,3,Rainy,2026-07-09,36.42,45.16,54.63,150.3
+Tomato,33.93,28.84,39.02,Grade B,2326.4,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,Low,1.91,0.69,0.49,3,Normal,2026-05-29,27.72,35.47,43.8,206.6
+Tomato,29.2,24.82,33.58,Grade A,1568.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,Medium,2.26,0.47,0.58,2,Normal,2026-04-15,31.88,38.75,46.36,178.9
+Onion,27.04,22.98,31.1,Grade B,268.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Low,Low,1.54,0.4,0.47,7,Normal,2026-03-17,24.64,31.92,38.75,109.8
+Potato,19.69,16.74,22.64,Grade A,771.0,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Low,Low,1.24,0.73,0.5,7,Normal,2026-04-05,21.34,31.51,38.67,79.0
+Cabbage,17.79,15.12,20.46,Grade B,2353.5,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Low,Low,1.33,0.54,0.45,5,Normal,2026-04-20,16.17,22.23,28.71,52.9
+Wheat,22.67,19.27,26.07,Grade A,583.9,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Low,Low,1.08,0.63,0.76,2,Normal,2026-06-29,23.64,29.36,36.46,135.4
+Cabbage,16.95,14.41,19.49,Grade B,604.4,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,High,1.69,0.57,0.44,2,Normal,2026-07-19,16.8,22.19,27.9,183.7
+Cotton,67.98,57.78,78.18,Grade A,333.5,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,High,2.77,0.43,0.63,6,Rainy,2026-03-20,78.93,93.27,113.63,90.2
+Rice,38.02,32.32,43.72,Grade B,927.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,0.87,0.59,0.7,5,Normal,2026-06-12,38.03,46.7,56.3,140.3
+Carrot,36.5,31.02,41.97,Grade B,1567.1,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Low,1.82,0.42,0.6,7,Rainy,2026-08-24,33.26,43.24,53.78,66.3
+Onion,30.6,26.01,35.19,Grade B,1549.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,High,1.47,0.51,0.67,6,Normal,2026-07-26,30.28,38.29,46.71,51.4
+Chilli,76.84,65.31,88.37,Grade C,1414.7,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Low,High,3.73,0.77,0.77,2,Normal,2026-07-27,65.47,80.91,96.38,126.3
+Carrot,38.44,32.67,44.21,Grade A,2239.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Low,2.03,0.49,0.77,2,Rainy,2026-06-17,40.1,46.94,57.44,200.3
+Brinjal,24.55,20.87,28.23,Grade A,65.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Medium,1.36,0.64,0.72,6,Normal,2026-05-30,26.5,35.31,43.86,218.1
+Onion,22.76,19.35,26.17,Grade A,535.3,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Medium,1.57,0.76,0.71,2,Normal,2026-04-22,25.21,32.54,40.04,164.8
+Cotton,78.24,66.5,89.98,Grade A,441.1,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,High,3.04,0.79,0.45,6,Rainy,2026-03-17,84.28,101.15,118.95,21.9
+Onion,28.16,23.94,32.38,Grade A,1979.1,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,High,1.25,0.57,0.63,7,Normal,2026-04-29,32.04,41.35,50.6,105.2
+Tomato,30.21,25.68,34.74,Grade A,264.6,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Low,1.52,0.41,0.7,5,Rainy,2026-05-05,30.05,36.58,44.53,98.9
+Chilli,86.71,73.7,99.72,Grade B,1912.4,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,High,High,2.94,0.5,0.67,5,Rainy,2026-01-30,80.02,97.46,115.28,58.7
+Brinjal,26.05,22.14,29.96,Grade C,778.4,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Medium,Low,1.67,0.37,0.62,2,Normal,2026-05-28,18.7,24.15,31.35,36.4
+Chilli,82.44,70.07,94.81,Grade C,432.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,High,Medium,3.54,0.55,0.66,7,Normal,2026-03-07,60.03,72.11,83.46,143.8
+Rice,45.85,38.97,52.73,Grade A,2339.4,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,High,High,1.1,0.56,0.5,1,Rainy,2026-04-02,50.1,57.99,69.18,176.2
+Cabbage,18.84,16.01,21.67,Grade A,358.6,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,High,1.31,0.74,0.78,1,Normal,2026-03-01,22.52,28.14,34.95,84.8
+Rice,39.28,33.39,45.17,Grade A,370.9,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,Medium,0.97,0.54,0.77,1,Normal,2026-07-20,40.9,48.44,59.3,188.4
+Cabbage,16.46,13.99,18.93,Grade B,477.9,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Low,1.24,0.75,0.63,5,Normal,2026-05-29,15.17,22.32,28.46,203.5
+Brinjal,25.88,22.0,29.76,Grade A,1337.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Low,1.55,0.59,0.5,5,Normal,2026-07-06,25.92,33.9,42.05,45.6
+Cabbage,19.68,16.73,22.63,Grade B,889.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Low,1.69,0.35,0.56,3,Normal,2026-02-12,17.77,22.67,28.22,22.6
+Cabbage,19.92,16.93,22.91,Grade A,1682.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,High,High,1.44,0.35,0.47,7,Drought,2026-07-22,21.77,29.17,36.23,219.1
+Onion,26.74,22.73,30.75,Grade A,1036.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Medium,1.47,0.67,0.67,4,Normal,2026-04-19,29.45,38.11,46.41,105.2
+Onion,29.67,25.22,34.12,Grade A,112.9,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,Low,1.35,0.36,0.79,3,Normal,2026-02-12,31.0,38.19,46.39,150.4
+Cabbage,17.97,15.27,20.67,Grade A,167.8,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Medium,1.4,0.5,0.64,1,Normal,2026-03-06,20.56,25.42,31.91,47.1
+Rice,39.65,33.7,45.6,Grade C,1347.8,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Low,Low,0.95,0.78,0.65,1,Normal,2026-05-02,31.09,37.36,45.75,70.2
+Cabbage,19.11,16.24,21.98,Grade A,2048.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,High,High,1.25,0.55,0.44,6,Normal,2026-04-03,20.13,27.58,34.72,217.2
+Brinjal,28.17,23.94,32.4,Grade A,1638.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.26,0.39,0.5,5,Normal,2026-08-07,31.65,38.43,46.91,98.3
+Potato,22.19,18.86,25.52,Grade B,576.5,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,High,1.11,0.45,0.61,3,Normal,2026-03-19,20.82,26.16,32.51,195.8
+Onion,27.5,23.38,31.62,Grade B,247.5,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,High,1.44,0.7,0.77,4,Normal,2026-06-30,26.77,35.29,42.85,84.6
+Cotton,74.51,63.33,85.69,Grade B,2343.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,Low,3.19,0.31,0.79,5,Normal,2026-01-29,62.06,73.34,87.71,108.0
+Chilli,83.5,70.97,96.02,Grade B,1892.7,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Low,High,3.06,0.4,0.51,2,Normal,2026-01-22,86.92,96.35,112.94,22.9
+Cabbage,16.06,13.65,18.47,Grade B,1450.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,Medium,1.77,0.56,0.49,7,Normal,2026-07-18,14.5,22.36,28.09,56.9
+Onion,27.71,23.55,31.87,Grade B,1234.1,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,High,1.25,0.59,0.63,1,Normal,2026-03-18,27.3,33.08,41.09,200.6
+Tomato,30.95,26.31,35.59,Grade C,2113.3,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Low,2.16,0.68,0.67,4,Normal,2026-06-20,23.63,32.78,41.02,29.4
+Potato,20.31,17.26,23.36,Grade A,861.3,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,High,Low,0.98,0.78,0.62,7,Normal,2026-01-13,19.81,29.04,36.24,137.5
+Potato,23.96,20.37,27.55,Grade A,1588.0,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Low,High,1.48,0.72,0.49,1,Normal,2026-06-20,28.51,34.03,42.44,166.2
+Tomato,33.11,28.14,38.08,Grade C,196.1,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,1.93,0.5,0.61,6,Normal,2026-01-28,24.56,32.47,41.16,46.6
+Cabbage,17.16,14.59,19.73,Grade B,1235.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,High,1.69,0.4,0.53,4,Normal,2026-04-25,16.7,22.39,28.44,114.6
+Chilli,77.91,66.22,89.6,Grade B,1060.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,3.06,0.46,0.76,4,Normal,2026-06-18,79.54,92.85,109.82,103.1
+Wheat,25.35,21.55,29.15,Grade A,306.5,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Medium,High,0.82,0.66,0.54,5,Normal,2026-01-01,28.95,37.09,46.08,198.1
+Potato,24.07,20.46,27.68,Grade B,774.6,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,High,1.07,0.7,0.55,1,Normal,2026-05-14,24.22,28.86,35.89,186.3
+Cabbage,19.32,16.42,22.22,Grade B,1468.5,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,High,1.69,0.63,0.72,4,Normal,2026-05-23,20.5,28.86,35.25,152.6
+Potato,20.53,17.45,23.61,Grade A,1614.3,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.04,0.73,0.6,4,Normal,2026-03-14,23.8,30.88,38.65,102.1
+Cabbage,19.75,16.79,22.71,Grade A,995.6,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,High,1.31,0.46,0.42,5,Normal,2026-01-13,23.95,31.54,38.57,165.2
+Onion,26.46,22.49,30.43,Grade B,1875.8,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,High,1.35,0.69,0.76,4,Normal,2026-08-24,25.42,32.52,39.53,32.5
+Brinjal,24.42,20.76,28.08,Grade A,2031.6,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,Low,1.72,0.68,0.46,2,Rainy,2026-01-29,24.59,30.75,37.98,153.9
+Cotton,67.38,57.27,77.49,Grade A,484.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,2.85,0.42,0.78,3,Rainy,2026-08-12,75.78,89.59,108.28,217.3
+Rice,38.16,32.44,43.88,Grade C,463.7,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,Low,0.99,0.38,0.73,5,Normal,2026-03-04,28.27,35.15,44.63,140.9
+Onion,26.29,22.35,30.23,Grade B,2309.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Medium,1.44,0.34,0.54,2,Normal,2026-01-08,23.45,29.23,37.02,192.7
+Potato,21.08,17.92,24.24,Grade A,76.3,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Medium,1.17,0.47,0.61,6,Normal,2026-06-08,24.5,31.92,39.02,32.6
+Brinjal,19.76,16.8,22.72,Grade C,1348.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Low,1.75,0.73,0.67,3,Normal,2026-07-05,13.77,20.7,26.51,82.3
+Wheat,27.65,23.5,31.8,Grade A,184.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,High,1.08,0.56,0.51,2,Normal,2026-06-15,33.2,39.83,48.97,164.6
+Tomato,29.35,24.95,33.75,Grade A,228.9,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,High,1.47,0.8,0.49,7,Normal,2026-08-04,34.28,45.96,55.74,180.5
+Tomato,36.88,31.35,42.41,Grade B,2160.5,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Low,Medium,2.33,0.54,0.79,6,Normal,2026-07-12,35.95,46.36,57.15,192.6
+Carrot,43.64,37.09,50.19,Grade A,2387.4,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Low,1.6,0.45,0.5,7,Normal,2026-08-02,44.44,53.11,64.85,103.5
+Brinjal,25.53,21.7,29.36,Grade B,881.3,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Medium,1.59,0.72,0.77,3,Normal,2026-05-27,26.06,33.59,40.75,167.6
+Brinjal,25.02,21.27,28.77,Grade B,2340.2,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Low,Low,1.26,0.44,0.52,6,Drought,2026-07-25,23.05,29.61,36.79,158.2
+Cotton,70.65,60.05,81.25,Grade B,1654.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,High,Medium,2.11,0.49,0.57,7,Drought,2026-07-24,61.17,73.47,88.29,55.8
+Wheat,26.07,22.16,29.98,Grade B,1294.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,Medium,1.12,0.53,0.61,7,Rainy,2026-02-01,26.71,35.61,43.9,184.1
+Chilli,75.47,64.15,86.79,Grade A,1511.3,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,High,2.7,0.42,0.52,4,Normal,2026-02-10,88.47,105.13,126.07,162.5
+Potato,17.96,15.27,20.65,Grade B,1062.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,High,1.31,0.73,0.69,3,Normal,2026-02-10,17.71,23.9,29.88,202.2
+Potato,19.47,16.55,22.39,Grade B,890.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Medium,Medium,1.39,0.42,0.58,5,Normal,2026-04-19,18.08,24.51,30.93,80.3
+Potato,22.37,19.01,25.73,Grade A,59.4,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Low,High,1.11,0.53,0.49,3,Normal,2026-01-26,26.84,32.21,39.38,212.3
+Potato,21.23,18.05,24.41,Grade C,1406.2,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,1.4,0.7,0.73,4,Normal,2026-04-28,16.56,24.23,30.66,181.0
+Brinjal,23.89,20.31,27.47,Grade A,1700.7,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,Medium,1.46,0.63,0.49,2,Normal,2026-07-18,25.76,31.64,39.1,96.1
+Onion,27.8,23.63,31.97,Grade B,2250.0,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,High,1.54,0.36,0.48,4,Normal,2026-08-22,28.0,35.14,43.49,130.1
+Chilli,97.97,83.27,112.67,Grade C,1074.8,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Low,Medium,3.15,0.39,0.44,4,Rainy,2026-08-10,79.15,90.73,107.7,131.1
+Onion,29.91,25.42,34.4,Grade A,1953.2,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,High,Medium,1.32,0.65,0.61,7,Normal,2026-07-17,30.5,41.05,49.09,191.6
+Rice,39.05,33.19,44.91,Grade A,1755.7,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,High,1.16,0.36,0.52,3,Normal,2026-04-13,45.59,52.29,63.74,95.9
+Brinjal,25.37,21.56,29.18,Grade A,347.5,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,Medium,1.46,0.31,0.5,2,Normal,2026-05-19,26.5,32.2,39.43,182.6
+Rice,40.14,34.12,46.16,Grade B,2147.2,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Low,High,0.83,0.75,0.56,1,Normal,2026-06-15,43.06,49.84,60.7,83.2
+Cotton,81.47,69.25,93.69,Grade B,259.2,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,2.6,0.51,0.43,1,Normal,2026-07-23,81.76,92.66,110.12,121.0
+Chilli,86.12,73.2,99.04,Grade B,1990.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,Medium,3.22,0.77,0.5,7,Normal,2026-08-14,80.88,100.71,121.17,89.2
+Potato,19.83,16.86,22.8,Grade A,948.7,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Low,1.54,0.73,0.64,1,Normal,2026-05-27,20.71,25.53,32.29,60.3
+Brinjal,23.1,19.64,26.57,Grade A,1390.9,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,High,Medium,1.27,0.56,0.44,7,Normal,2026-07-22,23.63,32.29,40.64,192.1
+Potato,21.27,18.08,24.46,Grade A,1878.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Low,Medium,1.5,0.61,0.45,2,Rainy,2026-05-07,24.54,30.07,37.97,79.6
+Chilli,83.89,71.31,96.47,Grade A,1560.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Medium,Medium,2.62,0.79,0.48,7,Drought,2026-08-10,93.4,111.55,135.87,133.1
+Carrot,35.16,29.89,40.43,Grade A,1288.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Medium,1.72,0.79,0.47,7,Rainy,2026-04-22,37.38,50.97,61.16,63.0
+Wheat,27.24,23.15,31.33,Grade B,206.3,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Medium,1.29,0.62,0.69,1,Normal,2026-04-08,25.28,30.51,38.51,193.9
+Potato,22.52,19.14,25.9,Grade B,721.3,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,1.41,0.41,0.42,5,Normal,2026-01-01,21.92,28.18,34.55,100.0
+Rice,45.22,38.44,52.0,Grade A,1514.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Medium,Medium,0.93,0.77,0.45,6,Normal,2026-06-08,49.07,59.83,73.35,122.9
+Cabbage,18.37,15.61,21.13,Grade B,2004.6,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,Low,1.72,0.34,0.75,7,Normal,2026-03-17,16.41,22.58,28.9,195.5
+Cotton,73.29,62.3,84.28,Grade A,2431.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,3.07,0.45,0.48,6,Normal,2026-07-31,81.08,95.84,117.07,65.5
+Carrot,41.47,35.25,47.69,Grade A,2470.9,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,Low,2.06,0.65,0.79,3,Normal,2026-07-12,39.89,48.35,59.64,56.9
+Carrot,42.16,35.84,48.48,Grade B,761.1,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,High,Medium,2.17,0.7,0.79,4,Normal,2026-01-06,37.54,47.68,58.11,117.5
+Rice,45.27,38.48,52.06,Grade A,1207.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Medium,1.09,0.71,0.56,3,Normal,2026-08-25,51.49,59.25,71.75,83.3
+Potato,21.72,18.46,24.98,Grade B,2278.5,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,Low,1.01,0.38,0.78,4,Normal,2026-01-27,20.34,25.87,31.58,158.6
+Tomato,33.07,28.11,38.03,Grade C,630.0,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,High,High,1.49,0.72,0.42,4,Normal,2026-01-14,25.45,32.91,40.43,153.6
+Potato,24.26,20.62,27.9,Grade A,992.1,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Kharif,Low,Medium,1.44,0.59,0.54,4,Normal,2026-08-01,27.24,34.75,42.03,72.2
+Cabbage,13.82,11.75,15.89,Grade C,1449.4,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,1.85,0.59,0.69,7,Normal,2026-02-07,10.28,18.79,23.51,163.6
+Rice,39.48,33.56,45.4,Grade C,2418.2,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,Medium,0.94,0.67,0.42,4,Rainy,2026-08-05,29.45,35.77,43.13,118.2
+Carrot,40.27,34.23,46.31,Grade B,1330.1,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Rabi,Low,Medium,1.6,0.72,0.55,7,Normal,2026-07-17,41.03,53.31,64.67,75.7
+Potato,21.76,18.5,25.02,Grade A,377.8,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,High,1.17,0.61,0.62,4,Normal,2026-03-29,24.21,30.96,38.01,102.2
+Cotton,72.03,61.23,82.83,Grade A,2172.3,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,Low,High,2.09,0.46,0.51,4,Normal,2026-07-24,86.31,99.97,119.89,91.9
+Tomato,30.57,25.98,35.16,Grade B,2482.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Medium,2.13,0.45,0.72,3,Rainy,2026-05-20,28.33,36.35,45.33,217.5
+Wheat,26.33,22.38,30.28,Grade B,1172.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.04,0.47,0.63,7,Normal,2026-05-18,25.75,33.95,43.03,30.2
+Cabbage,18.58,15.79,21.37,Grade A,1648.6,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Medium,1.42,0.53,0.47,7,Normal,2026-03-11,20.01,28.4,35.17,145.7
+Tomato,32.71,27.8,37.62,Grade B,1173.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Low,High,2.22,0.55,0.52,7,Normal,2026-06-25,35.0,45.87,55.31,117.7
+Potato,17.83,15.16,20.5,Grade A,1641.4,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Zaid,Low,Medium,1.01,0.36,0.42,7,Normal,2026-02-22,20.97,27.3,33.63,184.2
+Carrot,41.65,35.4,47.9,Grade A,1853.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,Medium,2.6,0.43,0.51,4,Normal,2026-04-12,45.71,56.49,69.21,187.3
+Brinjal,25.97,22.07,29.87,Grade B,364.5,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Low,Low,1.53,0.41,0.44,6,Normal,2026-07-11,24.65,32.13,39.81,112.7
+Brinjal,25.4,21.59,29.21,Grade A,1337.0,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Low,Medium,1.45,0.48,0.67,5,Normal,2026-08-24,29.14,36.94,45.12,153.4
+Tomato,31.99,27.19,36.79,Grade C,1855.2,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,High,2.28,0.48,0.58,7,Normal,2026-01-21,26.37,36.31,43.75,25.0
+Rice,35.49,30.17,40.81,Grade B,273.8,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,High,0.89,0.39,0.42,7,Normal,2026-04-03,34.82,43.65,53.48,85.3
+Wheat,25.87,21.99,29.75,Grade A,2104.1,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Low,Medium,0.94,0.65,0.52,1,Rainy,2026-05-09,29.62,34.92,42.55,88.7
+Onion,24.33,20.68,27.98,Grade B,223.4,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,Medium,1.57,0.78,0.52,1,Normal,2026-05-09,24.47,30.38,37.31,174.9
+Rice,41.89,35.61,48.17,Grade C,568.7,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Low,High,0.9,0.68,0.5,7,Normal,2026-08-14,34.6,46.06,56.57,81.9
+Carrot,40.73,34.62,46.84,Grade A,772.3,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,High,2.52,0.43,0.76,5,Rainy,2026-01-02,46.63,57.23,69.7,209.1
+Tomato,30.02,25.52,34.52,Grade B,872.4,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,Medium,High,1.82,0.53,0.69,5,Normal,2026-06-13,29.88,38.45,47.0,53.0
+Wheat,23.35,19.85,26.85,Grade A,184.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,High,Medium,1.06,0.37,0.57,1,Normal,2026-06-25,23.68,28.59,35.21,41.4
+Onion,28.64,24.34,32.94,Grade A,1248.6,"Erode, Tamil Nadu",Erode Agricultural Producer Market,Zaid,Medium,High,1.54,0.77,0.78,2,Normal,2026-06-10,33.0,41.15,50.29,74.3
+Potato,20.31,17.26,23.36,Grade B,118.9,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,1.5,0.77,0.79,2,Normal,2026-03-05,20.59,26.9,33.28,202.5
+Chilli,80.33,68.28,92.38,Grade B,2415.3,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Low,High,3.87,0.78,0.47,6,Normal,2026-04-24,82.69,102.18,121.4,95.7
+Wheat,23.55,20.02,27.08,Grade A,2466.1,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Rabi,High,High,0.86,0.59,0.77,2,Normal,2026-03-10,26.49,33.07,40.58,166.4
+Wheat,26.0,22.1,29.9,Grade A,1476.5,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,High,Medium,1.23,0.47,0.56,1,Rainy,2026-08-16,27.56,33.65,42.16,103.5
+Carrot,39.03,33.18,44.88,Grade B,729.0,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,Medium,Medium,2.11,0.38,0.78,4,Normal,2026-01-19,36.75,46.4,56.12,48.8
+Cabbage,18.22,15.49,20.95,Grade A,1336.6,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Low,Medium,1.31,0.74,0.51,7,Normal,2026-04-06,20.87,30.41,37.39,145.6
+Carrot,45.88,39.0,52.76,Grade B,121.5,"Nashik, Maharashtra",Lasalgaon Mandi,Zaid,High,Medium,1.66,0.76,0.68,1,Normal,2026-07-12,42.32,49.6,59.65,193.8
+Potato,25.08,21.32,28.84,Grade B,1256.3,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,High,1.51,0.47,0.78,7,Rainy,2026-05-22,24.79,32.87,40.62,95.2
+Potato,21.87,18.59,25.15,Grade A,790.9,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Zaid,Medium,Low,1.52,0.77,0.45,3,Normal,2026-04-30,22.56,29.36,36.84,146.2
+Onion,29.08,24.72,33.44,Grade A,1808.0,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Medium,Medium,1.87,0.34,0.53,5,Normal,2026-01-24,30.82,39.27,47.7,156.9
+Onion,27.09,23.03,31.15,Grade A,2316.4,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Low,Medium,1.45,0.3,0.67,3,Normal,2026-01-29,30.81,37.45,45.69,143.3
+Tomato,32.8,27.88,37.72,Grade C,1578.2,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,High,Low,1.57,0.56,0.41,4,Rainy,2026-05-07,22.0,28.13,35.81,63.1
+Cabbage,17.12,14.55,19.69,Grade B,2132.8,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,Low,High,1.31,0.57,0.63,6,Normal,2026-04-25,18.11,26.06,32.56,153.2
+Carrot,41.22,35.04,47.4,Grade C,1798.6,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Rabi,Medium,High,2.37,0.41,0.53,3,Normal,2026-02-20,33.57,41.17,50.72,141.6
+Wheat,26.05,22.14,29.96,Grade A,1585.7,"Chittoor, Andhra Pradesh",Madanapalle Tomato Market,Kharif,Low,Low,1.29,0.55,0.58,6,Rainy,2026-08-04,28.08,37.62,47.22,37.9
+Cotton,70.64,60.04,81.24,Grade C,365.8,"Kolar, Karnataka",Kolar APMC Mandi,Zaid,High,Medium,2.45,0.69,0.49,7,Normal,2026-07-27,51.15,65.76,79.91,45.4
+Cabbage,17.21,14.63,19.79,Grade A,1155.6,"Kolar, Karnataka",Kolar APMC Mandi,Rabi,Medium,Low,1.64,0.34,0.48,7,Normal,2026-07-28,17.45,24.3,29.69,136.9
+Carrot,29.52,25.09,33.95,Grade B,2124.6,"Kolar, Karnataka",Kolar APMC Mandi,Kharif,Medium,Medium,2.17,0.42,0.72,5,Normal,2026-06-02,27.27,35.33,43.22,209.9
+Cotton,70.84,60.21,81.47,Grade A,1739.5,"Nashik, Maharashtra",Lasalgaon Mandi,Rabi,Medium,High,2.37,0.64,0.53,1,Normal,2026-05-14,79.39,93.47,111.7,61.2
+Carrot,39.82,33.85,45.79,Grade B,879.9,"Dindigul, Tamil Nadu",Oddanchatram Vegetable Market,Kharif,High,Medium,1.65,0.73,0.48,6,Normal,2026-05-02,35.29,44.94,54.56,76.4
+Tomato,27.95,23.76,32.14,Grade A,353.0,"Nashik, Maharashtra",Lasalgaon Mandi,Kharif,Medium,High,1.55,0.76,0.6,3,Drought,2026-05-28,32.09,40.29,50.29,60.4

@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { getAllBatches, getBatch, simulateTamper, restoreBatch, fetchAdminMetrics } from '../services/api';
 import { translations } from '../locales/translations';
+import AdminMLSection from '../components/AdminML/AdminMLSection';
 
 export default function AdminDashboard({ 
   batches = [], 
@@ -16,6 +17,7 @@ export default function AdminDashboard({
 }) {
   const t = translations[currentLang] || translations.en;
 
+  const [adminMainView, setAdminMainView] = useState('ml-pricing'); // 'ml-pricing' | 'ledger'
   const [selectedBatchId, setSelectedBatchId] = useState(batches[0]?.batchId || '');
   const [batchData, setBatchData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -161,6 +163,63 @@ export default function AdminDashboard({
         </div>
       </header>
 
+      {/* Admin Module Switcher */}
+      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.5rem', background: 'rgba(15, 23, 42, 0.6)', padding: '0.4rem', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+        <button
+          type="button"
+          onClick={() => setAdminMainView('ml-pricing')}
+          style={{
+            flex: 1,
+            padding: '0.7rem 1.25rem',
+            borderRadius: '8px',
+            border: adminMainView === 'ml-pricing' ? '1px solid rgba(46, 204, 113, 0.4)' : '1px solid transparent',
+            cursor: 'pointer',
+            fontWeight: 700,
+            fontSize: '0.92rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.6rem',
+            background: adminMainView === 'ml-pricing' ? 'linear-gradient(135deg, rgba(46, 204, 113, 0.25), rgba(16, 185, 129, 0.15))' : 'transparent',
+            color: adminMainView === 'ml-pricing' ? '#34d399' : '#94a3b8',
+            boxShadow: adminMainView === 'ml-pricing' ? '0 2px 8px rgba(46, 204, 113, 0.2)' : 'none'
+          }}
+        >
+          <Cpu className="w-4 h-4" />
+          <span>AI Fair Price Recommendation Engine</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setAdminMainView('ledger')}
+          style={{
+            flex: 1,
+            padding: '0.7rem 1.25rem',
+            borderRadius: '8px',
+            border: adminMainView === 'ledger' ? '1px solid rgba(56, 189, 248, 0.4)' : '1px solid transparent',
+            cursor: 'pointer',
+            fontWeight: 700,
+            fontSize: '0.92rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.6rem',
+            background: adminMainView === 'ledger' ? 'linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(14, 165, 233, 0.15))' : 'transparent',
+            color: adminMainView === 'ledger' ? '#38bdf8' : '#94a3b8',
+            boxShadow: adminMainView === 'ledger' ? '0 2px 8px rgba(56, 189, 248, 0.2)' : 'none'
+          }}
+        >
+          <ShieldAlert className="w-4 h-4" />
+          <span>Central Blockchain Audit & Tamper Simulator</span>
+        </button>
+      </div>
+
+      {adminMainView === 'ml-pricing' && (
+        <AdminMLSection />
+      )}
+
+      {adminMainView === 'ledger' && (
+        <>
       {/* KPI Cards Strip */}
       <div className="admin-kpi-grid">
         <div className="admin-kpi-card">
@@ -496,6 +555,8 @@ export default function AdminDashboard({
             </div>
           </div>
         </div>
+      )}
+      </>
       )}
     </div>
   );

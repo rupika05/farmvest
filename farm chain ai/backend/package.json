@@ -6,11 +6,14 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "node tests/ledger.test.js"
+    "test": "node tests/ledger.test.js && node tests/ml_engine.test.js",
+    "test:ledger": "node tests/ledger.test.js",
+    "test:ml": "node tests/ml_engine.test.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "multer": "^2.4.0",
     "qrcode": "^1.5.3"
   }
 }

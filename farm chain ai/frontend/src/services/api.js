@@ -549,3 +549,142 @@ export async function fetchAdminMetrics() {
     isFallback: true
   };
 }
+
+// ============================================================
+// ML FAIR PRICE RECOMMENDATION ENGINE CLIENT METHODS
+// ============================================================
+
+export async function getMlHealth() {
+  const res = await requestApi('/api/ml/health');
+  return res.ok ? res.data : { status: 'offline', gateway: 'offline' };
+}
+
+export async function getMlDatasets() {
+  const res = await requestApi('/api/ml/datasets');
+  return res.ok && res.data ? res.data.datasets || [] : [];
+}
+
+export async function uploadMlDataset(formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/api/ml/datasets/upload`, {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    return { ok: res.ok, data };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+export async function getMlDatasetPreview(datasetId) {
+  const res = await requestApi(`/api/ml/datasets/${datasetId}/preview`);
+  return res.ok ? res.data : null;
+}
+
+export async function approveMlDataset(datasetId) {
+  const res = await requestApi(`/api/ml/datasets/${datasetId}/approve`, { method: 'POST' });
+  return res.ok ? res.data : null;
+}
+
+export async function rejectMlDataset(datasetId) {
+  const res = await requestApi(`/api/ml/datasets/${datasetId}/reject`, { method: 'POST' });
+  return res.ok ? res.data : null;
+}
+
+export async function deleteMlDataset(datasetId) {
+  const res = await requestApi(`/api/ml/datasets/${datasetId}`, { method: 'DELETE' });
+  return res.ok ? res.data : null;
+}
+
+export async function trainMlModel(datasetId, algorithm = 'auto') {
+  const res = await requestApi('/api/ml/train', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dataset_id: datasetId, algorithm })
+  });
+  return res.ok ? res.data : { error: res.data?.error || 'Training failed to initiate' };
+}
+
+export async function getMlTrainingStatus() {
+  const res = await requestApi('/api/ml/training-status');
+  return res.ok ? res.data : { is_training: false, current_step: 'Idle', progress_percentage: 0 };
+}
+
+export async function getMlModels() {
+  const res = await requestApi('/api/ml/models');
+  return res.ok && res.data ? res.data : { active_version: null, models: [] };
+}
+
+export async function activateMlModel(versionId) {
+  const res = await requestApi(`/api/ml/models/${versionId}/activate`, { method: 'POST' });
+  return res.ok ? res.data : null;
+}
+
+export async function getMlPriceRecommendation(input) {
+  const res = await requestApi('/api/ml/predict', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(input)
+  });
+
+  if (res.ok && res.data) {
+    return res.data;
+  }
+
+  // Graceful client fallback using official APMC Mandi calculation
+  const mPrice = Number(input.mandi_price) || 30;
+  const grade = input.quality_grade || 'Grade A';
+  const gMult = grade === 'Grade A' ? 1.15 : (grade === 'Grade C' ? 0.80 : 1.0);
+  const fExp = Math.round(mPrice * 0.94 * gMult * 10) / 10;
+  const iExp = Math.round((fExp + 2.5) * 1.10 * 10) / 10;
+  const rExp = Math.round((iExp + 2.0) * 1.15 * 10) / 10;
+
+  return {
+    crop: input.crop,
+    qualityGrade: grade,
+    marketReferencePrice: mPrice,
+    currency: 'INR',
+    unit: 'kg',
+    recommendations: {
+      farmerToIntermediary: {
+        lower: Math.round(fExp * 0.94 * 10) / 10,
+        expected: fExp,
+        upper: Math.round(fExp * 1.06 * 10) / 10
+      },
+      intermediaryToRetailer: {
+        lower: Math.round(iExp * 0.95 * 10) / 10,
+        expected: iExp,
+        upper: Math.round(iExp * 1.06 * 10) / 10
+      },
+      retailerToConsumer: {
+        lower: Math.round(rExp * 0.94 * 10) / 10,
+        expected: rExp,
+        upper: Math.round(rExp * 1.07 * 10) / 10
+      }
+    },
+    model: {
+      version: 'APMC_LOCAL_BENCHMARK',
+      trainedAt: new Date().toISOString(),
+      modelType: 'Statutory APMC Benchmark (Client Offline Fallback)',
+      datasetName: 'Local APMC Baseline',
+      isFallback: true
+    },
+    explanation: {
+      topFactors: [
+        { factor: 'APMC Mandi Base Benchmark', impact: 'High influence', weight_pct: 60.0 },
+        { factor: 'AI Quality Grade Premium', impact: 'High influence', weight_pct: 25.0 },
+        { factor: 'Standard Logistics Reserve', impact: 'Low influence', weight_pct: 15.0 }
+      ],
+      notice: 'Operating in baseline market reference mode.'
+    },
+    status: 'fallback_client',
+    disclaimer: 'Statistical estimate based on active APMC mandi reference and produce grade.'
+  };
+}
+
+export async function getMlFairnessAnalytics() {
+  const res = await requestApi('/api/ml/fairness-analytics');
+  return res.ok && res.data ? res.data : { batchesAnalyzed: 0, summary: {}, details: [] };
+}
+

@@ -212,7 +212,8 @@ router.post(['/batch', '/batches'], async (req, res) => {
       qualityStatus: 'Fresh',
       damageConfidence: 0.02,
       discountApplied: 0,
-      notes: notes || `Farmer Harvest recorded by ${owner} [Kisan Registry]`
+      notes: notes || `Farmer Harvest recorded by ${owner} [Kisan Registry]`,
+      mlRecommendation: req.body.mlRecommendation || null
     });
 
     const chain = [genesisBlock];
@@ -227,6 +228,7 @@ router.post(['/batch', '/batches'], async (req, res) => {
       createdAt: new Date().toISOString(),
       qrCode,
       trackingUrl,
+      mlRecommendation: req.body.mlRecommendation || null,
       chain
     };
 
@@ -354,10 +356,14 @@ router.post(['/batch/:id/transfer', '/batches/:id/transfer'], (req, res) => {
       qualityStatus,
       damageConfidence,
       discountApplied,
-      notes
+      notes,
+      mlRecommendation: req.body.mlRecommendation || null
     });
 
     record.chain.push(newBlock);
+    if (req.body.mlRecommendation) {
+      record.mlRecommendation = req.body.mlRecommendation;
+    }
     writeBatches(batches);
 
     const postVerification = verifyChain(record.chain);

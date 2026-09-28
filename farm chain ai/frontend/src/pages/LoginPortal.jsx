@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   ShieldCheck, Lock, Smartphone, User, CheckCircle2, ArrowRight, 
   RefreshCw, AlertCircle, Building2, Key, Check, Globe, Sparkles,
-  Phone, Mail, FileText, CheckCircle, HelpCircle
+  Phone, Mail, FileText, CheckCircle, HelpCircle, Layers, Cpu, QrCode, Sprout
 } from 'lucide-react';
 import TnEmblem from '../components/TnEmblem';
 import { sendOtp, verifyOtp } from '../services/api';
@@ -25,6 +25,12 @@ export default function LoginPortal({
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [fontSizeScale, setFontSizeScale] = useState('normal');
+
+  const languages = [
+    { code: 'ta', label: 'தமிழ்' },
+    { code: 'en', label: 'English' },
+    { code: 'hi', label: 'हिन्दी' }
+  ];
 
   const handleFontSize = (scale) => {
     setFontSizeScale(scale);
@@ -117,311 +123,269 @@ export default function LoginPortal({
   };
 
   return (
-    <div className="tnega-login-page">
-      {/* Topmost Official TNeGA Accessibility & Utility Bar */}
-      <div className="tnega-utility-topbar">
-        <div className="tnega-utility-inner">
-          <div className="tnega-help-links">
-            <span className="tnega-demo-pill">⚠️ {currentLang === 'ta' ? 'கருத்துரு முன்மாதிரி (Concept Prototype)' : 'Concept Prototype for Evaluation'}</span>
-            <span className="util-sep">|</span>
-            <a href="mailto:tnesevaihelpdesk@tn.gov.in" className="tnega-util-link">
-              <Mail className="w-3.5 h-3.5" />
-              <span>tnesevaihelpdesk@tn.gov.in (TNeGA Ref)</span>
-            </a>
-            <span className="util-sep">|</span>
-            <a href="tel:18004256000" className="tnega-util-link">
-              <Phone className="w-3.5 h-3.5" />
-              <span>{currentLang === 'ta' ? 'உதவி எண் (Demo Ref): 1800 425 6000' : 'Help (Demo Ref): 1800 425 6000'}</span>
-            </a>
+    <div className="minimal-login-page">
+      {/* 1. Minimal Top Header Bar */}
+      <header className="minimal-login-header">
+        <div className="minimal-login-header-inner">
+          <div className="minimal-login-brand">
+            <TnEmblem size={36} />
+            <div className="login-brand-meta">
+              <div className="brand-row">
+                <span className="login-brand-title">FarmChain AI</span>
+                <span className="login-poc-badge">GovTech PoC</span>
+              </div>
+              <span className="login-dept-title">
+                {currentLang === 'ta' 
+                  ? 'தமிழ்நாடு வேளாண்மை & TNeGA ஆய்வு மாதிரி' 
+                  : currentLang === 'hi'
+                  ? 'कृषि विभाग एवं TNeGA अनुसंधान प्रोटोटाइप'
+                  : 'Dept of Agriculture & TNeGA Research Prototype'}
+              </span>
+            </div>
           </div>
 
-          <div className="tnega-util-actions">
-            <div className="tnega-font-controls" title="Text Resizer">
+          <div className="minimal-login-header-controls">
+            {/* Direct Citizen Quick Bypass */}
+            {onEnterAsCitizen && (
+              <button
+                type="button"
+                onClick={onEnterAsCitizen}
+                className="minimal-citizen-shortcut"
+                title={currentLang === 'ta' ? 'நுகர்வோர் நேரடி அணுகல்' : 'Direct Citizen Access'}
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>{currentLang === 'ta' ? 'நுகர்வோர் நேரடி பார்வை' : 'Citizen Explorer'}</span>
+              </button>
+            )}
+
+            {/* Language Switcher */}
+            <div className="minimal-lang-switcher" role="group" aria-label="Language selection">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  type="button"
+                  onClick={() => setLanguage(l.code)}
+                  className={`lang-pill ${currentLang === l.code ? 'active' : ''}`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Accessibility Font Scaler */}
+            <div className="minimal-font-scaler" title="Text Resizer">
               <button 
                 type="button" 
                 onClick={() => handleFontSize('small')} 
-                className={`font-btn ${fontSizeScale === 'small' ? 'active' : ''}`}
+                className={`scale-btn ${fontSizeScale === 'small' ? 'active' : ''}`}
               >
                 A-
               </button>
               <button 
                 type="button" 
                 onClick={() => handleFontSize('normal')} 
-                className={`font-btn ${fontSizeScale === 'normal' ? 'active' : ''}`}
+                className={`scale-btn ${fontSizeScale === 'normal' ? 'active' : ''}`}
               >
                 A
               </button>
               <button 
                 type="button" 
                 onClick={() => handleFontSize('large')} 
-                className={`font-btn ${fontSizeScale === 'large' ? 'active' : ''}`}
+                className={`scale-btn ${fontSizeScale === 'large' ? 'active' : ''}`}
               >
                 A+
               </button>
             </div>
-
-            <span className="util-sep">|</span>
-
-            <div className="tnega-lang-group">
-              <Globe className="w-3.5 h-3.5 text-amber-300" />
-              <button
-                type="button"
-                onClick={() => setLanguage('ta')}
-                className={`tnega-lang-btn ${currentLang === 'ta' ? 'active' : ''}`}
-              >
-                தமிழ்
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage('en')}
-                className={`tnega-lang-btn ${currentLang === 'en' ? 'active' : ''}`}
-              >
-                English
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage('hi')}
-                className={`tnega-lang-btn ${currentLang === 'hi' ? 'active' : ''}`}
-              >
-                हिन्दी
-              </button>
-            </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Main Official Government Header Banner */}
-      <div className="tnega-main-brand-bar">
-        <div className="tnega-brand-inner">
-          <div className="tnega-brand-left">
-            <TnEmblem size={70} className="tnega-state-crest" />
-            <div className="tnega-title-block">
-              <h2 className="tnega-dept-title">
-                {currentLang === 'ta' 
-                  ? 'வேளாண்மைத் துறை & TNeGA ஆய்வுக்கான முன்மொழிவு மாதிரி திட்டம்' 
-                  : 'PROPOSED CONCEPT PROTOTYPE FOR TNeGA & DEPT OF AGRICULTURE'}
-              </h2>
-              <h1 className="tnega-agency-title">
-                {currentLang === 'ta' 
-                  ? 'இ-சேவை உழவர் தளம் (FarmChain AI Prototype)' 
-                  : 'e-Sevai Krishi Transparency Portal (Prototype)'}
-              </h1>
-              <div className="tnega-portal-badge-row">
-                <span className="tnega-portal-name">
-                  {currentLang === 'ta' 
-                    ? 'விளைபொருள் கிரிப்டோகிராபிக் பாஸ் மற்றும் AI தர மதிப்பீட்டு மாதிரி' 
-                    : 'Cryptographic Provenance & AI Produce Quality Demonstration'}
-                </span>
-                <span className="tnega-tag-prototype">⚠️ Concept Prototype</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="tnega-brand-right">
-            <div className="tnega-slogan-box">
-              <div className="tnega-motto">"இனிய சேவை இணைய சேவை"</div>
-              <div className="tnega-submotto">Prototype Demo Inspired by TNeGA UI</div>
-            </div>
-            <div className="tnega-badge-stack">
-              <span className="tnega-chip-badge saffron">🔬 Research PoC</span>
-              <span className="tnega-chip-badge green">🌾 Agri Tech Demo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Sub-Banner Strip with High Visibility Prototype Disclaimer */}
-      <div className="tnega-substrip">
-        <div className="tnega-substrip-inner">
-          <span className="substrip-tag">
-            {currentLang === 'ta' ? 'கருத்துரு மாதிரி வெள்ளோட்டம்' : 'Evaluation Prototype Demo'}
-          </span>
-          <span className="substrip-msg">
-            {currentLang === 'ta' 
-              ? '🔔 இது TNeGA மற்றும் உழவர் நலத்துறை மதிப்பீட்டிற்கான முன்மாதிரி வெள்ளோட்டம் (Proof of Concept). உண்மை அரசு தளம் அல்ல.' 
-              : '🔔 Demonstration Proof-of-Concept Prototype proposed for TNeGA & Agri Dept. For evaluation purposes only.'}
-          </span>
-        </div>
-      </div>
-
-      {/* Two-Column Authentic TNeGA Layout */}
-      <main className="tnega-body-container">
-        <div className="tnega-grid-layout">
+      {/* 2. Main Minimal 2-Column Content Layout */}
+      <main className="minimal-login-container">
+        <div className="minimal-login-grid">
           
-          {/* LEFT COLUMN: Authentic TNeGA 4-Step Process & Citizen Info */}
-          <section className="tnega-info-col" aria-label="How to Avail Services">
-            <div className="tnega-guide-card">
-              <div className="guide-card-header">
-                <FileText className="w-5 h-5 text-blue-700" />
-                <h3>{currentLang === 'ta' ? 'சேவைகளைப் பெற நான்கு செயல்முறை' : '4 Steps to Access Government e-Services'}</h3>
-              </div>
-              
-              <div className="tnega-steps-list">
-                <div className="step-item">
-                  <div className="step-num-bubble">1</div>
-                  <div className="step-item-content">
-                    <h4>{currentLang === 'ta' ? 'இ-சேவை / மண்டி மையத்தை அணுகவும்' : 'Approach e-Sevai / APMC Mandi'}</h4>
-                    <p>
-                      {currentLang === 'ta' 
-                        ? 'உங்கள் அருகிலுள்ள இ-சேவை மையம் அல்லது ஒழுங்குமுறை விற்பனைக் கூடத்தை அணுகவும்.' 
-                        : 'Visit your nearest e-Sevai center or APMC regulated mandi market yard.'}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="step-item">
-                  <div className="step-num-bubble">2</div>
-                  <div className="step-item-content">
-                    <h4>{currentLang === 'ta' ? 'வேளாண் சேவையைத் தேர்ந்தெடுக்கவும்' : 'Select Required Agricultural Service'}</h4>
-                    <p>
-                      {currentLang === 'ta' 
-                        ? 'விளைபொருள் பதிவு, APMC மண்டி விலை விவரம் அல்லது AI கணினி பார்வை தர ஆய்வு கோரவும்.' 
-                        : 'Choose crop registration, live APMC mandi benchmarks, or AI computer vision quality inspection.'}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="step-item">
-                  <div className="step-num-bubble">3</div>
-                  <div className="step-item-content">
-                    <h4>{currentLang === 'ta' ? 'விவரங்களை சமர்ப்பித்து OTP உறுதி செய்க' : 'Submit Details & Verify via SMS OTP'}</h4>
-                    <p>
-                      {currentLang === 'ta' 
-                        ? 'தங்களின் பதிவுற்ற கைபேசி எண் அல்லது PM-KISAN அட்டை மூலம் எளிய OTP சரிபார்ப்பை முடிக்கவும்.' 
-                        : 'Complete instant OTP verification using your registered Mobile Number or PM-KISAN ID.'}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="step-item">
-                  <div className="step-num-bubble">4</div>
-                  <div className="step-item-content">
-                    <h4>{currentLang === 'ta' ? 'டிஜிட்டல் உழவர் பாஸ் & QR பெறுக' : 'Receive Digital Mandi Pass & QR'}</h4>
-                    <p>
-                      {currentLang === 'ta' 
-                        ? 'கிரிப்டோகிராபிக் Block #0 குறியிடப்பட்ட அரசு டிஜிட்டல் பாஸ் மற்றும் QR குறியீட்டை உடனடியாக பெற்றுக்கொள்ளவும்.' 
-                        : 'Receive your official cryptographically verified Digital Mandi Pass with QR code immediately.'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Citizen Helpdesk Info Box */}
-              <div className="tnega-helpdesk-box">
-                <div className="helpdesk-header">
-                  <HelpCircle className="w-4 h-4 text-emerald-700" />
-                  <strong>{currentLang === 'ta' ? 'உதவி மற்றும் ஆலோசனை மையம்' : 'e-Sevai Citizen Helpdesk'}</strong>
-                </div>
-                <div className="helpdesk-details">
-                  <div>📞 {currentLang === 'ta' ? 'கட்டணமில்லா எண்:' : 'Toll-Free:'} <strong>1800 425 6000</strong> (8 AM - 8 PM)</div>
-                  <div>✉️ {currentLang === 'ta' ? 'மின்னஞ்சல்:' : 'Email:'} <strong>tnesevaihelpdesk@tn.gov.in</strong></div>
-                  <div>🏛️ {currentLang === 'ta' ? 'அலுவலகம்:' : 'Office:'} TNeGA, 807, 7th Floor, PT Lee Chengalvaraya Naicker Maligai, Anna Salai, Chennai - 600002.</div>
-                </div>
-              </div>
+          {/* LEFT COLUMN: Clean System Description & Pillars */}
+          <section className="minimal-desc-col" aria-label="About the Platform">
+            
+            <div className="minimal-poc-pill">
+              <span className="poc-dot"></span>
+              <span>{currentLang === 'ta' ? 'தேசிய உழவர் ஒளிவுமறைவற்ற தளம்' : 'NATIONAL KRISHI TRANSPARENCY REGISTRY'}</span>
             </div>
-          </section>
 
-          {/* RIGHT COLUMN: Authentic TNeGA Login Form Box */}
-          <section className="tnega-login-col" aria-label="Portal Login">
-            <div className="tnega-login-box">
+            <h1 className="minimal-hero-heading">
+              {t.loginHeroHeadline || (currentLang === 'ta' 
+                ? 'நேர்மையான விளைபொருள் தரம் மற்றும் விநியோகச் சங்கிலி சரிபார்ப்பு' 
+                : 'Verifiable Farm-to-Fork Traceability & AI Produce Grading')}
+            </h1>
+
+            <p className="minimal-hero-desc">
+              {t.loginHeroDesc || (currentLang === 'ta'
+                ? 'பாரம்பரிய காகித ரசீதுகளுக்கு மாற்றாக, SHA-256 பிளாக்செயின் மற்றும் ஜெமினி AI கணினி பார்வை மூலம் உழவர் முதல் நுகர்வோர் வரை வெளிப்படையான விலையையும் தரத்தையும் FarmChain AI உறுதி செய்கிறது.'
+                : 'FarmChain AI replaces paper mandi slips and opaque wholesale margins with an immutable cryptographic ledger and Gemini multimodal vision AI. Every harvest minted into the registry carries verified APMC mandi prices and automated quality grades.')}
+            </p>
+
+            {/* 3 Minimal Pillars */}
+            <div className="minimal-pillars-grid">
               
-              {/* Login Box Header */}
-              <div className="login-box-header">
-                <div className="login-crest-icon">
-                  <TnEmblem size={44} />
+              <div className="minimal-pillar-card">
+                <div className="pillar-icon-box emerald">
+                  <Sprout className="w-5 h-5 text-emerald-400" />
                 </div>
-                <div>
-                  <h3 className="login-box-title">
-                    {currentLang === 'ta' ? 'இ-சேவை முன்மாதிரி உள்நுழைவு' : 'e-Sevai Prototype Demo Login'}
-                  </h3>
-                  <p className="login-box-desc">
-                    {currentLang === 'ta' 
-                      ? 'மதிப்பீட்டாளர் ஆய்வு சாளரம் • மாதிரி வெள்ளோட்டம் (Not Official)' 
-                      : 'Evaluation Single Sign-On • Concept Demonstration'}
+                <div className="pillar-content">
+                  <h3>{currentLang === 'ta' ? '1. டிஜிட்டல் மண்டி பாஸ்' : '1. Digital Mandi Pass'}</h3>
+                  <p>
+                    {currentLang === 'ta'
+                      ? 'அறுவடைக்கு நேரடி APMC மண்டி விலை மற்றும் கிரிப்டோகிராபிக் ஜெனிசிஸ் பிளாக் உருவாக்கம்.'
+                      : 'Real-time APMC mandi price benchmarks & verifiable Genesis Block minting.'}
                   </p>
                 </div>
               </div>
 
-              {/* 3 Citizen/Official Role Selector Tabs */}
-              <div className="tnega-role-tabs">
+              <div className="minimal-pillar-card">
+                <div className="pillar-icon-box sky">
+                  <Cpu className="w-5 h-5 text-sky-400" />
+                </div>
+                <div className="pillar-content">
+                  <h3>{currentLang === 'ta' ? '2. AI தர மதிப்பீடு' : '2. Multimodal AI Vision'}</h3>
+                  <p>
+                    {currentLang === 'ta'
+                      ? 'கேமரா மூலம் சேதங்கள் கண்டறிந்து 20% தானியங்கி விலை குறைப்பு அல்லது பிரீமியம் நிர்ணயம்.'
+                      : 'Real-time optical HUD detects produce blemishes and applies automated fair markdown.'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="minimal-pillar-card">
+                <div className="pillar-icon-box amber">
+                  <QrCode className="w-5 h-5 text-amber-400" />
+                </div>
+                <div className="pillar-content">
+                  <h3>{currentLang === 'ta' ? '3. கிரிப்டோகிராபிக் பாஸ்போர்ட்' : '3. Provenance Passport'}</h3>
+                  <p>
+                    {currentLang === 'ta'
+                      ? 'நுகர்வோர் ஸ்கேன் செய்யக்கூடிய QR பாஸ் மற்றும் SHA-256 திருத்த எதிர்ப்பு ஆய்வு.'
+                      : 'End-to-end QR code tracking with SHA-256 tamper-evident cyber defense checks.'}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Direct Citizen Access Action Card */}
+            {onEnterAsCitizen && (
+              <div className="minimal-citizen-banner">
+                <div className="citizen-banner-info">
+                  <h4>{currentLang === 'ta' ? 'பொது நுகர்வோர் மற்றும் தணிக்கையாளர் பார்வை' : 'Citizen & Public Evaluator Access'}</h4>
+                  <p>
+                    {currentLang === 'ta'
+                      ? 'உள்நுழைவு தேவையின்றி QR பாஸ்போர்ட் மற்றும் பிளாக்செயின் தணிக்கை சாளரத்தை நேரடியாக பார்வையிடலாம்.'
+                      : 'Inspect verified produce passports, custody handoffs, and tamper attack resilience without login.'}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  id="btn-public-citizen-access"
+                  onClick={onEnterAsCitizen}
+                  className="minimal-citizen-action-btn"
+                >
+                  <span>{currentLang === 'ta' ? 'நுகர்வோர் பார்வை திறக்க ➔' : 'Explore Citizen Passport ➔'}</span>
+                </button>
+              </div>
+            )}
+
+          </section>
+
+          {/* RIGHT COLUMN: Minimal Modern Authentication Card */}
+          <section className="minimal-auth-col" aria-label="Portal Login">
+            <div className="minimal-auth-card">
+              
+              <div className="auth-card-top">
+                <h2 className="auth-card-title">{t.loginTitle || 'Registry Authentication'}</h2>
+                <p className="auth-card-sub">
+                  {currentLang === 'ta' 
+                    ? 'உங்கள் அடையாள வகையை தேர்வு செய்து OTP மூலம் உள்நுழைக' 
+                    : 'Select your persona to access digital mandi passes and audit ledgers'}
+                </p>
+              </div>
+
+              {/* 3 Identity Category Tabs */}
+              <div className="minimal-role-selector">
                 <button
                   type="button"
                   id="role-tab-farmer"
                   onClick={() => handleRoleChange('farmer')}
-                  className={`tnega-role-tab ${role === 'farmer' ? 'active' : ''}`}
+                  className={`role-btn ${role === 'farmer' ? 'active' : ''}`}
                 >
-                  <span className="tab-icon">👨‍🌾</span>
-                  <span className="tab-text">{currentLang === 'ta' ? 'குடிமக்கள் / உழவர்' : 'Citizen / Farmer'}</span>
+                  <span className="role-icon">👨‍🌾</span>
+                  <span className="role-label">{currentLang === 'ta' ? 'உழவர்' : 'Farmer'}</span>
                 </button>
 
                 <button
                   type="button"
                   id="role-tab-trader"
                   onClick={() => handleRoleChange('trader')}
-                  className={`tnega-role-tab ${role === 'trader' ? 'active' : ''}`}
+                  className={`role-btn ${role === 'trader' ? 'active' : ''}`}
                 >
-                  <span className="tab-icon">🏪</span>
-                  <span className="tab-text">{currentLang === 'ta' ? 'மண்டி வணிகர்' : 'APMC Trader'}</span>
+                  <span className="role-icon">🏪</span>
+                  <span className="role-label">{currentLang === 'ta' ? 'வணிகர்' : 'Trader'}</span>
                 </button>
 
                 <button
                   type="button"
                   id="role-tab-admin"
                   onClick={() => handleRoleChange('admin')}
-                  className={`tnega-role-tab ${role === 'admin' ? 'active' : ''}`}
+                  className={`role-btn ${role === 'admin' ? 'active' : ''}`}
                 >
-                  <span className="tab-icon">🏛️</span>
-                  <span className="tab-text">{currentLang === 'ta' ? 'அரசு அலுவலர்' : 'Govt Official'}</span>
+                  <span className="role-icon">🏛️</span>
+                  <span className="role-label">{currentLang === 'ta' ? 'அதிகாரி' : 'Official'}</span>
                 </button>
               </div>
 
-              {/* Simulated Govt SMS Alert Toast */}
+              {/* Simulated SMS Alert Toast */}
               {incomingSmsOtp && (
-                <div className="tnega-sms-toast" role="alert">
+                <div className="minimal-sms-toast" role="alert">
                   <div className="sms-toast-header">
                     <span className="sms-sender">🔐 TN-GOVT-SMS • e-Sevai Gateway</span>
-                    <span className="sms-time">Just Now</span>
+                    <span className="sms-time">Now</span>
                   </div>
-                  <p className="sms-msg-text">
-                    Your e-Sevai authentication code is <strong className="sms-code-strong">{incomingSmsOtp}</strong>. Valid for 10 minutes.
+                  <p className="sms-text">
+                    e-Sevai verification code is <strong className="sms-code">{incomingSmsOtp}</strong>. Valid for 10 min.
                   </p>
                   <button
                     type="button"
                     onClick={() => setOtpCode(incomingSmsOtp)}
-                    className="tnega-autofill-btn"
+                    className="minimal-autofill-btn"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>{currentLang === 'ta' ? 'தானியங்கி OTP உள்ளிடு (782419)' : 'Auto-Fill Demo OTP (782419)'}</span>
+                    <span>{currentLang === 'ta' ? 'தானியங்கி OTP (782419)' : 'Auto-Fill OTP (782419)'}</span>
                   </button>
                 </div>
               )}
 
-              {/* Error Banner */}
+              {/* Error Message */}
               {errorMsg && (
-                <div className="tnega-error-banner" role="alert">
-                  <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <div className="minimal-error-banner" role="alert">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
-              {/* Form Body */}
-              <form onSubmit={otpSent ? handleVerifyOtp : handleSendOtp} className="tnega-login-form">
-                <div className="form-group">
-                  <label className="tnega-form-label">
-                    {role === 'farmer' && (currentLang === 'ta' ? 'உழவர் கைபேசி எண் அல்லது PM-KISAN அட்டை எண்:' : 'Farmer Mobile No or PM-KISAN ID:')}
-                    {role === 'trader' && (currentLang === 'ta' ? 'மண்டி உரிம எண் (APMC License No):' : 'Mandi License ID (e.g. APMC-TN-8821):')}
-                    {role === 'admin' && (currentLang === 'ta' ? 'அரசு அலுவலர் மின்னஞ்சல் அல்லது பயனர் எண்:' : 'Officer Official Email (@nic.in) or ID:')}
+              {/* Form */}
+              <form onSubmit={otpSent ? handleVerifyOtp : handleSendOtp} className="minimal-auth-form">
+                <div className="form-field">
+                  <label className="field-label">
+                    {role === 'farmer' && (currentLang === 'ta' ? 'கைபேசி எண் அல்லது PM-KISAN எண்:' : 'Mobile Number or PM-KISAN ID:')}
+                    {role === 'trader' && (currentLang === 'ta' ? 'மண்டி உரிம எண் (APMC License):' : 'Mandi License ID (e.g. APMC-TN-8821):')}
+                    {role === 'admin' && (currentLang === 'ta' ? 'அதிகாரி மின்னஞ்சல் (@nic.in) அல்லது எண்:' : 'Officer Email (@nic.in) or ID:')}
                   </label>
-                  <div className="tnega-input-wrapper">
-                    <input
-                      type="text"
-                      className="tnega-form-input"
-                      value={identifier}
-                      onChange={(e) => setIdentifier(e.target.value)}
-                      placeholder={role === 'farmer' ? '9842100000' : role === 'trader' ? 'APMC-TN-8821' : 'agricofficer@nic.in'}
-                      required
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    className="minimal-input"
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value)}
+                    placeholder={role === 'farmer' ? '9842100000' : role === 'trader' ? 'APMC-TN-8821' : 'agricofficer@nic.in'}
+                    required
+                  />
                 </div>
 
                 {!otpSent ? (
@@ -429,12 +393,12 @@ export default function LoginPortal({
                     type="submit"
                     id="btn-send-otp"
                     disabled={loading || !identifier}
-                    className="tnega-primary-btn"
+                    className="minimal-submit-btn"
                   >
                     {loading ? (
                       <>
                         <RefreshCw className="w-4 h-4 animate-spin" />
-                        <span>{currentLang === 'ta' ? 'OTP அனுப்பப்படுகிறது...' : 'Sending OTP...'}</span>
+                        <span>{currentLang === 'ta' ? 'OTP அனுப்பப்படுகிறது...' : 'Dispatching OTP...'}</span>
                       </>
                     ) : (
                       <>
@@ -445,29 +409,27 @@ export default function LoginPortal({
                   </button>
                 ) : (
                   <>
-                    <div className="form-group">
-                      <label className="tnega-form-label">
+                    <div className="form-field">
+                      <label className="field-label">
                         {currentLang === 'ta' ? '6 இலக்க சரிபார்ப்பு OTP குறியீடு:' : '6-Digit Verification Code (OTP):'}
                       </label>
-                      <div className="tnega-input-wrapper">
-                        <input
-                          type="text"
-                          maxLength={6}
-                          className="tnega-form-input otp-input"
-                          value={otpCode}
-                          onChange={(e) => setOtpCode(e.target.value)}
-                          placeholder="782419"
-                          required
-                          autoFocus
-                        />
-                      </div>
+                      <input
+                        type="text"
+                        maxLength={6}
+                        className="minimal-input otp-field"
+                        value={otpCode}
+                        onChange={(e) => setOtpCode(e.target.value)}
+                        placeholder="782419"
+                        required
+                        autoFocus
+                      />
                     </div>
 
                     <button
                       type="submit"
                       id="btn-verify-otp"
                       disabled={loading || !otpCode}
-                      className="tnega-primary-btn"
+                      className="minimal-submit-btn"
                     >
                       {loading ? (
                         <>
@@ -477,16 +439,16 @@ export default function LoginPortal({
                       ) : (
                         <>
                           <Lock className="w-4 h-4" />
-                          <span>{currentLang === 'ta' ? 'உள்நுழைக (Verify & Enter)' : 'Verify Identity & Enter'}</span>
+                          <span>{currentLang === 'ta' ? 'உள்நுழைக' : 'Verify & Enter'}</span>
                         </>
                       )}
                     </button>
 
-                    <div className="tnega-resend-row">
+                    <div className="resend-row">
                       <button
                         type="button"
                         onClick={handleSendOtp}
-                        className="tnega-link-btn"
+                        className="minimal-link-btn"
                       >
                         {currentLang === 'ta' ? 'மறுமுறை OTP அனுப்புக' : 'Resend OTP'}
                       </button>
@@ -495,70 +457,41 @@ export default function LoginPortal({
                 )}
               </form>
 
-              {/* 1-Click Instant Persona Login for Evaluators */}
-              <div className="tnega-evaluator-section">
-                <div className="evaluator-title">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-700" />
-                  <span>{currentLang === 'ta' ? 'மதிப்பீட்டாளர் உடனடி உள்நுழைவு (1-Click Personas):' : '1-Click Instant Evaluator Personas:'}</span>
-                </div>
-                <div className="evaluator-btns-row">
+              {/* 1-Click Persona Shortcuts */}
+              <div className="minimal-personas-section">
+                <span className="personas-label">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{currentLang === 'ta' ? 'உடனடி மாதிரி உள்நுழைவு:' : 'Instant 1-Click Evaluation:'}</span>
+                </span>
+                <div className="personas-row">
                   <button
                     type="button"
                     id="demo-login-farmer"
                     onClick={() => handleQuickDemoLogin('farmer')}
-                    className="evaluator-chip farmer"
+                    className="persona-chip farmer"
+                    title="Login as Farmer Murugan"
                   >
-                    👨‍🌾 {currentLang === 'ta' ? 'உழவர் முருகன்' : 'Farmer Murugan'}
+                    👨‍🌾 {currentLang === 'ta' ? 'முருகன் (உழவர்)' : 'Murugan (Farmer)'}
                   </button>
                   <button
                     type="button"
                     id="demo-login-trader"
                     onClick={() => handleQuickDemoLogin('trader')}
-                    className="evaluator-chip trader"
+                    className="persona-chip trader"
+                    title="Login as Mandi Trader Selvaraj"
                   >
-                    🏪 {currentLang === 'ta' ? 'வியாபாரி செல்வராஜ்' : 'Trader Selvaraj'}
+                    🏪 {currentLang === 'ta' ? 'செல்வராஜ் (வணிகர்)' : 'Selvaraj (Trader)'}
                   </button>
                   <button
                     type="button"
                     id="demo-login-admin"
                     onClick={() => handleQuickDemoLogin('admin')}
-                    className="evaluator-chip admin"
+                    className="persona-chip admin"
+                    title="Login as Regulatory Officer Swaminathan"
                   >
-                    🏛️ {currentLang === 'ta' ? 'அரசு அலுவலர்' : 'Officer Swaminathan'}
+                    🏛️ {currentLang === 'ta' ? 'சுவாமிநாதன் (அதிகாரி)' : 'Swaminathan (Admin)'}
                   </button>
                 </div>
-
-                {onEnterAsCitizen && (
-                  <button
-                    type="button"
-                    id="btn-public-citizen-access"
-                    onClick={onEnterAsCitizen}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.5rem',
-                      width: '100%',
-                      padding: '0.65rem 0.85rem',
-                      background: '#f0fdf4',
-                      border: '1.5px dashed #059669',
-                      borderRadius: '6px',
-                      color: '#065f46',
-                      fontWeight: '700',
-                      fontSize: '0.84rem',
-                      cursor: 'pointer',
-                      marginTop: '0.85rem',
-                      transition: 'all 0.2s ease'
-                    }}
-                  >
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                    <span>
-                      {currentLang === 'ta'
-                        ? '🔎 நுகர்வோர் நேரடி அணுகல் (உள்நுழைவு இன்றி பாஸ்போர்ட் காண்க)'
-                        : '🔎 Citizen Public Access (Inspect Traceability without Login)'}
-                    </span>
-                  </button>
-                )}
               </div>
 
             </div>
@@ -567,25 +500,25 @@ export default function LoginPortal({
         </div>
       </main>
 
-      {/* Prototype Disclaimer Footer */}
-      <footer className="tnega-footer">
-        <div className="tnega-footer-inner">
-          <div className="footer-col-main">
-            <div className="footer-title">
+      {/* 3. Minimal GovTech Footer */}
+      <footer className="minimal-login-footer">
+        <div className="minimal-login-footer-inner">
+          <div className="footer-left">
+            <span className="footer-title">
               {currentLang === 'ta' 
-                ? 'TNeGA & வேளாண்மைத் துறை ஆய்வுக்கான கருத்துரு மாதிரி (FarmChain AI Concept Prototype)' 
-                : 'Concept Prototype Proposed for TNeGA & Department of Agriculture (FarmChain AI)'}
-            </div>
-            <p className="footer-desc">
+                ? 'வேளாண்மைத் துறை & TNeGA ஆய்வுக்கான கருத்துரு முன்மாதிரி' 
+                : 'National Krishi Transparency Registry • Govt Research PoC'}
+            </span>
+            <p className="footer-subtext">
               {currentLang === 'ta'
-                ? '⚠️ அறிவிப்பு: இது மதிப்பீட்டு வெள்ளோட்டத்திற்கான முன்மாதிரி திட்டம் (Research PoC). உண்மை அரசு தளம் அல்ல. TNeGA இடைமுக பாணியில் ஆய்வுக்காக உருவாக்கப்பட்டது.'
-                : '⚠️ Notice: This application is an evaluation proof-of-concept prototype demonstrating blockchain-style provenance & AI produce quality checks. Not an official live government deployment.'}
+                ? 'விளைபொருள் உண்மைத் தன்மை, APMC மண்டி விலை மற்றும் கிரிப்டோகிராபிக் SHA-256 பதிவேட்டு வெள்ளோட்டம்.'
+                : 'Decentralized agricultural traceability prototype powered by SHA-256 cryptographic ledgers & Gemini Vision AI.'}
             </p>
           </div>
-          <div className="footer-col-badges">
-            <span className="footer-seal-pill">🔬 Research PoC</span>
-            <span className="footer-seal-pill">⚠️ Prototype Only</span>
-            <span className="footer-seal-pill">🔐 SHA-256 Ledger</span>
+          <div className="footer-tags">
+            <span className="footer-tag-pill">🇮🇳 Digital India</span>
+            <span className="footer-tag-pill">🌾 e-NAM Network</span>
+            <span className="footer-tag-pill">🔒 SHA-256 Ledger</span>
           </div>
         </div>
       </footer>

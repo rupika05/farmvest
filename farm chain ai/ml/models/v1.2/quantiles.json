@@ -1,0 +1,14 @@
+{
+  "farmerToIntermediary": {
+    "p10_delta": -1.48,
+    "p90_delta": 2.23
+  },
+  "intermediaryToRetailer": {
+    "p10_delta": -1.87,
+    "p90_delta": 2.77
+  },
+  "retailerToConsumer": {
+    "p10_delta": -2.44,
+    "p90_delta": 3.3
+  }
+}

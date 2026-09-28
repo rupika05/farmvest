@@ -1,0 +1,682 @@
+{
+  "datasets": [
+    {
+      "id": "ds-b54e657a",
+      "name": "hello",
+      "description": "Historical Mandi Dataset uploaded by Admin",
+      "uploaded_at": "2026-09-28T17:00:17.948888",
+      "file_path": "C:\\Users\\VARSHA\\Desktop\\farm chain ai\\farm chain ai\\ml\\data\\uploads\\ds-b54e657a_farmchain_ai_price_training_dataset_corrected.csv",
+      "total_rows": 1500,
+      "valid_rows": 1500,
+      "invalid_rows": 0,
+      "columns_count": 8,
+      "status": "APPROVED",
+      "quality_score": 100.0,
+      "is_demo": false,
+      "validation_summary": {
+        "dataset_name": "hello",
+        "total_rows": 1500,
+        "valid_rows": 1500,
+        "invalid_rows": 0,
+        "duplicate_rows": 0,
+        "missing_value_summary": {
+          "crop": 0,
+          "mandi_price": 0,
+          "quality_grade": 0,
+          "quantity_kg": 0,
+          "farmer_to_intermediary_price": 0,
+          "intermediary_to_retailer_price": 0,
+          "retailer_to_consumer_price": 0,
+          "location": 0
+        },
+        "column_status": {
+          "crop": "PRESENT",
+          "mandi_price": "PRESENT",
+          "quality_grade": "PRESENT",
+          "quantity_kg": "PRESENT",
+          "farmer_to_intermediary_price": "PRESENT",
+          "intermediary_to_retailer_price": "PRESENT",
+          "retailer_to_consumer_price": "PRESENT",
+          "mandi_min_price": "OPTIONAL_ABSENT",
+          "mandi_max_price": "OPTIONAL_ABSENT",
+          "location": "PRESENT",
+          "market_location": "OPTIONAL_ABSENT",
+          "season": "OPTIONAL_ABSENT",
+          "supply_level": "OPTIONAL_ABSENT",
+          "demand_level": "OPTIONAL_ABSENT",
+          "transport_cost_per_kg": "OPTIONAL_ABSENT",
+          "storage_cost_per_kg": "OPTIONAL_ABSENT",
+          "handling_cost_per_kg": "OPTIONAL_ABSENT",
+          "days_in_storage": "OPTIONAL_ABSENT",
+          "weather_condition": "OPTIONAL_ABSENT",
+          "transaction_date": "OPTIONAL_ABSENT",
+          "distance_km": "OPTIONAL_ABSENT",
+          "arrival_quantity": "OPTIONAL_ABSENT",
+          "market_arrival_volume": "OPTIONAL_ABSENT"
+        },
+        "quality_score": 100.0,
+        "validation_status": "VALID",
+        "errors": [],
+        "warnings": [],
+        "preview_rows": [
+          {
+            "crop": "Cauliflower",
+            "mandi_price": 45.81,
+            "quality_grade": "C",
+            "quantity_kg": 200,
+            "farmer_to_intermediary_price": 38.73,
+            "intermediary_to_retailer_price": 45.89,
+            "retailer_to_consumer_price": 53.2,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Lady Finger",
+            "mandi_price": 50.27,
+            "quality_grade": "B",
+            "quantity_kg": 25,
+            "farmer_to_intermediary_price": 45.42,
+            "intermediary_to_retailer_price": 52.91,
+            "retailer_to_consumer_price": 59.24,
+            "location": "Salem"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi_price": 32.45,
+            "quality_grade": "B",
+            "quantity_kg": 25,
+            "farmer_to_intermediary_price": 27.78,
+            "intermediary_to_retailer_price": 33.41,
+            "retailer_to_consumer_price": 38.91,
+            "location": "Salem"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi_price": 36.33,
+            "quality_grade": "A",
+            "quantity_kg": 500,
+            "farmer_to_intermediary_price": 30.01,
+            "intermediary_to_retailer_price": 37.37,
+            "retailer_to_consumer_price": 44.33,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Potato",
+            "mandi_price": 24.32,
+            "quality_grade": "B",
+            "quantity_kg": 50,
+            "farmer_to_intermediary_price": 21.95,
+            "intermediary_to_retailer_price": 25.84,
+            "retailer_to_consumer_price": 30.25,
+            "location": "Salem"
+          },
+          {
+            "crop": "Green Chilli",
+            "mandi_price": 84.3,
+            "quality_grade": "A",
+            "quantity_kg": 150,
+            "farmer_to_intermediary_price": 71.86,
+            "intermediary_to_retailer_price": 86.58,
+            "retailer_to_consumer_price": 97.68,
+            "location": "Madurai"
+          },
+          {
+            "crop": "Tomato",
+            "mandi_price": 62.46,
+            "quality_grade": "A",
+            "quantity_kg": 150,
+            "farmer_to_intermediary_price": 53.51,
+            "intermediary_to_retailer_price": 64.5,
+            "retailer_to_consumer_price": 72.36,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Onion",
+            "mandi_price": 34.0,
+            "quality_grade": "B",
+            "quantity_kg": 750,
+            "farmer_to_intermediary_price": 28.94,
+            "intermediary_to_retailer_price": 34.49,
+            "retailer_to_consumer_price": 41.4,
+            "location": "Madurai"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi_price": 32.41,
+            "quality_grade": "C",
+            "quantity_kg": 300,
+            "farmer_to_intermediary_price": 27.44,
+            "intermediary_to_retailer_price": 33.51,
+            "retailer_to_consumer_price": 40.87,
+            "location": "Trichy"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi_price": 32.08,
+            "quality_grade": "A",
+            "quantity_kg": 75,
+            "farmer_to_intermediary_price": 27.45,
+            "intermediary_to_retailer_price": 32.77,
+            "retailer_to_consumer_price": 38.44,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Lady Finger",
+            "mandi_price": 44.18,
+            "quality_grade": "A",
+            "quantity_kg": 300,
+            "farmer_to_intermediary_price": 37.94,
+            "intermediary_to_retailer_price": 45.75,
+            "retailer_to_consumer_price": 55.53,
+            "location": "Erode"
+          },
+          {
+            "crop": "Beetroot",
+            "mandi_price": 37.42,
+            "quality_grade": "C",
+            "quantity_kg": 150,
+            "farmer_to_intermediary_price": 31.85,
+            "intermediary_to_retailer_price": 38.09,
+            "retailer_to_consumer_price": 45.98,
+            "location": "Trichy"
+          },
+          {
+            "crop": "Brinjal",
+            "mandi_price": 40.13,
+            "quality_grade": "B",
+            "quantity_kg": 200,
+            "farmer_to_intermediary_price": 34.38,
+            "intermediary_to_retailer_price": 42.65,
+            "retailer_to_consumer_price": 50.1,
+            "location": "Chennai"
+          },
+          {
+            "crop": "Brinjal",
+            "mandi_price": 39.77,
+            "quality_grade": "A",
+            "quantity_kg": 25,
+            "farmer_to_intermediary_price": 35.42,
+            "intermediary_to_retailer_price": 39.71,
+            "retailer_to_consumer_price": 47.86,
+            "location": "Madurai"
+          },
+          {
+            "crop": "Potato",
+            "mandi_price": 26.18,
+            "quality_grade": "C",
+            "quantity_kg": 200,
+            "farmer_to_intermediary_price": 22.83,
+            "intermediary_to_retailer_price": 26.19,
+            "retailer_to_consumer_price": 31.98,
+            "location": "Dindigul"
+          },
+          {
+            "crop": "Drumstick",
+            "mandi_price": 46.63,
+            "quality_grade": "A",
+            "quantity_kg": 100,
+            "farmer_to_intermediary_price": 40.25,
+            "intermediary_to_retailer_price": 49.42,
+            "retailer_to_consumer_price": 58.01,
+            "location": "Salem"
+          },
+          {
+            "crop": "Green Chilli",
+            "mandi_price": 62.86,
+            "quality_grade": "C",
+            "quantity_kg": 75,
+            "farmer_to_intermediary_price": 56.55,
+            "intermediary_to_retailer_price": 64.77,
+            "retailer_to_consumer_price": 78.19,
+            "location": "Salem"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi_price": 25.11,
+            "quality_grade": "A",
+            "quantity_kg": 100,
+            "farmer_to_intermediary_price": 22.01,
+            "intermediary_to_retailer_price": 26.4,
+            "retailer_to_consumer_price": 31.38,
+            "location": "Trichy"
+          },
+          {
+            "crop": "Cauliflower",
+            "mandi_price": 39.6,
+            "quality_grade": "B",
+            "quantity_kg": 100,
+            "farmer_to_intermediary_price": 34.1,
+            "intermediary_to_retailer_price": 40.21,
+            "retailer_to_consumer_price": 49.85,
+            "location": "Thanjavur"
+          },
+          {
+            "crop": "Cabbage",
+            "mandi_price": 30.71,
+            "quality_grade": "B",
+            "quantity_kg": 150,
+            "farmer_to_intermediary_price": 27.47,
+            "intermediary_to_retailer_price": 32.62,
+            "retailer_to_consumer_price": 36.32,
+            "location": "Erode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ds-f2542da9",
+      "name": "market transactions",
+      "description": "Historical Mandi Dataset uploaded by Admin",
+      "uploaded_at": "2026-09-28T16:57:01.493556",
+      "file_path": "C:\\Users\\VARSHA\\Desktop\\farm chain ai\\farm chain ai\\ml\\data\\uploads\\ds-f2542da9_farmchain_ai_price_training_dataset.csv",
+      "total_rows": 1500,
+      "valid_rows": 0,
+      "invalid_rows": 1500,
+      "columns_count": 8,
+      "status": "REJECTED",
+      "quality_score": 0.0,
+      "is_demo": false,
+      "validation_summary": {
+        "dataset_name": "market transactions",
+        "total_rows": 1500,
+        "valid_rows": 0,
+        "invalid_rows": 1500,
+        "duplicate_rows": 0,
+        "missing_value_summary": {
+          "crop": 0,
+          "mandi base (\u20b9)": 0,
+          "grade": 0,
+          "qty (kg)": 0,
+          "farmer price (\u20b9)": 0,
+          "intermediary (\u20b9)": 0,
+          "retailer (\u20b9)": 0,
+          "location": 0
+        },
+        "column_status": {
+          "crop": "PRESENT",
+          "mandi_price": "MISSING_REQUIRED",
+          "quality_grade": "MISSING_REQUIRED",
+          "quantity_kg": "MISSING_REQUIRED",
+          "farmer_to_intermediary_price": "MISSING_REQUIRED",
+          "intermediary_to_retailer_price": "MISSING_REQUIRED",
+          "retailer_to_consumer_price": "MISSING_REQUIRED",
+          "mandi_min_price": "OPTIONAL_ABSENT",
+          "mandi_max_price": "OPTIONAL_ABSENT",
+          "location": "PRESENT",
+          "market_location": "OPTIONAL_ABSENT",
+          "season": "OPTIONAL_ABSENT",
+          "supply_level": "OPTIONAL_ABSENT",
+          "demand_level": "OPTIONAL_ABSENT",
+          "transport_cost_per_kg": "OPTIONAL_ABSENT",
+          "storage_cost_per_kg": "OPTIONAL_ABSENT",
+          "handling_cost_per_kg": "OPTIONAL_ABSENT",
+          "days_in_storage": "OPTIONAL_ABSENT",
+          "weather_condition": "OPTIONAL_ABSENT",
+          "transaction_date": "OPTIONAL_ABSENT",
+          "distance_km": "OPTIONAL_ABSENT",
+          "arrival_quantity": "OPTIONAL_ABSENT",
+          "market_arrival_volume": "OPTIONAL_ABSENT"
+        },
+        "quality_score": 0.0,
+        "validation_status": "INVALID",
+        "errors": [
+          {
+            "row_index": 0,
+            "column": "SCHEMA",
+            "value": "['mandi_price', 'quality_grade', 'quantity_kg', 'farmer_to_intermediary_price', 'intermediary_to_retailer_price', 'retailer_to_consumer_price']",
+            "reason": "Required columns missing: mandi_price, quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+          }
+        ],
+        "warnings": [
+          "Missing required columns: mandi_price, quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+        ],
+        "preview_rows": [
+          {
+            "crop": "Cauliflower",
+            "mandi base (\u20b9)": 45.81,
+            "grade": "C",
+            "qty (kg)": 200,
+            "farmer price (\u20b9)": 38.73,
+            "intermediary (\u20b9)": 45.89,
+            "retailer (\u20b9)": 53.2,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Lady Finger",
+            "mandi base (\u20b9)": 50.27,
+            "grade": "B",
+            "qty (kg)": 25,
+            "farmer price (\u20b9)": 45.42,
+            "intermediary (\u20b9)": 52.91,
+            "retailer (\u20b9)": 59.24,
+            "location": "Salem"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi base (\u20b9)": 32.45,
+            "grade": "B",
+            "qty (kg)": 25,
+            "farmer price (\u20b9)": 27.78,
+            "intermediary (\u20b9)": 33.41,
+            "retailer (\u20b9)": 38.91,
+            "location": "Salem"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi base (\u20b9)": 36.33,
+            "grade": "A",
+            "qty (kg)": 500,
+            "farmer price (\u20b9)": 30.01,
+            "intermediary (\u20b9)": 37.37,
+            "retailer (\u20b9)": 44.33,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Potato",
+            "mandi base (\u20b9)": 24.32,
+            "grade": "B",
+            "qty (kg)": 50,
+            "farmer price (\u20b9)": 21.95,
+            "intermediary (\u20b9)": 25.84,
+            "retailer (\u20b9)": 30.25,
+            "location": "Salem"
+          },
+          {
+            "crop": "Green Chilli",
+            "mandi base (\u20b9)": 84.3,
+            "grade": "A",
+            "qty (kg)": 150,
+            "farmer price (\u20b9)": 71.86,
+            "intermediary (\u20b9)": 86.58,
+            "retailer (\u20b9)": 97.68,
+            "location": "Madurai"
+          },
+          {
+            "crop": "Tomato",
+            "mandi base (\u20b9)": 62.46,
+            "grade": "A",
+            "qty (kg)": 150,
+            "farmer price (\u20b9)": 53.51,
+            "intermediary (\u20b9)": 64.5,
+            "retailer (\u20b9)": 72.36,
+            "location": "Coimbatore"
+          },
+          {
+            "crop": "Onion",
+            "mandi base (\u20b9)": 34.0,
+            "grade": "B",
+            "qty (kg)": 750,
+            "farmer price (\u20b9)": 28.94,
+            "intermediary (\u20b9)": 34.49,
+            "retailer (\u20b9)": 41.4,
+            "location": "Madurai"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi base (\u20b9)": 32.41,
+            "grade": "C",
+            "qty (kg)": 300,
+            "farmer price (\u20b9)": 27.44,
+            "intermediary (\u20b9)": 33.51,
+            "retailer (\u20b9)": 40.87,
+            "location": "Trichy"
+          },
+          {
+            "crop": "Cucumber",
+            "mandi base (\u20b9)": 32.08,
+            "grade": "A",
+            "qty (kg)": 75,
+            "farmer price (\u20b9)": 27.45,
+            "intermediary (\u20b9)": 32.77,
+            "retailer (\u20b9)": 38.44,
+            "location": "Coimbatore"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ds-85b5e39d",
+      "name": "Invalid Test Dataset",
+      "description": "Historical Mandi Dataset uploaded by Admin",
+      "uploaded_at": "2026-09-28T16:43:44.397444",
+      "file_path": "C:\\Users\\VARSHA\\Desktop\\farm chain ai\\farm chain ai\\ml\\data\\uploads\\ds-85b5e39d_invalid_test.csv",
+      "total_rows": 2,
+      "valid_rows": 0,
+      "invalid_rows": 2,
+      "columns_count": 2,
+      "status": "REJECTED",
+      "quality_score": 0.0,
+      "is_demo": false,
+      "validation_summary": {
+        "dataset_name": "Invalid Test Dataset",
+        "total_rows": 2,
+        "valid_rows": 0,
+        "invalid_rows": 2,
+        "duplicate_rows": 0,
+        "missing_value_summary": {
+          "crop": 0,
+          "mandi_price": 0
+        },
+        "column_status": {
+          "crop": "PRESENT",
+          "mandi_price": "PRESENT",
+          "quality_grade": "MISSING_REQUIRED",
+          "quantity_kg": "MISSING_REQUIRED",
+          "farmer_to_intermediary_price": "MISSING_REQUIRED",
+          "intermediary_to_retailer_price": "MISSING_REQUIRED",
+          "retailer_to_consumer_price": "MISSING_REQUIRED",
+          "mandi_min_price": "OPTIONAL_ABSENT",
+          "mandi_max_price": "OPTIONAL_ABSENT",
+          "location": "OPTIONAL_ABSENT",
+          "market_location": "OPTIONAL_ABSENT",
+          "season": "OPTIONAL_ABSENT",
+          "supply_level": "OPTIONAL_ABSENT",
+          "demand_level": "OPTIONAL_ABSENT",
+          "transport_cost_per_kg": "OPTIONAL_ABSENT",
+          "storage_cost_per_kg": "OPTIONAL_ABSENT",
+          "handling_cost_per_kg": "OPTIONAL_ABSENT",
+          "days_in_storage": "OPTIONAL_ABSENT",
+          "weather_condition": "OPTIONAL_ABSENT",
+          "transaction_date": "OPTIONAL_ABSENT",
+          "distance_km": "OPTIONAL_ABSENT",
+          "arrival_quantity": "OPTIONAL_ABSENT",
+          "market_arrival_volume": "OPTIONAL_ABSENT"
+        },
+        "quality_score": 0.0,
+        "validation_status": "INVALID",
+        "errors": [
+          {
+            "row_index": 0,
+            "column": "SCHEMA",
+            "value": "['quality_grade', 'quantity_kg', 'farmer_to_intermediary_price', 'intermediary_to_retailer_price', 'retailer_to_consumer_price']",
+            "reason": "Required columns missing: quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+          }
+        ],
+        "warnings": [
+          "Missing required columns: quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+        ],
+        "preview_rows": [
+          {
+            "crop": "Tomato",
+            "mandi_price": "-15.0"
+          },
+          {
+            "crop": "Potato",
+            "mandi_price": "abc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ds-c0df14fa",
+      "name": "Invalid Test Dataset",
+      "description": "Historical Mandi Dataset uploaded by Admin",
+      "uploaded_at": "2026-09-28T16:35:11.137146",
+      "file_path": "C:\\Users\\VARSHA\\Desktop\\farm chain ai\\farm chain ai\\ml\\data\\uploads\\ds-c0df14fa_invalid_test.csv",
+      "total_rows": 2,
+      "valid_rows": 0,
+      "invalid_rows": 2,
+      "columns_count": 2,
+      "status": "REJECTED",
+      "quality_score": 0.0,
+      "is_demo": false,
+      "validation_summary": {
+        "dataset_name": "Invalid Test Dataset",
+        "total_rows": 2,
+        "valid_rows": 0,
+        "invalid_rows": 2,
+        "duplicate_rows": 0,
+        "missing_value_summary": {
+          "crop": 0,
+          "mandi_price": 0
+        },
+        "column_status": {
+          "crop": "PRESENT",
+          "mandi_price": "PRESENT",
+          "quality_grade": "MISSING_REQUIRED",
+          "quantity_kg": "MISSING_REQUIRED",
+          "farmer_to_intermediary_price": "MISSING_REQUIRED",
+          "intermediary_to_retailer_price": "MISSING_REQUIRED",
+          "retailer_to_consumer_price": "MISSING_REQUIRED",
+          "mandi_min_price": "OPTIONAL_ABSENT",
+          "mandi_max_price": "OPTIONAL_ABSENT",
+          "location": "OPTIONAL_ABSENT",
+          "market_location": "OPTIONAL_ABSENT",
+          "season": "OPTIONAL_ABSENT",
+          "supply_level": "OPTIONAL_ABSENT",
+          "demand_level": "OPTIONAL_ABSENT",
+          "transport_cost_per_kg": "OPTIONAL_ABSENT",
+          "storage_cost_per_kg": "OPTIONAL_ABSENT",
+          "handling_cost_per_kg": "OPTIONAL_ABSENT",
+          "days_in_storage": "OPTIONAL_ABSENT",
+          "weather_condition": "OPTIONAL_ABSENT",
+          "transaction_date": "OPTIONAL_ABSENT",
+          "distance_km": "OPTIONAL_ABSENT",
+          "arrival_quantity": "OPTIONAL_ABSENT",
+          "market_arrival_volume": "OPTIONAL_ABSENT"
+        },
+        "quality_score": 0.0,
+        "validation_status": "INVALID",
+        "errors": [
+          {
+            "row_index": 0,
+            "column": "SCHEMA",
+            "value": "['quality_grade', 'quantity_kg', 'farmer_to_intermediary_price', 'intermediary_to_retailer_price', 'retailer_to_consumer_price']",
+            "reason": "Required columns missing: quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+          }
+        ],
+        "warnings": [
+          "Missing required columns: quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+        ],
+        "preview_rows": [
+          {
+            "crop": "Tomato",
+            "mandi_price": "-15.0"
+          },
+          {
+            "crop": "Potato",
+            "mandi_price": "abc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ds-275f9a18",
+      "name": "Invalid Test Dataset",
+      "description": "Historical Mandi Dataset uploaded by Admin",
+      "uploaded_at": "2026-09-28T16:34:47.255435",
+      "file_path": "C:\\Users\\VARSHA\\Desktop\\farm chain ai\\farm chain ai\\ml\\data\\uploads\\ds-275f9a18_invalid_test.csv",
+      "total_rows": 2,
+      "valid_rows": 0,
+      "invalid_rows": 2,
+      "columns_count": 2,
+      "status": "REJECTED",
+      "quality_score": 0.0,
+      "is_demo": false,
+      "validation_summary": {
+        "dataset_name": "Invalid Test Dataset",
+        "total_rows": 2,
+        "valid_rows": 0,
+        "invalid_rows": 2,
+        "duplicate_rows": 0,
+        "missing_value_summary": {
+          "crop": 0,
+          "mandi_price": 0
+        },
+        "column_status": {
+          "crop": "PRESENT",
+          "mandi_price": "PRESENT",
+          "quality_grade": "MISSING_REQUIRED",
+          "quantity_kg": "MISSING_REQUIRED",
+          "farmer_to_intermediary_price": "MISSING_REQUIRED",
+          "intermediary_to_retailer_price": "MISSING_REQUIRED",
+          "retailer_to_consumer_price": "MISSING_REQUIRED",
+          "mandi_min_price": "OPTIONAL_ABSENT",
+          "mandi_max_price": "OPTIONAL_ABSENT",
+          "location": "OPTIONAL_ABSENT",
+          "market_location": "OPTIONAL_ABSENT",
+          "season": "OPTIONAL_ABSENT",
+          "supply_level": "OPTIONAL_ABSENT",
+          "demand_level": "OPTIONAL_ABSENT",
+          "transport_cost_per_kg": "OPTIONAL_ABSENT",
+          "storage_cost_per_kg": "OPTIONAL_ABSENT",
+          "handling_cost_per_kg": "OPTIONAL_ABSENT",
+          "days_in_storage": "OPTIONAL_ABSENT",
+          "weather_condition": "OPTIONAL_ABSENT",
+          "transaction_date": "OPTIONAL_ABSENT",
+          "distance_km": "OPTIONAL_ABSENT",
+          "arrival_quantity": "OPTIONAL_ABSENT",
+          "market_arrival_volume": "OPTIONAL_ABSENT"
+        },
+        "quality_score": 0.0,
+        "validation_status": "INVALID",
+        "errors": [
+          {
+            "row_index": 0,
+            "column": "SCHEMA",
+            "value": "['quality_grade', 'quantity_kg', 'farmer_to_intermediary_price', 'intermediary_to_retailer_price', 'retailer_to_consumer_price']",
+            "reason": "Required columns missing: quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+          }
+        ],
+        "warnings": [
+          "Missing required columns: quality_grade, quantity_kg, farmer_to_intermediary_price, intermediary_to_retailer_price, retailer_to_consumer_price"
+        ],
+        "preview_rows": [
+          {
+            "crop": "Tomato",
+            "mandi_price": "-15.0"
+          },
+          {
+            "crop": "Potato",
+            "mandi_price": "abc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-dataset-2026",
+      "name": "Demo Mandi History (Testing Baseline)",
+      "description": "DEMO DATA \u2014 NOT REAL MARKET DATA: Pre-configured test dataset covering 10 commodities across 350 transactions.",
+      "uploaded_at": "2026-09-28T16:00:00.000Z",
+      "file_path": "ml/data/sample_market_dataset.csv",
+      "total_rows": 350,
+      "valid_rows": 350,
+      "columns_count": 21,
+      "status": "APPROVED",
+      "quality_score": 100.0,
+      "is_demo": true,
+      "validation_summary": {
+        "dataset_name": "Demo Mandi History (Testing Baseline)",
+        "total_rows": 350,
+        "valid_rows": 350,
+        "invalid_rows": 0,
+        "duplicate_rows": 0,
+        "missing_value_summary": {},
+        "quality_score": 100.0,
+        "validation_status": "VALID",
+        "warnings": [
+          "DEMO DATA \u2014 NOT REAL MARKET DATA. Provided for testing purposes."
+        ]
+      }
+    }
+  ]
+}

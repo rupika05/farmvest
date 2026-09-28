@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import batchRoutes from './routes/batchRoutes.js';
 import priceRoutes from './services/priceSuggestion/routes.js';
 import authRoutes from './services/authService/routes.js';
+import mlRoutes from './routes/mlRoutes.js';
 import { securityHeaders } from './middleware/security.js';
 import { compression } from './middleware/compression.js';
 import { createRateLimiter } from './middleware/rateLimiter.js';
@@ -106,6 +107,9 @@ app.get('/api/metrics', (req, res) => {
 // 3. API Routes with Caching Policies
 app.use('/api/auth', authLimiter, authRoutes);
 app.use('/auth', authLimiter, authRoutes);
+
+// ML-Based Fair Price Recommendation Gateway
+app.use('/api/ml', mlRoutes);
 
 // Price Suggestion: Cache-friendly static benchmark data
 app.use('/api/price-suggestion', (req, res, next) => {

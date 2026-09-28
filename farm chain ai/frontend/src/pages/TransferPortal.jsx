@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRightLeft, ShieldCheck, CheckCircle2, AlertCircle, RefreshCw, Layers, ArrowRight } from 'lucide-react';
-import { getBatch, transferBatch } from '../services/api';
+import { getBatch, transferBatch, getMlPriceRecommendation } from '../services/api';
 import DamageCheck from '../components/DamageCheck/DamageCheck';
 import { getCropImage } from '../config/crops';
 import { translations } from '../locales/translations';
@@ -43,6 +43,7 @@ export default function TransferPortal({
   const [submitting, setSubmitting] = useState(false);
   const [successBlock, setSuccessBlock] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [mlRecommendation, setMlRecommendation] = useState(null);
 
   useEffect(() => {
     if (initialBatchId) {
@@ -68,6 +69,22 @@ export default function TransferPortal({
           originalPrice: res.currentPrice,
           adjustedPrice: res.currentPrice
         }));
+
+        // Query genuine ML Recommendation Engine for intermediate / retail price benchmarks
+        try {
+          const rec = await getMlPriceRecommendation({
+            crop: res.crop,
+            mandi_price: Number(res.currentPrice) || 35.0,
+            quality_grade: res.qualityStatus || 'Grade A',
+            quantity_kg: Number(res.quantity) || 100,
+            location: res.currentLocation || 'Tamil Nadu',
+            transport_cost_per_kg: 1.5,
+            days_in_storage: 2
+          });
+          if (rec) setMlRecommendation(rec);
+        } catch (e) {
+          console.warn('TransferPortal ML recommendation error:', e);
+        }
       } else {
         setErrorMsg(res?.error || 'Batch not found.');
       }
@@ -95,6 +112,10 @@ export default function TransferPortal({
         ? inspectionData.adjustedPrice
         : currentNominal;
 
+      const isRetailStage = stage === 'RETAIL_KIRANA_RATION';
+      const stageKey = isRetailStage ? 'retailerToConsumer' : 'intermediaryToRetailer';
+      const recStage = mlRecommendation?.recommendations?.[stageKey];
+
       const payload = {
         stage,
         owner: newOwner,
@@ -104,7 +125,14 @@ export default function TransferPortal({
         qualityStatus: inspectionData?.qualityStatus || 'Standard',
         damageConfidence: inspectionData?.confidence || 0,
         discountApplied: inspectionData?.discountApplied || 0,
-        notes: notes + (inspectionData?.qualityStatus === 'Damaged' ? ' [AI Damage Detected: 20% markdown applied]' : '')
+        notes: notes + (inspectionData?.qualityStatus === 'Damaged' ? ' [AI Damage Detected: 20% markdown applied]' : ''),
+        mlRecommendation: recStage ? {
+          stage: stageKey,
+          lower: recStage.lower,
+          expected: recStage.expected,
+          upper: recStage.upper,
+          modelVersion: mlRecommendation?.model?.version || 'v1.0'
+        } : null
       };
 
       const result = await transferBatch(selectedBatchId, payload);
@@ -300,6 +328,80 @@ export default function TransferPortal({
               currentLang={currentLang}
               onInspectionComplete={handleInspectionComplete}
             />
+
+            {/* AI Fair Price Transfer Recommendation Card */}
+            {mlRecommendation && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.9))',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                borderRadius: '12px',
+                padding: '1.25rem',
+                margin: '1.25rem 0'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ background: '#0284c7', color: '#f0f9ff', fontWeight: 800, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px', textTransform: 'uppercase' }}>
+                      AI Fair Price Benchmark
+                    </span>
+                    <span style={{ fontSize: '0.8rem', color: '#7dd3fc', fontWeight: 600 }}>
+                      Model {mlRecommendation.model?.version || 'v1.0'} ({mlRecommendation.model?.modelType})
+                    </span>
+                  </div>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                    Acquisition Base: ₹{batchData.currentPrice}/{batchData.unit}
+                  </span>
+                </div>
+
+                {stage === 'RETAIL_KIRANA_RATION' ? (
+                  // Retailer -> Consumer Recommendation
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', background: 'rgba(0, 0, 0, 0.3)', padding: '1rem', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <div>
+                      <span style={{ fontSize: '0.8rem', color: '#cbd5e1', display: 'block', marginBottom: '4px' }}>
+                        Recommended Retail Fair Price Range (Retailer → Consumer):
+                      </span>
+                      <span style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f59e0b' }}>
+                        ₹{mlRecommendation.recommendations?.retailerToConsumer?.lower} – ₹{mlRecommendation.recommendations?.retailerToConsumer?.upper}
+                        <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: 500 }}> / {batchData.unit}</span>
+                      </span>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#94a3b8', display: 'block' }}>Expected Consumer Price</span>
+                      <strong style={{ fontSize: '1.2rem', color: '#34d399' }}>
+                        ₹{mlRecommendation.recommendations?.retailerToConsumer?.expected}/{batchData.unit}
+                      </strong>
+                    </div>
+                  </div>
+                ) : (
+                  // Intermediary -> Retailer Recommendation
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', background: 'rgba(0, 0, 0, 0.3)', padding: '1rem', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <div>
+                      <span style={{ fontSize: '0.8rem', color: '#cbd5e1', display: 'block', marginBottom: '4px' }}>
+                        Recommended Wholesale Selling Range (Intermediary → Retailer):
+                      </span>
+                      <span style={{ fontSize: '1.5rem', fontWeight: 800, color: '#38bdf8' }}>
+                        ₹{mlRecommendation.recommendations?.intermediaryToRetailer?.lower} – ₹{mlRecommendation.recommendations?.intermediaryToRetailer?.upper}
+                        <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: 500 }}> / {batchData.unit}</span>
+                      </span>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#94a3b8', display: 'block' }}>Expected Wholesale Price</span>
+                      <strong style={{ fontSize: '1.2rem', color: '#f59e0b' }}>
+                        ₹{mlRecommendation.recommendations?.intermediaryToRetailer?.expected}/{batchData.unit}
+                      </strong>
+                    </div>
+                  </div>
+                )}
+
+                <div style={{ marginTop: '0.75rem', fontSize: '0.74rem', color: '#94a3b8', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                  <span>
+                    💡 <strong>Factors considered:</strong> Mandi reference, produce grade ({batchData.qualityStatus || 'Standard'}), transit freight, and storage holding impact.
+                  </span>
+                  <span style={{ color: '#6ee7b7' }}>
+                    Non-binding statistical guide for fair trade negotiation
+                  </span>
+                </div>
+              </div>
+            )}
 
             {errorMsg && (
               <div style={{ margin: '1rem 0', padding: '0.75rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid #ef4444', borderRadius: '8px', color: '#f87171', fontSize: '0.85rem' }}>

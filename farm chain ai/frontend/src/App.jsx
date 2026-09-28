@@ -247,19 +247,24 @@ export default function App() {
         )}
       </main>
 
-      {/* Official Government Footer */}
-      <footer className="govt-footer">
-        <div className="govt-footer-inner">
-          <div className="footer-left">
-            <strong>தேசிய உழவர் ஒளிவுமறைவற்ற தளம் | National Krishi Transparency Portal</strong>
-            <p style={{ margin: '0.2rem 0 0', fontSize: '0.72rem', color: '#94a3b8' }}>
-              Ministry of Agriculture & Farmers Welfare, Government of India • Digital India Portal
+      {/* Minimal GovTech Footer with Platform Description */}
+      <footer className="minimal-global-footer">
+        <div className="minimal-footer-inner">
+          <div className="footer-brand-desc">
+            <div className="footer-brand-title">
+              <strong>FarmChain AI</strong>
+              <span className="footer-badge-pill">GovTech Research PoC</span>
+              <span className="footer-dept-name">Ministry of Agriculture & Farmers Welfare • TNeGA PoC</span>
+            </div>
+            <p className="footer-description-text">
+              Public digital infrastructure for transparent farm-to-consumer agricultural provenance, real-time APMC Mandi price discovery, and multimodal AI produce quality grading secured on an immutable SHA-256 cryptographic hash-chain ledger.
             </p>
           </div>
-          <div className="footer-badges">
-            <span className="footer-tag">🇮🇳 e-NAM Integrated</span>
-            <span className="footer-tag">SHA-256 Ledger Verified</span>
-            <span className="footer-tag">APMC Mandi Network</span>
+          <div className="footer-pills-row">
+            <span className="footer-compliance-tag">🇮🇳 Digital India</span>
+            <span className="footer-compliance-tag">🌾 e-NAM Mandi Network</span>
+            <span className="footer-compliance-tag">🔒 SHA-256 Ledger Verified</span>
+            <span className="footer-compliance-tag">🤖 Gemini Vision AI</span>
           </div>
         </div>
       </footer>

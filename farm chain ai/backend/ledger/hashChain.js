@@ -40,6 +40,7 @@ export function createGenesisBlock(batchId, payload = {}) {
     damageConfidence: Number(payload.damageConfidence) || 0,
     discountApplied: Number(payload.discountApplied) || 0,
     notes: payload.notes || 'Batch harvested and registered on FarmChain AI ledger',
+    ...(payload.mlRecommendation ? { mlRecommendation: payload.mlRecommendation } : {}),
     previousHash: '0'.repeat(64),
     hash: ''
   };
@@ -83,6 +84,7 @@ export function appendTransferBlock(chain, payload) {
     damageConfidence: Number(payload.damageConfidence ?? 0),
     discountApplied: Number(payload.discountApplied ?? 0),
     notes: payload.notes || `Transferred custody to ${payload.owner || 'Custodian'}`,
+    ...(payload.mlRecommendation ? { mlRecommendation: payload.mlRecommendation } : {}),
     previousHash: previousBlock.hash,
     hash: ''
   };

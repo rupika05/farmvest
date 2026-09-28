@@ -1,0 +1,83 @@
+{
+  "farmerToIntermediary": [
+    {
+      "factor": "Wholesale Market Position",
+      "impact": "High influence",
+      "weight_pct": 92.2
+    },
+    {
+      "factor": "Mandi Price Range Spread",
+      "impact": "Low influence",
+      "weight_pct": 2.8
+    },
+    {
+      "factor": "Commodity Type",
+      "impact": "Low influence",
+      "weight_pct": 2.1
+    },
+    {
+      "factor": "Current APMC Mandi Price",
+      "impact": "Low influence",
+      "weight_pct": 1.0
+    },
+    {
+      "factor": "Produce Quality Grade",
+      "impact": "Low influence",
+      "weight_pct": 0.8
+    }
+  ],
+  "intermediaryToRetailer": [
+    {
+      "factor": "Wholesale Market Position",
+      "impact": "High influence",
+      "weight_pct": 90.4
+    },
+    {
+      "factor": "Mandi Price Range Spread",
+      "impact": "Low influence",
+      "weight_pct": 3.3
+    },
+    {
+      "factor": "Commodity Type",
+      "impact": "Low influence",
+      "weight_pct": 3.1
+    },
+    {
+      "factor": "Current APMC Mandi Price",
+      "impact": "Low influence",
+      "weight_pct": 1.1
+    },
+    {
+      "factor": "Produce Quality Grade",
+      "impact": "Low influence",
+      "weight_pct": 0.8
+    }
+  ],
+  "retailerToConsumer": [
+    {
+      "factor": "Wholesale Market Position",
+      "impact": "High influence",
+      "weight_pct": 88.5
+    },
+    {
+      "factor": "Mandi Price Range Spread",
+      "impact": "Low influence",
+      "weight_pct": 4.7
+    },
+    {
+      "factor": "Commodity Type",
+      "impact": "Low influence",
+      "weight_pct": 2.9
+    },
+    {
+      "factor": "Current APMC Mandi Price",
+      "impact": "Low influence",
+      "weight_pct": 1.5
+    },
+    {
+      "factor": "Produce Quality Grade",
+      "impact": "Low influence",
+      "weight_pct": 0.8
+    }
+  ]
+}
